@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from time import sleep
+import grequests
 
 
 def get_url():
@@ -118,6 +119,20 @@ def parse_single_pub_citations(publication):
     return citations
 
 
+def next_page(browser, next_page_number):
+    """
+    This function makes the click on the next/chosen page number,
+    as the main URL address is not updated by changing page.
+    :param next_button:
+    :return:
+    """
+    # Looking for the button, that has an inner span element, with the number of the page as its value
+    # i.e. < span class ="nova-legacy-c-button__labelf" > {next_page_number} < /span >
+    xpath_expression = f'//button[.//span[contains(text(),{next_page_number})]]'
+    browser.find_element(By.XPATH, xpath_expression).click()
+    return
+
+
 def main():
     """Costructor function"""
     # Initializing our container for parsed info of publications
@@ -128,8 +143,10 @@ def main():
     # Looping through pages (with finding all pubs on each page)
     for p in range(1, 10):
         print("Page proccessing: ", p)
-        url_page = f"https://www.researchgate.net/search/publication?q=Energy-Market&page={p}"
-        browser.get(url_page)
+
+        if p > 1:
+            # navigating to the next page, by pressing the next page button on the bottom of the page
+            next_page(browser, p)
         sleep(3)
         pubs = find_all_pubs_on_page(browser)
 
@@ -154,5 +171,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
