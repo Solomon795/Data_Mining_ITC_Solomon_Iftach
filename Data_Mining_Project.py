@@ -143,11 +143,6 @@ def main():
     # Looping through pages (with finding all pubs on each page)
     for p in range(1, 10):
         print("Page proccessing: ", p)
-
-        if p > 1:
-            # navigating to the next page, by pressing the next page button on the bottom of the page
-            next_page(browser, p)
-        sleep(3)
         pubs = find_all_pubs_on_page(browser)
 
         # Scraping relevant info of individual publication from given search page
@@ -165,6 +160,11 @@ def main():
                          "authors": authors, "month - year": monthyear, "reads": reads,
                          "citations": citations})
         print("Total publications parsed: ", len(data))
+
+        # navigating to the next page, by pressing the next page button on the bottom of the page
+        next_page(browser, p)
+
+        sleep(3)
     print(*data, sep="\n")
     return data
 
