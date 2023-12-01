@@ -1,0 +1,12 @@
+{
+    "UserCredentials":
+      {
+        "login": "Solomon.Iashuvaev@bakerhughes.com",
+        "password": "Solmars1@"
+      },
+
+  "Topic": {
+    "name": "Energy-Market",
+    "num-pages-to-process": 10
+  }
+}
