@@ -20,7 +20,7 @@ All parameters needed for the program, are taken from the JSON configuration fil
 
 ## Database: DataMining
 Here's thea database diagram:
-![Database Diagram](./ERD_data_mining.png)
+![Diagram](ERD_data_mining.png "ERD Diagram")
 
 ###Tables: 
 1. publications: 
