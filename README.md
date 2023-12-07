@@ -17,3 +17,49 @@ All parameters needed for the program, are taken from the JSON configuration fil
  - Topic name 
  - The number of the pages that should be processed for the topic. 
  Note: each page contains 10 references.
+
+## Database: DataMining
+Here's thea database diagram:
+![Database Diagram](./ERD_data_mining.png)
+
+###Tables: 
+1. publications: 
+     Columns:
+      - id - INT - primary key: identifier number from the publication's URL
+      - pub_type_code - INT - code of publication type
+      - title - VARCHAR(150) - publication title
+      - year - INT - year of publication
+      - citations - INT - number of citations
+      - reads - INT - number of publication reads
+      - url - VARCHAR(150) - url of publication
+      - journal - VARCHAR(45) - journal name
+
+   2. publication_types
+        Columns:
+       - type_code - INT - primary key: code of publication type
+       - type_name - VARCHAR(45) - description of publication type
+   
+   3. publication_by_authors
+        Columns:
+       -  id - INT - primary key: technical index
+       -  pub_id - INT - foreign key: publications.id
+       -  author_id - INT - foreign key: authors.id
+   
+   4. publications_by_topics
+        Columns:
+       - id - INT - primary key: technical index
+       - topic_id - INT - foreign key: topics.id
+       - pub_id - INT - foreign key: publications.id
+   
+    5. topics
+        Columns:
+       - id - INT - primary key: technical code of topic
+       - subject - VARCHAR(45) - topic description
+    
+    6. authors
+        Columns:
+       - id - INT - primary key: technical index
+       - full_name - VARCHAR(45) - author's full name
+
+### SChema installation instructions:
+    
