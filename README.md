@@ -19,10 +19,10 @@ All parameters needed for the program, are taken from the JSON configuration fil
  Note: each page contains 10 references.
 
 ## Database: DataMining
-Here's thea database diagram:
+Here's the ERD diagram:
 ![Diagram](ERD_data_mining.png "ERD Diagram")
 
-###Tables: 
+### Tables: 
 1. publications: 
      Columns:
       - id - INT - primary key: identifier number from the publication's URL
@@ -61,5 +61,6 @@ Here's thea database diagram:
        - id - INT - primary key: technical index
        - full_name - VARCHAR(45) - author's full name
 
-### SChema installation instructions:
-    
+### Schema installation instructions:
+The program requires the creation of the above DB tables. 
+For this, the script file data_mining_db_creation.sql should be run in advance.
