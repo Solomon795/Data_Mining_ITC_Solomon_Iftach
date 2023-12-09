@@ -8,15 +8,18 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from time import sleep
 import Configuration
-#import grequests
+import argparse
+
+# import grequests
 
 
 # CONSTANTS used in the program
 conf = Configuration.Configuration()
-topic_name, num_pages = conf.get_topic_settings()
-#num_pages = int(num_pages_str)
 
-def get_url():
+
+# num_pages = int(num_pages_str)
+
+def get_url(topic_name):
     """
     Going to our homepage
     :return browser, url:
@@ -55,7 +58,6 @@ def sign_in(my_url, my_chrome):
                            '.nova'
                            '-legacy-l-flex--justify-content-flex-start\@s-up.nova-legacy-l-flex--wrap-nowrap\@s-up > '
                            'div:nth-child(1) > button').click()
-    sleep(3)
 
 
 def find_all_pubs_on_page(my_chrome):
@@ -69,6 +71,8 @@ def find_all_pubs_on_page(my_chrome):
 
     pubs = soup.findAll('div', class_='nova-legacy-v-entity-item__stack nova-legacy-v-entity-item__stack--gutter-m')
     return pubs
+
+
 # href="publication/364328816_Modeling_Electricity_Markets_and_Energy_Systems_Challenges_and_Opportunities_Ahead"
 
 def parse_single_pub_material(publication):
@@ -178,7 +182,8 @@ def next_page(browser, next_page_number):
     """
     This function makes the click on the next/chosen page number,
     as the main URL address is not updated by changing page.
-    :param next_button:
+    :param browser:
+    :param next_page_number:
     :return:
     """
     # Looking for the button, that has an inner span element, with the number of the page as its value
@@ -189,20 +194,35 @@ def next_page(browser, next_page_number):
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Choose parameters for parsing - ')
+    parser.add_argument('num_pages', type=int, help='Give a positive integer value for number of pages')  # 2
+    parser.add_argument('topic', type=str, help='Give a topic for publications search')  # 3
+    parser.add_argument('-w', action="store_true")
+    args = parser.parse_args()
+    if args.w:
+        print("Good day! Today we are parsing ResearchGate! :)")
+    num_pages = args.num_pages
+    topic = args.topic
     """Costructor function"""
     # Initializing our container for parsed info of publications
     data = []
     # Launching chrome and signing in
-    browser, url = get_url()
+    browser, url = get_url(topic)
+    sleep(3)
     sign_in(url, browser)
+    sleep(3)
 
     # Headers needed for the parallel downloading by grequests
     headers = {
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
 
     # Looping through pages (with finding all pubs on each page)
     for p in range(1, num_pages):
         print("Page proccessing: ", p)
+        # url_page = f"https://www.researchgate.net/search/publication?q={topic}&page={p}"
+        # browser.get(url_page)
+        # sleep(3)
         pubs = find_all_pubs_on_page(browser)
 
         # Scraping relevant info of individual publication from given search page
@@ -213,7 +233,7 @@ def main():
         # my_requests = (grequests.get(u, headers=headers) for u in pubs)
         # responses = grequests.map(my_requests)
 
-        for pub in pubs:  #responses:
+        for pub in pubs:  # responses:
             material = parse_single_pub_material(pub)
             title = parse_single_pub_title(pub)
             site = parse_single_pub_site(pub)
