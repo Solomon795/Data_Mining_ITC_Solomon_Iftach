@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from time import sleep
 import Configuration
 import argparse
+import time
 
 # import grequests
 
@@ -24,7 +25,13 @@ def get_url(topic_name):
     Going to our homepage
     :return browser, url:
     """
-    browser = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option("prefs", {
+        # block image loading
+        "profile.managed_default_content_settings.images": 2,
+    })
+
+    browser = webdriver.Chrome(options=options)
     url = f"https://www.researchgate.net/search/publication?q={topic_name}&page=1"
     return browser, url
 
@@ -194,6 +201,7 @@ def next_page(browser, next_page_number):
 
 
 def main():
+    start_time = time.time()
     parser = argparse.ArgumentParser(description='Choose parameters for parsing - ')
     parser.add_argument('num_pages', type=int, help='Give a positive integer value for number of pages')  # 2
     parser.add_argument('topic', type=str, help='Give a topic for publications search')  # 3
@@ -208,9 +216,10 @@ def main():
     data = []
     # Launching chrome and signing in
     browser, url = get_url(topic)
-    sleep(3)
+    sleep(1)
     sign_in(url, browser)
-    sleep(3)
+    sleep(1)
+
 
     # Headers needed for the parallel downloading by grequests
     headers = {
@@ -220,19 +229,19 @@ def main():
     # Looping through pages (with finding all pubs on each page)
     for p in range(1, num_pages):
         print("Page proccessing: ", p)
-        # url_page = f"https://www.researchgate.net/search/publication?q={topic}&page={p}"
-        # browser.get(url_page)
-        # sleep(3)
+    # url_page = f"https://www.researchgate.net/search/publication?q={topic}&page={p}"
+    # browser.get(url_page)
+    # sleep(3)
         pubs = find_all_pubs_on_page(browser)
-
+    
         # Scraping relevant info of individual publication from given search page
         # and appending it to our list container as a dictionary
-
+    
         # Downloading in parallel way all the 10 publications of a single page into
         # my_requests.
         # my_requests = (grequests.get(u, headers=headers) for u in pubs)
         # responses = grequests.map(my_requests)
-
+    
         for pub in pubs:  # responses:
             material = parse_single_pub_material(pub)
             title = parse_single_pub_title(pub)
@@ -246,12 +255,13 @@ def main():
                          "authors": authors, "month - year": monthyear, "reads": reads,
                          "citations": citations})
         print("Total publications parsed: ", len(data))
-
+    
         # navigating to the next page, by pressing the next page button on the bottom of the page
         next_page(browser, p)
-
-        sleep(3)
+        sleep(1)
     print(*data, sep="\n")
+    end_time = time.time()
+    print(f"It took {end_time-start_time} sec")
     return data
 
 
