@@ -66,6 +66,9 @@ def sign_in(my_url, my_chrome):
                            '-legacy-l-flex--justify-content-flex-start\@s-up.nova-legacy-l-flex--wrap-nowrap\@s-up > '
                            'div:nth-child(1) > button').click()
 
+    ### range of years
+
+
 
 def find_all_pubs_on_page(my_chrome):
     """
@@ -221,6 +224,7 @@ def main():
     sleep(1)
 
 
+
     # Headers needed for the parallel downloading by grequests
     headers = {
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -246,12 +250,13 @@ def main():
             material = parse_single_pub_material(pub)
             title = parse_single_pub_title(pub)
             site = parse_single_pub_site(pub)
+            pub_id = int(site[41:50])
             journal = parse_single_pub_journal(pub)
             authors = parse_single_pub_authors(pub)
             monthyear = parse_single_pub_monthyear(pub)
             reads = parse_single_pub_reads(pub)
             citations = parse_single_pub_citations(pub)
-            data.append({"material": material, "title": title, "site": site, "journal": journal,
+            data.append({"material": material, "title": title, "site": site, "journal": journal, "id": pub_id,
                          "authors": authors, "month - year": monthyear, "reads": reads,
                          "citations": citations})
         print("Total publications parsed: ", len(data))
