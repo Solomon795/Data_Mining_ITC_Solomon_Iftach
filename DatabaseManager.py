@@ -3,7 +3,7 @@ import pymysql.cursors
 
 
 class DatabaseManager:
-    def __init__(self, conf):
+    def __init__(self, conf, topic_subject):
         # Connect to the database
         host, user, password, database = conf.get_database_properties()
         self._connection = pymysql.connect(host=host,
@@ -11,6 +11,9 @@ class DatabaseManager:
                                            password=password,
                                            database=database,
                                            cursorclass=pymysql.cursors.DictCursor)
+
+        self._topic_id = self._insert_topic_if_needed(topic_subject)
+
 
     def _sql_run_fetch_command(self, sql_command, vals=None, fetch_all=False):
         """
@@ -33,23 +36,25 @@ class DatabaseManager:
             self._connection.commit()
 
     def insert_publications_info(self, publications_info_list):
-        start_time = time.time()
-        # insert
-        sql_command = 'INSERT INTO trips (trip_id, taxi_id, start_year, start_month, start_day, start_hour, nb_points) VALUES (%s, %s, %s, %s, %s, %s, %s)'
-        sql_run_command(sql_command, vals=trips_info, modify_db=True, fetch_all=False, close_db=False)
-        trips_info = []
+        # start_time = time.time()
+        # # insert
+        # sql_command = 'INSERT INTO trips (trip_id, taxi_id, start_year, start_month, start_day, start_hour, nb_points) VALUES (%s, %s, %s, %s, %s, %s, %s)'
+        # sql_run_command(sql_command, vals=trips_info, modify_db=True, fetch_all=False, close_db=False)
+        # trips_info = []
+        #
+        # end_time = time.time()
+        # print(f"Time it took: {round(end_time - start_time, 3)}")
+        return None
 
-        end_time = time.time()
-        print(f"Time it took: {round(end_time - start_time, 3)}")
-
-    def insert_topic_if_needed(self, topic_subject):
+    def _insert_topic_if_needed(self, topic_subject):
         """
         This method verifies if topic already exists. If not, updates the table.
         :param topic_subject:
-        :return None:
+        :return topic_id: int - topic_id of the subject search
         """
         sql_command = 'SELECT id, subject from topics where subject=%s'
         result = self._sql_run_fetch_command(sql_command, vals=topic_subject)
+        topic_id = -1
         if result is None:
             # The topic does not exist in the topic table, needs to insert it
             sql_command = 'SELECT max(id) from topics'
@@ -60,6 +65,7 @@ class DatabaseManager:
                 topic_id = int(result['max(id)']) + 1
             sql_command = 'insert into topics (id, subject) values (%s, %s)'
             self._sql_run_execute(sql_command, vals=(topic_id, topic_subject))
+        return topic_id
 
 def main():
     import Configuration

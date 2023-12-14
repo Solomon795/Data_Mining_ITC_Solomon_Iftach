@@ -249,7 +249,6 @@ def get_publications_info(pubs, publications_info_list):
 
 
 def main():
-    db_manager = DatabaseManager.DatabaseManager(conf)
 
     start_time = time.time()
     parser = argparse.ArgumentParser(description='Choose parameters for parsing - ')
@@ -263,7 +262,7 @@ def main():
 
     topic = args.topic
     # Check if topic exists already, if not insert it to DB.
-    db_manager.insert_topic_if_needed(topic)
+    db_manager = DatabaseManager.DatabaseManager(conf, topic)
 
     """Costructor function"""
     # Initializing our container for parsed info of publications
