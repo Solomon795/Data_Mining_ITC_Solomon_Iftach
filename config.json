@@ -8,5 +8,12 @@
   "Topic": {
     "name": "Energy-Market",
     "num-pages-to-process": 10
+  },
+
+  "DatabaseProperties": {
+    "host": "localhost",
+    "user": "root",
+    "password": "root",
+    "database": "DataMining"
   }
 }
