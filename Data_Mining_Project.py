@@ -224,7 +224,7 @@ def get_publications_info(pubs, publications_info_list):
     :return None:
     """
     for pub in pubs:  # responses:
-        material = parse_single_pub_material(pub)
+        publication_type = parse_single_pub_material(pub)
         title = parse_single_pub_title(pub)
         site = parse_single_pub_site(pub)
         pub_id = int(site[41:50])
@@ -240,7 +240,7 @@ def get_publications_info(pubs, publications_info_list):
         except IndexError:
             citations = 0
         publications_info_list.append(
-            {"material": material, "title": title, "site": site, "journal": journal, "id": pub_id,
+            {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
              "authors": authors, "month - year": monthyear, "reads": reads,
              "citations": citations})
 
