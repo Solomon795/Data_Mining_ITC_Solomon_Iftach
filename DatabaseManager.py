@@ -13,7 +13,7 @@ class DatabaseManager:
                                            cursorclass=pymysql.cursors.DictCursor)
 
         self._topic_id = self._insert_topic_if_needed(topic_subject)
-
+        self._publications_types = self._get_publications_types()
 
     def _sql_run_fetch_command(self, sql_command, vals=None, fetch_all=False):
         """
@@ -67,24 +67,35 @@ class DatabaseManager:
             self._sql_run_execute(sql_command, vals=(topic_id, topic_subject))
         return topic_id
 
+    def _get_publications_types(self):
+        """
+        This function returns a dictionary of publications types and codes:
+        {publication_type: publication_code}
+        :return:
+        """
+        sql_command = 'SELECT type_name, type_code from publications_types'
+        result = self._sql_run_fetch_command(sql_command)
+        return result
+
+
 def main():
     import Configuration
     c = Configuration.Configuration()
 
-    m = DatabaseManager(c)
+    m = DatabaseManager(c, 'energy market')
 
-    sql_command = 'SELECT * from topics'
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    print(f"before inserting: {result}")
-
-    m.insert_topic_if_needed("try topic4")
-    sql_command = 'SELECT * from topics'
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    print(f"after inserting: {result}")
-
-    m.insert_topic_if_needed("try topic4")
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    print(f"after inserting again: {result}")
+    # sql_command = 'SELECT * from topics'
+    # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    # print(f"before inserting: {result}")
+    #
+    # m.insert_topic_if_needed("try topic4")
+    # sql_command = 'SELECT * from topics'
+    # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    # print(f"after inserting: {result}")
+    #
+    # m.insert_topic_if_needed("try topic4")
+    # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    # print(f"after inserting again: {result}")
 
 
 if __name__ == "__main__":
