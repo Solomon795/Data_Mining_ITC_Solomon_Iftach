@@ -8,10 +8,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from time import sleep
-import Configuration
 import argparse
 import time
 from datetime import datetime
+
+import Configuration
+import DatabaseManager
 
 # import grequests
 
@@ -246,7 +248,7 @@ def get_publications_info(pubs, publications_info_list):
 
 
 def main():
-    db_manger = DatabaseManager(conf)
+    db_manager = DatabaseManager.DatabaseManager(conf)
 
     start_time = time.time()
     parser = argparse.ArgumentParser(description='Choose parameters for parsing - ')
