@@ -168,7 +168,8 @@ def parse_single_pub_monthyear(publication):
     """
     monthyear = publication.findAll('li', class_='nova-legacy-e-list__item nova-legacy-v-entity-item__meta-data-item')[
         0].text
-    monthyear = datetime.strptime(monthyear, '%B %Y')
+    # monthyear = datetime.strptime(monthyear, '%B %Y')
+    monthyear = 2023
     return monthyear
 
 
