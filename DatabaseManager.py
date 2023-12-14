@@ -13,6 +13,7 @@ class DatabaseManager:
                                            cursorclass=pymysql.cursors.DictCursor)
 
         self._topic_id = self._insert_topic_if_needed(topic_subject)
+        # publications_types is a dictionary {type_name: type_code}
         self._publications_types = self._get_publications_types()
 
     def _sql_run_fetch_command(self, sql_command, vals=None, fetch_all=False):
@@ -44,6 +45,7 @@ class DatabaseManager:
         #
         # end_time = time.time()
         # print(f"Time it took: {round(end_time - start_time, 3)}")
+        self._insert_publication_type_if_needed(publication_type)
         return None
 
     def _insert_topic_if_needed(self, topic_subject):
@@ -71,11 +73,35 @@ class DatabaseManager:
         """
         This function returns a dictionary of publications types and codes:
         {publication_type: publication_code}
-        :return:
+        :return result:
         """
         sql_command = 'SELECT type_name, type_code from publications_types'
-        result = self._sql_run_fetch_command(sql_command)
-        return result
+        result = self._sql_run_fetch_command(sql_command, fetch_all=True)
+        local_dict = {}
+        if result is not None:
+            for elem in result:
+                local_dict.update({elem['type_name']: elem['type_code']})
+        return local_dict
+
+    def _insert_publication_type_if_needed(self, publication_type):
+        """
+        This method returns the code for the publication_type:
+        if the publication type already exists it returns its code from the local dictionary,
+        else it updates both the table publications_types and the local dictionary.
+        :param publication_type:
+        :return type code: int type code for the publication_type
+        """
+        try:  # If publication_type already in table
+            type_code = self._publications_types[publication_type]
+            return type_code
+        except KeyError:  # publication_type is not in the table
+            type_code = len(self._publications_types) + 1
+            # Updating publications_types table
+            sql_command = 'insert into publications_types (type_code, type_name) values (%s, %s)'
+            self._sql_run_execute(sql_command, vals=(type_code, publication_type))
+            # Updating the local dictionary
+            self._publications_types.update({publication_type: type_code})
+            return type_code
 
 
 def main():
@@ -83,19 +109,12 @@ def main():
     c = Configuration.Configuration()
 
     m = DatabaseManager(c, 'energy market')
-
-    # sql_command = 'SELECT * from topics'
-    # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    # print(f"before inserting: {result}")
-    #
-    # m.insert_topic_if_needed("try topic4")
-    # sql_command = 'SELECT * from topics'
-    # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    # print(f"after inserting: {result}")
-    #
-    # m.insert_topic_if_needed("try topic4")
-    # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    # print(f"after inserting again: {result}")
+    type_code = m._insert_publication_type_if_needed('Article')
+    print(f"type_code of Article:{type_code}")
+    type_code = m._insert_publication_type_if_needed('Article')
+    print(f"type_code of Article:{type_code}")
+    type_code = m._insert_publication_type_if_needed('Poster')
+    print(f"type_code of Poster:{type_code}")
 
 
 if __name__ == "__main__":
