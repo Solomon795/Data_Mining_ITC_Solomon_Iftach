@@ -160,7 +160,7 @@ def parse_single_pub_authors(publication):
     return authors_list
 
 
-def parse_single_pub_monthyear(publication):
+def parse_single_pub_year(publication):
     """
     Scraping month and year of publishing of individual publication from given search page
     :param publication:
@@ -169,8 +169,8 @@ def parse_single_pub_monthyear(publication):
     monthyear = publication.findAll('li', class_='nova-legacy-e-list__item nova-legacy-v-entity-item__meta-data-item')[
         0].text
     # monthyear = datetime.strptime(monthyear, '%B %Y')
-    monthyear = 2023
-    return monthyear
+    year = 2023
+    return year
 
 
 def parse_single_pub_reads(publication):
@@ -233,7 +233,7 @@ def get_publications_info(pubs, publications_info_list):
         pub_id = int(site[41:50])
         journal = parse_single_pub_journal(pub)
         authors = parse_single_pub_authors(pub)
-        monthyear = parse_single_pub_monthyear(pub)
+        year = parse_single_pub_year(pub)
         try:
             reads = int(parse_single_pub_reads(pub).split()[0])
         except IndexError:
@@ -244,7 +244,7 @@ def get_publications_info(pubs, publications_info_list):
             citations = 0
         publications_info_list.append(
             {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
-             "authors": authors, "month - year": monthyear, "reads": reads,
+             "authors": authors, "year": year, "reads": reads,
              "citations": citations})
 
 
@@ -282,7 +282,7 @@ def main():
                       "Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
 
     # Looping through pages (with finding all pubs on each page)
-    for p in range(1, num_pages):
+    for p in range(1, num_pages+1):
         print("Page proccessing: ", p)
         # url_page = f"https://www.researchgate.net/search/publication?q={topic}&page={p}"
         # browser.get(url_page)
