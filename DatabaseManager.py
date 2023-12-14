@@ -12,7 +12,7 @@ class DatabaseManager:
                                            database=database,
                                            cursorclass=pymysql.cursors.DictCursor)
 
-    def sql_run_fetch_command(self, sql_command, vals=None, fetch_all=False, close_db=False):
+    def _sql_run_fetch_command(self, sql_command, vals=None, fetch_all=False):
         """
         This function runs an SQL command by the chosen mode: modification, fetching, or closing the database.
         Modification includes for example the insertion of values into the SQL table.
@@ -25,10 +25,12 @@ class DatabaseManager:
                 cursor.execute(sql_command, vals)
                 result = cursor.fetchone()
 
-            if close_db:
-                self._connection.close()
-
             return result
+
+    def _sql_run_execute(self, sql_command, vals=None):
+        with self._connection.cursor() as cursor:
+            cursor.execute(sql_command, vals)
+            self._connection.commit()
 
     def insert_publications_info(self, publications_info_list):
         start_time = time.time()
@@ -47,22 +49,17 @@ class DatabaseManager:
         :return None:
         """
         sql_command = 'SELECT id, subject from topics where subject=%s'
-        result = self.sql_run_fetch_command(sql_command, vals=topic_subject)
+        result = self._sql_run_fetch_command(sql_command, vals=topic_subject)
         if result is None:
             # The topic does not exist in the topic table, needs to insert it
             sql_command = 'SELECT max(id) from topics'
-            result = self.sql_run_fetch_command(sql_command)
+            result = self._sql_run_fetch_command(sql_command)
             if result is None:
                 topic_id = 0
             else:
-                topic_id = int(result['max(id)'])
-                topic_id += 1
+                topic_id = int(result['max(id)']) + 1
             sql_command = 'insert into topics (id, subject) values (%s, %s)'
-            with self._connection.cursor() as cursor:
-                cursor.execute(sql_command, (topic_id, topic_subject))
-                self._connection.commit()
-        print(result)
-
+            self._sql_run_execute(sql_command, vals=(topic_id, topic_subject))
 
 def main():
     import Configuration
@@ -71,16 +68,16 @@ def main():
     m = DatabaseManager(c)
 
     sql_command = 'SELECT * from topics'
-    result = m.sql_run_fetch_command(sql_command, fetch_all=True)
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
     print(f"before inserting: {result}")
 
-    m.insert_topic_if_needed("try topic3")
+    m.insert_topic_if_needed("try topic4")
     sql_command = 'SELECT * from topics'
-    result = m.sql_run_fetch_command(sql_command, fetch_all=True)
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
     print(f"after inserting: {result}")
 
-    m.insert_topic_if_needed("try topic3")
-    result = m.sql_run_fetch_command(sql_command, fetch_all=True)
+    m.insert_topic_if_needed("try topic4")
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
     print(f"after inserting again: {result}")
 
 
