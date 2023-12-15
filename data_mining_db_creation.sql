@@ -1,4 +1,3 @@
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -45,12 +44,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `DataMining`.`publications` (
   `id` INT UNSIGNED NOT NULL COMMENT 'Unique publication identifier extracted from its URL.',
   `pub_type_code` INT UNSIGNED NOT NULL,
-  `title` VARCHAR(150) NOT NULL COMMENT 'Title of publication',
+  `title` VARCHAR(250) NOT NULL COMMENT 'Title of publication',
   `year` INT UNSIGNED NOT NULL COMMENT 'Year of publication.',
-  `citations` INT UNSIGNED NOT NULL COMMENT 'Number of citations of the publication',
-  `reads` INT UNSIGNED NOT NULL COMMENT 'Number of publication reads',
-  `url` VARCHAR(150) NOT NULL COMMENT 'URL of the publication',
-  `journal` VARCHAR(45) NOT NULL,
+  `num_citations` INT UNSIGNED NOT NULL COMMENT 'Number of citations of the publication',
+  `num_reads` INT UNSIGNED NOT NULL COMMENT 'Number of publication reads',
+  `url` VARCHAR(250) NOT NULL COMMENT 'URL of the publication',
+  `journal` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `url_UNIQUE` (`url` ASC) VISIBLE,
@@ -68,10 +67,11 @@ ENGINE = InnoDB;
 -- Table `DataMining`.`authors`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DataMining`.`authors` (
-  `id` INT UNSIGNED NOT NULL COMMENT 'Technical id',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Technical id',
   `full_name` VARCHAR(45) NOT NULL COMMENT 'full name of author',
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `full_name_UNIQUE` (`full_name` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -84,8 +84,6 @@ CREATE TABLE IF NOT EXISTS `DataMining`.`publications_by_topics` (
   `pub_id` INT UNSIGNED NOT NULL COMMENT 'Foreign Key = publications.id, taken from publications table. ',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `pub_id_UNIQUE` (`pub_id` ASC) VISIBLE,
-  UNIQUE INDEX `topic_id_UNIQUE` (`topic_id` ASC) VISIBLE,
   CONSTRAINT `topic_id_fk1`
     FOREIGN KEY (`topic_id`)
     REFERENCES `DataMining`.`topics` (`id`)
@@ -103,13 +101,11 @@ ENGINE = InnoDB;
 -- Table `DataMining`.`publications_by_authors`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DataMining`.`publications_by_authors` (
-  `id` INT UNSIGNED NOT NULL COMMENT 'Index',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Index',
   `pub_id` INT UNSIGNED NOT NULL COMMENT 'FK =  publications.id from publications table.',
   `author_id` INT UNSIGNED NOT NULL COMMENT 'FK  = authors.id taken from authors table',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `pub_id_UNIQUE` (`pub_id` ASC) VISIBLE,
-  UNIQUE INDEX `author_id_UNIQUE` (`author_id` ASC) VISIBLE,
   CONSTRAINT `pub_id_fk2`
     FOREIGN KEY (`pub_id`)
     REFERENCES `DataMining`.`publications` (`id`)
