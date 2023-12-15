@@ -41,7 +41,7 @@ Here's the ERD diagram:
    
    3. publication_by_authors
         Columns:
-       -  id - INT - primary key: technical index
+       -  id (auto - increment) - INT - primary key: technical index
        -  pub_id - INT - foreign key: publications.id
        -  author_id - INT - foreign key: authors.id
    
@@ -58,7 +58,7 @@ Here's the ERD diagram:
     
     6. authors
         Columns:
-       - id - INT - primary key: technical index
+       - id (auto - increment) - INT - primary key: technical index 
        - full_name - VARCHAR(45) - author's full name
 
 ### Schema installation instructions:
