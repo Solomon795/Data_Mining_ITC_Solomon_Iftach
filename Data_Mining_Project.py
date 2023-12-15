@@ -221,8 +221,40 @@ def next_page(browser, next_page_number):
                 sleeper += 1
     return
 
+def get_publications_info(pubs, publications_info_list):
+    """
+    This function updates publications_info_list
+    Scraping relevant info of all individual publications from given search page
+    and appending their values as dictionary to our list container,
+
+    :param pubs:
+    :param publications_info_list:
+    :return None:
+    """
+    for pub in pubs:  # responses:
+        publication_type = parse_single_pub_material(pub)
+        title = parse_single_pub_title(pub)
+        site = parse_single_pub_site(pub)
+        pub_id = int(site[41:50])
+        journal = parse_single_pub_journal(pub)
+        authors = parse_single_pub_authors(pub)
+        monthyear = parse_single_pub_monthyear(pub)
+        try:
+            reads = int(parse_single_pub_reads(pub).split()[0])
+        except IndexError:
+            reads = 0
+        try:
+            citations = int(parse_single_pub_citations(pub).split()[0])
+        except IndexError:
+            citations = 0
+        publications_info_list.append(
+            {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
+             "authors": authors, "year": monthyear.year, "reads": reads,
+             "citations": citations})
+
 
 def main():
+
     start_time = time.time()
     parser = argparse.ArgumentParser(description='Choose parameters for parsing - ')
     parser.add_argument('num_pages', type=int, help='Give a positive integer value for number of pages')  # 2
@@ -232,10 +264,14 @@ def main():
     if args.w:
         print("Good day! Today we are parsing ResearchGate! :)")
     num_pages = args.num_pages
+
     topic = args.topic
+    # Check if topic exists already, if not insert it to DB.
+    db_manager = DatabaseManager.DatabaseManager(conf, topic)
+
     """Costructor function"""
     # Initializing our container for parsed info of publications
-    data = []
+    publications_info_list = []
     # Launching chrome and signing in
     browser, url = get_url(topic)
     while True:
@@ -279,5 +315,7 @@ def main():
     return publications_info_list
 
 
+
 if __name__ == '__main__':
     main()
+
