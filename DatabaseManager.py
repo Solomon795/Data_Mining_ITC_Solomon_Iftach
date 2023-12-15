@@ -115,12 +115,21 @@ class DatabaseManager:
         sql_command = f"select id from publications where id in ({pubs_ids_str})"
         # Example for result structure: [{'id': 1}, {'id': 2}]
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
+        vals_to_update = []
         for dict_id in result:
             id_to_remove = dict_id['id']
             # removal of all publications for the insertion to publications table
             element_to_remove = pubs_vals_dict.pop(id_to_remove)
             # removal of all publications for the insertion to publications_by_authors table
             authors_per_pub.pop(id_to_remove)
+            # Building an update list of num_reads and num_citations for existing publications
+            num_citation_pos = 4  # position in the tuple
+            num_reads_pos = 5  # position in the tuple
+            # The actual list building
+            vals_to_update += [(element_to_remove[num_citation_pos], element_to_remove[num_reads_pos], id_to_remove)]
+
+        sql_command = 'update publications set num_citations = %s, num_reads = %s where id = %s'
+        self._sql_run_execute_many(sql_command, vals=vals_to_update)
 
         #  2. insertion to publications the verified new rows
         sql_command = ('insert into publications (id, pub_type_code, title, year, num_citations, num_reads, url, '
@@ -267,7 +276,7 @@ def main():
     print (f"topic id:{m._topic_id}")
 
     pubs = [{"publication_type": "Article", "title": "t5", "site": "s5", "journal": "j3", "id": 5,
-     "authors": ["abba", 'saba'], "year": 2023, "reads": 3, "citations": 2},
+     "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
             {"publication_type": "Article", "title": "t6", "site": "s6", "journal": "j4", "id": 6,
              "authors": ["imma", "abba"], "year": 2023, "reads": 3, "citations": 2}]
     m.insert_publications_info(pubs)
