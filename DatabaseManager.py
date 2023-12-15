@@ -85,6 +85,8 @@ class DatabaseManager:
         pubs_vals_dict = {}   # dictionary of pub_id to check for already existing articles
         pubs_ids = []
         pubs_for_topic = set()
+        authors_per_pub = {}
+        authors_per_batch = set()
         for dict in publications_info_list:
             pub_type = dict['publication_type']
             title = dict['title']
@@ -95,7 +97,8 @@ class DatabaseManager:
             year = dict['year']
             reads = dict['reads']
             citations = dict['citations']
-
+            authors_per_batch.update(set(authors))
+            authors_per_pub.update({pub_id: authors})
             pubs_for_topic.update({pub_id})
             #  Check if to insert publication_type
             type_code = self._insert_publication_type_if_needed(pub_type)
@@ -103,19 +106,21 @@ class DatabaseManager:
             # pubs_topics_dict.update({pub_id: (topic_id, pub_id)})
             pubs_ids += [str(pub_id)]
 
+        ##### 2 + 3. Removing existing rows from publications ####
         # Making a string of pub_ids
         separator = ','
         pubs_ids_str = separator.join(pubs_ids)
 
-        ##### Removing existing rows from publications ####
         # Selecting existing publications and removing them from pubs_vals_dict
         sql_command = f"select id from publications where id in ({pubs_ids_str})"
         # Example for result structure: [{'id': 1}, {'id': 2}]
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
         for dict_id in result:
             id_to_remove = dict_id['id']
+            # removal of all publications for the insertion to publications table
             element_to_remove = pubs_vals_dict.pop(id_to_remove)
-
+            # removal of all publications for the insertion to publications_by_authors table
+            authors_per_pub.pop(id_to_remove)
 
         #  2. insertion to publications the verified new rows
         sql_command = ('insert into publications (id, pub_type_code, title, year, num_citations, num_reads, url, '
@@ -140,6 +145,42 @@ class DatabaseManager:
 
         sql_command = 'insert into publications_by_topics (id, topic_id, pub_id) values (%s, %s, %s)'
         self._sql_run_execute_many(sql_command, vals=pubs_for_topics_vals)
+
+        # 4. Insert set authors_per_batch to authors table
+        # cast the authors to a string for the removal selection
+        list(authors_per_batch)
+        authors_str = '\",\"'.join(authors_per_batch)
+        authors_str = f'\"{authors_str}\"'
+
+        # extract the authors to remove from authors table
+        authors_to_insert = set(authors_per_batch)
+        sql_command = f'select full_name from authors where full_name in ({authors_str})'
+        result = self._sql_run_fetch_command(sql_command, fetch_all=True)
+        for dict_aut in result:
+            aut_to_remove = dict_aut['full_name']
+            authors_to_insert.remove(aut_to_remove)
+
+        # Insertion of new authors to authors table
+        sql_command = 'insert into authors (full_name) values (%s)'
+        self._sql_run_execute_many(sql_command, vals=list(authors_to_insert))
+
+        # extract the id and authors from the new batch that was added for publications_by_authors
+        sql_command = f"select id, full_name from authors where full_name in ({authors_str})"
+        result = self._sql_run_fetch_command(sql_command, fetch_all=True)
+        dict_aut_id = {}
+        for dict_aut in result:
+            dict_aut_id.update({dict_aut['full_name']: dict_aut['id']})
+
+        # 5. Insertion to publications_by_authors
+        # Generating pairs candidates to insert to the table
+        pub_aut_pairs = []
+        for pub_aut in authors_per_pub:
+            for aut in authors_per_pub.get(pub_aut):
+                pub_aut_pairs += [(pub_aut, dict_aut_id[aut])]
+
+        sql_command = 'insert into publications_by_authors (pub_id, author_id) values (%s, %s)'
+        self._sql_run_execute_many(sql_command, vals=pub_aut_pairs)
+
 
     def _insert_topic_if_needed(self, topic_subject):
         """
@@ -199,8 +240,9 @@ def main():
     import Configuration
     c = Configuration.Configuration()
 
-    m = DatabaseManager(c, 'Energy Market')
+    m = DatabaseManager(c, 'Energy Market2')
 
+    print("######### BEFORE INSERTION")
     sql_command = "select * from topics"
     result = m._sql_run_fetch_command(sql_command, fetch_all=True)
     print(f"top:{result}")
@@ -208,14 +250,49 @@ def main():
     result = m._sql_run_fetch_command(sql_command, fetch_all=True)
     for pub in result:
         print(f"pub:{pub}")
+    sql_command = "select * from authors"
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    for aut in result:
+        print(f"aut:{aut}")
+    sql_command = "select * from publications_by_authors"
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    for pub_aut in result:
+        print(f"pub_aut:{pub_aut}")
+    sql_command = "select * from publications_by_topics"
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    for pub_top in result:
+        print(f"pub_top:{pub_top}")
+
 
     print (f"topic id:{m._topic_id}")
 
-    pubs = [{"publication_type": "Article", "title": "t7", "site": "s7", "journal": "j3", "id": 7,
-     "authors": "a1", "year": 2023, "reads": 3, "citations": 2},
-            {"publication_type": "Article", "title": "t8", "site": "s8", "journal": "j4", "id": 8,
-             "authors": "a2", "year": 2023, "reads": 3, "citations": 2}]
+    pubs = [{"publication_type": "Article", "title": "t5", "site": "s5", "journal": "j3", "id": 5,
+     "authors": ["abba", 'saba'], "year": 2023, "reads": 3, "citations": 2},
+            {"publication_type": "Article", "title": "t6", "site": "s6", "journal": "j4", "id": 6,
+             "authors": ["imma", "abba"], "year": 2023, "reads": 3, "citations": 2}]
     m.insert_publications_info(pubs)
+
+    print("######### AFTER INSERTION")
+    sql_command = "select * from topics"
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    print(f"top:{result}")
+    sql_command = "select * from publications"
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    for pub in result:
+        print(f"pub:{pub}")
+    sql_command = "select * from authors"
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    for aut in result:
+        print(f"aut:{aut}")
+    sql_command = "select * from publications_by_authors"
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    for pub_aut in result:
+        print(f"pub_aut:{pub_aut}")
+    sql_command = "select * from publications_by_topics"
+    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    for pub_top in result:
+        print(f"pub_top:{pub_top}")
+
 
     # sql_command = "select type_code from publications_types where type_code in (1,2,3, 4, 5)"
     # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
