@@ -17,6 +17,10 @@ class Configuration:
     def get_topic_settings(self):
         return self._config['Topic']['name'], self._config['Topic']['num-pages-to-process']
 
+    def get_database_properties(self):
+        return (self._config['DatabaseProperties']['host'], self._config['DatabaseProperties']['user'],
+                self._config['DatabaseProperties']['password'], self._config['DatabaseProperties']['database'])
+
 
 def main():
     c = Configuration();
