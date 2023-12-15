@@ -240,6 +240,20 @@ def main():
 
     m = DatabaseManager(c, 'Energy Market2')
 
+    # sql_command = 'delete from publications_by_topics'
+    # m._sql_run_execute(sql_command)
+    # sql_command = 'delete from publications_by_authors'
+    # m._sql_run_execute(sql_command)
+    # sql_command = 'delete from topics'
+    # m._sql_run_execute(sql_command)
+    # sql_command = 'delete from authors'
+    # m._sql_run_execute(sql_command)
+    # sql_command = 'delete from publications'
+    # m._sql_run_execute(sql_command)
+    # sql_command = 'delete from publications_types'
+    # m._sql_run_execute(sql_command)
+
+
     print("######### BEFORE INSERTION")
     sql_command = "select * from topics"
     result = m._sql_run_fetch_command(sql_command, fetch_all=True)
@@ -263,10 +277,47 @@ def main():
 
     print(f"topic id:{m._topic_id}")
 
-    pubs = [{"publication_type": "Article", "title": "t5", "site": "s5", "journal": "j3", "id": 5,
+    pubs = [{"id": 1,"title": "t1", "site": "s1","publication_type": "Article",  "journal": "j3",
              "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"publication_type": "Article", "title": "t6", "site": "s6", "journal": "j4", "id": 6,
-             "authors": ["imma", "abba"], "year": 2023, "reads": 3, "citations": 2}]
+            {"id": 2, "title": "t2", "site": "s2", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 3, "title": "t3", "site": "s3", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 4, "title": "t4", "site": "s4", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 5, "title": "t5", "site": "s5", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 6, "title": "t6", "site": "s6", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 7, "title": "t7", "site": "s7", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 8, "title": "t8", "site": "s8", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 9, "title": "t9", "site": "s9", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 10, "title": "t10", "site": "s10", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 11, "title": "t11", "site": "s11", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 12, "title": "t12", "site": "s12", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 13, "title": "t13", "site": "s13", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 14, "title": "t14", "site": "s14", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 15, "title": "t15", "site": "s15", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 16, "title": "t16", "site": "s16", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 17, "title": "t17", "site": "s17", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 18, "title": "t18", "site": "s18", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 19, "title": "t19", "site": "s19", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+            {"id": 20, "title": "t20", "site": "s20", "publication_type": "Article", "journal": "j3",
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100}]
+
     m.insert_publications_info(pubs)
 
     print("######### AFTER INSERTION")
