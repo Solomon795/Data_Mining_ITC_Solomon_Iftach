@@ -131,7 +131,7 @@ class DatabaseManager:
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
         for pub_dict in result:  # [{'pub_id': 32441}, {'pub_id': 25646}]
             pub_id_to_remove = pub_dict['pub_id']  # pub_id from the table
-            pubs_for_topic.pop(pub_id_to_remove)
+            pubs_for_topic.remove(pub_id_to_remove)
         # Insertion of remaining rows to publications_by_topics table
         pubs_for_topics_vals = []
         for pub_id in pubs_for_topic:
