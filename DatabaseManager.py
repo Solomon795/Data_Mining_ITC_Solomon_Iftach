@@ -71,7 +71,8 @@ class DatabaseManager:
         # {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
         #  "authors": authors, "month - year": monthyear, "reads": reads,
         #  "citations": citations})
-        vals = []
+        pubs_vals_dict = {}   # dictionary of pub_id to check for already existing articles
+        pubs_ids = []
         for dict in publications_info_list:
             pub_type = dict['publication_type']
             title = dict['title']
@@ -83,20 +84,28 @@ class DatabaseManager:
             reads = dict['reads']
             citations = dict['citations']
 
-            #  1. insertion to publication_types table
+            #  Check if to insert publication_type
             type_code = self._insert_publication_type_if_needed(pub_type)
-            vals.append((pub_id, type_code, title, year, citations, reads, site, journal))
+            pubs_vals_dict.update({pub_id: (pub_id, type_code, title, year, citations, reads, site, journal)})
+            pubs_ids += [str(pub_id)]
 
-            #  2. insertion to publications
-            sql_command = ('insert into publications (id, pub_type_code, title, year, num_citations, num_reads, url, '
-                           'journal) values (%s, %s, %s, %s, %s, %s, %s, %s)')
+        ##### Removing existing rows ####
+        separator = ','
+        pubs_ids_str = separator.join(pubs_ids)
+        # Selecting existing publications and removing them from pubs_vals_dict
+        sql_command = f"select id from publications where id in ({pubs_ids_str})"
+        # Example for result structure: [{'id': 1}, {'id': 2}]
+        result = self._sql_run_fetch_command(sql_command, fetch_all=True)
+        for dict_id in result:
+            id_to_remove = dict_id['id']
+            element_to_remove = pubs_vals_dict.pop(id_to_remove)
 
-        self._sql_run_execute_many(sql_command, vals=vals, special_exception_handling = True)
-        print (f"vals:{vals}")
-        #self._sql_run_execute(sql_command,
-        #                      vals=(pub_id, type_code, title, year, citations, reads, site, journal))
+        #  2. insertion to publications the verified new rows
+        sql_command = ('insert into publications (id, pub_type_code, title, year, num_citations, num_reads, url, '
+                       'journal) values (%s, %s, %s, %s, %s, %s, %s, %s)')
+        pubs_vals = pubs_vals_dict.values()
+        self._sql_run_execute_many(sql_command, vals=pubs_vals)
 
-        return None
 
     def _insert_topic_if_needed(self, topic_subject):
         """
@@ -160,12 +169,17 @@ def main():
     c = Configuration.Configuration()
 
     m = DatabaseManager(c, 'energy market')
-    type_code = m._insert_publication_type_if_needed('Article')
-    print(f"type_code of Article:{type_code}")
-    type_code = m._insert_publication_type_if_needed('Article')
-    print(f"type_code of Article:{type_code}")
-    type_code = m._insert_publication_type_if_needed('Poster')
-    print(f"type_code of Poster:{type_code}")
+
+    pubs = [{"publication_type": "Article", "title": "t3", "site": "s3", "journal": "j3", "id": 3,
+     "authors": "a1", "year": 2023, "reads": 3, "citations": 2},
+            {"publication_type": "Article", "title": "t4", "site": "s4", "journal": "j4", "id": 4,
+             "authors": "a2", "year": 2023, "reads": 3, "citations": 2}]
+    m.insert_publications_info(pubs)
+
+    # sql_command = "select type_code from publications_types where type_code in (1,2,3, 4, 5)"
+    # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
+    # res: [{'type_code': 1}, {'type_code': 2}, {'type_code': 3}, {'type_code': 4}]
+    # print(f"res1:{result}")
 
 
 if __name__ == "__main__":
