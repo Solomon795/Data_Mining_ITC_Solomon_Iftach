@@ -36,16 +36,66 @@ class DatabaseManager:
             cursor.execute(sql_command, vals)
             self._connection.commit()
 
+    def _sql_run_execute_many(self, sql_command, vals=None):  #,special_exception_handling=True):
+        try:
+            with self._connection.cursor() as cursor:
+                cursor.executemany(sql_command, vals)
+                self._connection.commit()
+        except pymysql.err.IntegrityError as e:
+            # In case of key error due to an already existing row we switch to execution of row by row
+            print(f"_sql_run_execute_many with command:{sql_command}\nfailed with {e} on vals:\n{vals}")
+            print(f"Due to already existed row switching to single row handling")
+            # if special_exception_handling:
+            #     for single_val in vals:
+            #         print(f'single_val: {single_val}')
+            #         self._sql_run_execute(sql_command, single_val)
+        except Exception as e:
+            print(f"_sql_run_execute_many with command:{sql_command}\nfailed with {e} on vals:\n{vals}")
+            print(f"_sql_run_execute_many with command:continue running")
+            return
+
+
     def insert_publications_info(self, publications_info_list):
-        # start_time = time.time()
-        # # insert
-        # sql_command = 'INSERT INTO trips (trip_id, taxi_id, start_year, start_month, start_day, start_hour, nb_points) VALUES (%s, %s, %s, %s, %s, %s, %s)'
-        # sql_run_command(sql_command, vals=trips_info, modify_db=True, fetch_all=False, close_db=False)
-        # trips_info = []
-        #
-        # end_time = time.time()
-        # print(f"Time it took: {round(end_time - start_time, 3)}")
-        self._insert_publication_type_if_needed(publication_type)
+        """
+        This function inserts the publications_info_list into the following tables in the
+        following order:
+        1. publication_types
+        2. publications
+        3. publications_by_topics
+        4. authors
+        5. publications_by_authors
+        Commit is done only after all insertions.
+        :param publications_info_list:
+        :return None:
+        """
+        # {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
+        #  "authors": authors, "month - year": monthyear, "reads": reads,
+        #  "citations": citations})
+        vals = []
+        for dict in publications_info_list:
+            pub_type = dict['publication_type']
+            title = dict['title']
+            site = dict["site"]
+            journal = dict['journal']
+            pub_id = dict['id']
+            authors = dict['authors']
+            year = dict['year']
+            reads = dict['reads']
+            citations = dict['citations']
+
+            #  1. insertion to publication_types table
+            type_code = self._insert_publication_type_if_needed(pub_type)
+            vals.append((pub_id, type_code, title, year, citations, reads, site, journal))
+
+            #  2. insertion to publications
+            sql_command = ('insert into publications (id, pub_type_code, title, year, num_citations, num_reads, url, '
+                           'journal) values (%s, %s, %s, %s, %s, %s, %s, %s)')
+
+        self._sql_run_execute_many(sql_command, vals=vals, special_exception_handling = True)
+        print (f"vals:{vals}")
+        #self._sql_run_execute(sql_command,
+        #                      vals=(pub_id, type_code, title, year, citations, reads, site, journal))
+
         return None
 
     def _insert_topic_if_needed(self, topic_subject):
@@ -61,10 +111,11 @@ class DatabaseManager:
             # The topic does not exist in the topic table, needs to insert it
             sql_command = 'SELECT max(id) from topics'
             result = self._sql_run_fetch_command(sql_command)
-            if result is None:
+            max_val = result['max(id)'] # The table is still empty
+            if max_val is None:
                 topic_id = 0
             else:
-                topic_id = int(result['max(id)']) + 1
+                topic_id = int(max_val) + 1
             sql_command = 'insert into topics (id, subject) values (%s, %s)'
             self._sql_run_execute(sql_command, vals=(topic_id, topic_subject))
         return topic_id
