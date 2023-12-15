@@ -11,6 +11,7 @@ from time import sleep
 import argparse
 import time
 from datetime import datetime
+import re
 
 import Configuration
 import DatabaseManager
@@ -70,7 +71,7 @@ def sign_in(my_url, my_chrome):
                            '-legacy-l-flex--justify-content-flex-start\@s-up.nova-legacy-l-flex--wrap-nowrap\@s-up > '
                            'div:nth-child(1) > button').click()
 
-    ### range of years
+
 
 
 def find_all_pubs_on_page(my_chrome):
@@ -160,7 +161,7 @@ def parse_single_pub_authors(publication):
     return authors_list
 
 
-def parse_single_pub_year(publication):
+def parse_single_pub_monthyear(publication):
     """
     Scraping month and year of publishing of individual publication from given search page
     :param publication:
@@ -168,9 +169,8 @@ def parse_single_pub_year(publication):
     """
     monthyear = publication.findAll('li', class_='nova-legacy-e-list__item nova-legacy-v-entity-item__meta-data-item')[
         0].text
-    # monthyear = datetime.strptime(monthyear, '%B %Y')
-    year = 2023
-    return year
+    monthyear = datetime.strptime(monthyear, '%B %Y')
+    return monthyear
 
 
 def parse_single_pub_reads(publication):
@@ -205,16 +205,21 @@ def next_page(browser, next_page_number):
     """
     # Looking for the button, that has an inner span element, with the number of the page as its value
     # i.e. < span class ="nova-legacy-c-button__labelf" > {next_page_number} < /span >
-    browser.execute_script("window.scrollBy(0, 500);")
+    browser.execute_script("window.scrollBy(0, 100);")
     xpath_expression = f'//button[.//span[contains(text(),{next_page_number})]]'
+    sleeper = 0
     while True:
-        try:
-            browser.find_element(By.XPATH, xpath_expression).click()
+        if sleeper == 3:
+            browser.get(f"https://www.researchgate.net/search/publication?q={topic_name}&page={next_page_number}")
             break
-        except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
-            sleep(1)
+        else:
+            try:
+                browser.find_element(By.XPATH, xpath_expression).click()
+                break
+            except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
+                sleep(1)
+                sleeper += 1
     return
-
 
 def get_publications_info(pubs, publications_info_list):
     """
@@ -233,7 +238,7 @@ def get_publications_info(pubs, publications_info_list):
         pub_id = int(site[41:50])
         journal = parse_single_pub_journal(pub)
         authors = parse_single_pub_authors(pub)
-        year = parse_single_pub_year(pub)
+        monthyear = parse_single_pub_monthyear(pub)
         try:
             reads = int(parse_single_pub_reads(pub).split()[0])
         except IndexError:
@@ -244,7 +249,7 @@ def get_publications_info(pubs, publications_info_list):
             citations = 0
         publications_info_list.append(
             {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
-             "authors": authors, "year": year, "reads": reads,
+             "authors": authors, "year": monthyear.year, "reads": reads,
              "citations": citations})
 
 
@@ -304,8 +309,13 @@ def main():
     print(*publications_info_list, sep="\n")
     end_time = time.time()
     print(f"It took {end_time - start_time} sec")
+
+    browser.close()
+
     return publications_info_list
+
 
 
 if __name__ == '__main__':
     main()
+
