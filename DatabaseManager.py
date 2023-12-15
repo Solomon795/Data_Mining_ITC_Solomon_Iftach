@@ -47,24 +47,15 @@ class DatabaseManager:
             cursor.execute(sql_command, vals)
             self._connection.commit()
 
-    def _sql_run_execute_many(self, sql_command, vals=None):  #,special_exception_handling=True):
+    def _sql_run_execute_many(self, sql_command, vals=None):
         try:
             with self._connection.cursor() as cursor:
                 cursor.executemany(sql_command, vals)
                 self._connection.commit()
-        except pymysql.err.IntegrityError as e:
-            # In case of key error due to an already existing row we switch to execution of row by row
-            print(f"_sql_run_execute_many with command:{sql_command}\nfailed with {e} on vals:\n{vals}")
-            print(f"Due to already existed row switching to single row handling")
-            # if special_exception_handling:
-            #     for single_val in vals:
-            #         print(f'single_val: {single_val}')
-            #         self._sql_run_execute(sql_command, single_val)
         except Exception as e:
             print(f"_sql_run_execute_many with command:{sql_command}\nfailed with {e} on vals:\n{vals}")
             print(f"_sql_run_execute_many with command:continue running")
             return
-
 
     def insert_publications_info(self, publications_info_list):
         """
@@ -82,7 +73,7 @@ class DatabaseManager:
         # {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
         #  "authors": authors, "month - year": monthyear, "reads": reads,
         #  "citations": citations})
-        pubs_vals_dict = {}   # dictionary of pub_id to check for already existing articles
+        pubs_vals_dict = {}  # dictionary of pub_id to check for already existing articles
         pubs_ids = []
         pubs_for_topic = set()
         authors_per_pub = {}
@@ -137,7 +128,6 @@ class DatabaseManager:
         pubs_vals = pubs_vals_dict.values()
         self._sql_run_execute_many(sql_command, vals=pubs_vals)
 
-
         #  3. Insertion of rows {id, topic_id, pub_id} to publications_by_topics ########
         # Existing rows in publications_by_topics removed from pubs_for_topic
         sql_command = (f"select pub_id from publications_by_topics "
@@ -189,7 +179,6 @@ class DatabaseManager:
 
         sql_command = 'insert into publications_by_authors (pub_id, author_id) values (%s, %s)'
         self._sql_run_execute_many(sql_command, vals=pub_aut_pairs)
-
 
     def _insert_topic_if_needed(self, topic_subject):
         """
@@ -272,11 +261,10 @@ def main():
     for pub_top in result:
         print(f"pub_top:{pub_top}")
 
-
-    print (f"topic id:{m._topic_id}")
+    print(f"topic id:{m._topic_id}")
 
     pubs = [{"publication_type": "Article", "title": "t5", "site": "s5", "journal": "j3", "id": 5,
-     "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
+             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
             {"publication_type": "Article", "title": "t6", "site": "s6", "journal": "j4", "id": 6,
              "authors": ["imma", "abba"], "year": 2023, "reads": 3, "citations": 2}]
     m.insert_publications_info(pubs)
@@ -301,7 +289,6 @@ def main():
     result = m._sql_run_fetch_command(sql_command, fetch_all=True)
     for pub_top in result:
         print(f"pub_top:{pub_top}")
-
 
     # sql_command = "select type_code from publications_types where type_code in (1,2,3, 4, 5)"
     # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
