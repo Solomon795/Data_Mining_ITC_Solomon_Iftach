@@ -16,14 +16,9 @@ import re
 import Configuration
 import DatabaseManager
 
-# import grequests
-
-
 # CONSTANTS used in the program
 conf = Configuration.Configuration()
 
-
-# num_pages = int(num_pages_str)
 
 def get_url(topic_name):
     """
@@ -35,7 +30,7 @@ def get_url(topic_name):
         # block image loading
         "profile.managed_default_content_settings.images": 2,
     })
-    # options.add_extension("C:/Users/solom/AppData/Local/Google/Chrome/User Data/Default/Extensions/gighmmpiobklfepjocnamgkkbiglidom/5.15.0_0/adblock.css")
+
     browser = webdriver.Chrome(options=options)
     url = f"https://www.researchgate.net/search/publication?q={topic_name}&page=1"
     return browser, url
@@ -70,8 +65,6 @@ def sign_in(my_url, my_chrome):
                            '.nova'
                            '-legacy-l-flex--justify-content-flex-start\@s-up.nova-legacy-l-flex--wrap-nowrap\@s-up > '
                            'div:nth-child(1) > button').click()
-
-
 
 
 def find_all_pubs_on_page(my_chrome):
@@ -195,66 +188,62 @@ def parse_single_pub_citations(publication):
     return citations
 
 
-def next_page(browser, next_page_number):
+def next_page(browser):
     """
     This function makes the click on the next/chosen page number,
     as the main URL address is not updated by changing page.
     :param browser:
-    :param next_page_number:
     :return:
     """
     # Looking for the button, that has an inner span element, with the number of the page as its value
     # i.e. < span class ="nova-legacy-c-button__labelf" > {next_page_number} < /span >
-    browser.execute_script("window.scrollBy(0, 100);")
-    xpath_expression = f'//button[.//span[contains(text(),{next_page_number})]]'
-    sleeper = 0
+    browser.execute_script("window.scrollBy(0, 1000);")
+    # xpath_expression = f'//button[.//span[contains(text(),{next_page_number})]]'
     while True:
-        if sleeper == 3:
-            browser.get(f"https://www.researchgate.net/search/publication?q={topic_name}&page={next_page_number}")
+        try:
+            # browser.find_element(By.XPATH, xpath_expression).click()
+            browser.find_element(By.XPATH,
+                                 '/html/body/div[1]/div[3]/div[1]/div/div/div/div/div/div[3]/div/div[1]/div/div[3]/div[2]/div/nav/button[2]').click()
             break
-        else:
-            try:
-                browser.find_element(By.XPATH, xpath_expression).click()
-                break
-            except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
-                sleep(1)
-                sleeper += 1
+        except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
+            sleep(1)
     return
 
-def get_publications_info(pubs, publications_info_list):
-    """
-    This function updates publications_info_list
-    Scraping relevant info of all individual publications from given search page
-    and appending their values as dictionary to our list container,
 
-    :param pubs:
-    :param publications_info_list:
-    :return None:
+def get_publications_info(publication):
     """
-    for pub in pubs:  # responses:
-        publication_type = parse_single_pub_material(pub)
-        title = parse_single_pub_title(pub)
-        site = parse_single_pub_site(pub)
+    This function gathers all the data for a single publication
+    """
+    publication_type = parse_single_pub_material(publication)
+    title = parse_single_pub_title(publication)
+    site = parse_single_pub_site(publication)
+    try:
         pub_id = int(site[41:50])
-        journal = parse_single_pub_journal(pub)
-        authors = parse_single_pub_authors(pub)
-        monthyear = parse_single_pub_monthyear(pub)
-        try:
-            reads = int(parse_single_pub_reads(pub).split()[0])
-        except IndexError:
-            reads = 0
-        try:
-            citations = int(parse_single_pub_citations(pub).split()[0])
-        except IndexError:
-            citations = 0
-        publications_info_list.append(
-            {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
-             "authors": authors, "year": monthyear.year, "reads": reads,
-             "citations": citations})
+    except ValueError:
+        pub_id = re.search(r"publication/(\d+)_", site)  # use r to indicate a raw string
+        pub_id = pub_id.group(1)
+        site = site[29:]
+    journal = parse_single_pub_journal(publication)
+    authors = parse_single_pub_authors(publication)
+    monthyear = parse_single_pub_monthyear(publication)
+    try:
+        reads = int(parse_single_pub_reads(publication).split()[0])
+    except IndexError:
+        reads = 0
+    except ValueError:
+        reads = parse_single_pub_reads(publication).split()[0]
+        reads = ''.join(char for char in reads if char.isdigit())
+    try:
+        citations = int(parse_single_pub_citations(publication).split()[0])
+    except IndexError:
+        citations = 0
+    data = {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
+            "authors": authors, "year": monthyear.year, "reads": reads,
+            "citations": citations}
+    return data
 
 
 def main():
-
     start_time = time.time()
     parser = argparse.ArgumentParser(description='Choose parameters for parsing - ')
     parser.add_argument('num_pages', type=int, help='Give a positive integer value for number of pages')  # 2
@@ -287,22 +276,23 @@ def main():
                       "Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
 
     # Looping through pages (with finding all pubs on each page)
-    for p in range(1, num_pages+1):
+    for p in range(1, num_pages + 1):
         print("Page proccessing: ", p)
-        # url_page = f"https://www.researchgate.net/search/publication?q={topic}&page={p}"
-        # browser.get(url_page)
-        # sleep(3)
-
+        sleep(1)
         pubs = find_all_pubs_on_page(browser)
-        get_publications_info(pubs, publications_info_list)
+
+        for pub in pubs:
+            dictionary = get_publications_info(pub)
+            publications_info_list.append(dictionary)
         print("Total publications parsed: ", len(publications_info_list))
 
         if p % 100 == 0 or p == num_pages:
             db_manager.insert_publications_info(publications_info_list)
-            publications_info_list=[]   # initiation of the list prior to accepting new batch of publications info.
+            publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
 
         # navigating to the next page, by pressing the next page button on the bottom of the page
-        next_page(browser, p)
+        if p < num_pages + 1:
+            next_page(browser)
 
         # Accumulating data
 
@@ -315,7 +305,5 @@ def main():
     return publications_info_list
 
 
-
 if __name__ == '__main__':
     main()
-
