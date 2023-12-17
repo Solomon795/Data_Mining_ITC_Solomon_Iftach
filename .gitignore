@@ -1,0 +1,4 @@
+# Ignoring pycache and scrap
+
+__pycache__/
+scrap.py
