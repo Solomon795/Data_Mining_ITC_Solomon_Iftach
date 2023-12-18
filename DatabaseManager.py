@@ -1,6 +1,6 @@
 import pymysql
 import pymysql.cursors
-
+import json
 
 class DatabaseManager:
     def __init__(self, conf, topic_subject):
@@ -108,7 +108,7 @@ class DatabaseManager:
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
         vals_to_update = []
         for dict_id in result:
-            id_to_remove = dict_id['id']
+            id_to_remove = str(dict_id['id'])
             # removal of all publications for the insertion to publications table
             element_to_remove = pubs_vals_dict.pop(id_to_remove)
             # removal of all publications for the insertion to publications_by_authors table
@@ -134,7 +134,7 @@ class DatabaseManager:
                        f"where topic_id=({self._topic_id}) and pub_id in ({pubs_ids_str})")
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
         for pub_dict in result:  # [{'pub_id': 32441}, {'pub_id': 25646}]
-            pub_id_to_remove = pub_dict['pub_id']  # pub_id from the table
+            pub_id_to_remove = str(pub_dict['pub_id'])  # pub_id from the table
             pubs_for_topic.remove(pub_id_to_remove)
         # Insertion of remaining rows to publications_by_topics table
         pubs_for_topics_vals = []
@@ -233,118 +233,3 @@ class DatabaseManager:
             self._publications_types.update({publication_type: type_code})
             return type_code
 
-
-def main():
-    import Configuration
-    c = Configuration.Configuration()
-
-    m = DatabaseManager(c, 'Energy Market2')
-
-    # sql_command = 'delete from publications_by_topics'
-    # m._sql_run_execute(sql_command)
-    # sql_command = 'delete from publications_by_authors'
-    # m._sql_run_execute(sql_command)
-    # sql_command = 'delete from topics'
-    # m._sql_run_execute(sql_command)
-    # sql_command = 'delete from authors'
-    # m._sql_run_execute(sql_command)
-    # sql_command = 'delete from publications'
-    # m._sql_run_execute(sql_command)
-    # sql_command = 'delete from publications_types'
-    # m._sql_run_execute(sql_command)
-
-
-    print("######### BEFORE INSERTION")
-    sql_command = "select * from topics"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    print(f"top:{result}")
-    sql_command = "select * from publications"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    for pub in result:
-        print(f"pub:{pub}")
-    sql_command = "select * from authors"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    for aut in result:
-        print(f"aut:{aut}")
-    sql_command = "select * from publications_by_authors"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    for pub_aut in result:
-        print(f"pub_aut:{pub_aut}")
-    sql_command = "select * from publications_by_topics"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    for pub_top in result:
-        print(f"pub_top:{pub_top}")
-
-    print(f"topic id:{m._topic_id}")
-
-    pubs = [{"id": 1,"title": "t1", "site": "s1","publication_type": "Article",  "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 2, "title": "t2", "site": "s2", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 3, "title": "t3", "site": "s3", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 4, "title": "t4", "site": "s4", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 5, "title": "t5", "site": "s5", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 6, "title": "t6", "site": "s6", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 7, "title": "t7", "site": "s7", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 8, "title": "t8", "site": "s8", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 9, "title": "t9", "site": "s9", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 10, "title": "t10", "site": "s10", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 11, "title": "t11", "site": "s11", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 12, "title": "t12", "site": "s12", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 13, "title": "t13", "site": "s13", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 14, "title": "t14", "site": "s14", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 15, "title": "t15", "site": "s15", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 16, "title": "t16", "site": "s16", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 17, "title": "t17", "site": "s17", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 18, "title": "t18", "site": "s18", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 19, "title": "t19", "site": "s19", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100},
-            {"id": 20, "title": "t20", "site": "s20", "publication_type": "Article", "journal": "j3",
-             "authors": ["abba", 'saba'], "year": 2023, "reads": 99, "citations": 100}]
-
-    m.insert_publications_info(pubs)
-
-    print("######### AFTER INSERTION")
-    sql_command = "select * from topics"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    print(f"top:{result}")
-    sql_command = "select * from publications"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    for pub in result:
-        print(f"pub:{pub}")
-    sql_command = "select * from authors"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    for aut in result:
-        print(f"aut:{aut}")
-    sql_command = "select * from publications_by_authors"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    for pub_aut in result:
-        print(f"pub_aut:{pub_aut}")
-    sql_command = "select * from publications_by_topics"
-    result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    for pub_top in result:
-        print(f"pub_top:{pub_top}")
-
-    # sql_command = "select type_code from publications_types where type_code in (1,2,3, 4, 5)"
-    # result = m._sql_run_fetch_command(sql_command, fetch_all=True)
-    # print(f"res1:{result}")
-
-
-if __name__ == "__main__":
-    main()

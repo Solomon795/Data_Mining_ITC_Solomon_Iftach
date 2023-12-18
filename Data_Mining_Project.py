@@ -15,6 +15,7 @@ import re
 
 import Configuration
 import DatabaseManager
+import json
 
 # CONSTANTS used in the program
 conf = Configuration.Configuration()
@@ -279,7 +280,10 @@ def main():
 
         for pub in pubs:
             dictionary = get_publications_info(pub)
-            publications_info_list.append(dictionary)
+            # Preprints are excluded as they break the uniqueness of titles
+            # when article with same title exists.
+            if dictionary["publication_type"] != 'Preprint':
+                publications_info_list.append(dictionary)
         print("Total publications parsed: ", len(publications_info_list))
 
         if p % 100 == 0 or p == num_pages:
