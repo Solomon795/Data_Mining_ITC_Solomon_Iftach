@@ -14,21 +14,7 @@ class Configuration:
     def get_user_credentials(self):
         return self._config['UserCredentials']['login'], self._config['UserCredentials']['password']
 
-    def get_topic_settings(self):
-        return self._config['Topic']['name'], self._config['Topic']['num-pages-to-process']
-
     def get_database_properties(self):
         return (self._config['DatabaseProperties']['host'], self._config['DatabaseProperties']['user'],
                 self._config['DatabaseProperties']['password'], self._config['DatabaseProperties']['database'])
 
-
-def main():
-    c = Configuration();
-
-    user, password = c.get_user_credentials()
-    topic_name, num_pages_to_process = c.get_topic_settings()
-    print(f"username: {user}\npassword: {password}\ntopic:{topic_name}\nnum pages:{num_pages_to_process}")
-
-
-if __name__ == "__main__":
-    main()
