@@ -217,12 +217,8 @@ def get_publications_info(publication):
     publication_type = parse_single_pub_material(publication)
     title = parse_single_pub_title(publication)
     site = parse_single_pub_site(publication)
-    try:
-        pub_id = int(site[41:50])
-    except ValueError:
-        pub_id = re.search(r"publication/(\d+)_", site)  # use r to indicate a raw string
-        pub_id = pub_id.group(1)
-        site = site[29:]
+    pub_id = re.search(r"publication/(\d+)_", site)  # use r to indicate a raw string
+    pub_id = pub_id.group(1)
     journal = parse_single_pub_journal(publication)
     authors = parse_single_pub_authors(publication)
     monthyear = parse_single_pub_monthyear(publication)
