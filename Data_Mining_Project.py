@@ -34,6 +34,7 @@ def get_url(topic_name):
 
     browser = webdriver.Chrome(options=options)
     url = f"https://www.researchgate.net/search/publication?q={topic_name}&page=1"
+    browser.get(url)
     return browser, url
 
 
@@ -46,7 +47,6 @@ def sign_in(my_url, my_chrome):
     """
     email, password = conf.get_user_credentials()
 
-    my_chrome.get(my_url)
     # Finding button "Log In" by its text and pressing it
     my_chrome.find_element(By.LINK_TEXT, "Log in").click()
 
@@ -78,6 +78,8 @@ def find_all_pubs_on_page(my_chrome):
     soup = BeautifulSoup(my_chrome.page_source, 'lxml')
 
     pubs = soup.findAll('div', class_='nova-legacy-v-entity-item__stack nova-legacy-v-entity-item__stack--gutter-m')
+    if len(pubs) == 0:
+        pubs = soup.findAll('div', class_='nova-legacy-c-card nova-legacy-c-card--spacing-xl nova-legacy-c-card--elevation-1-above')
     return pubs
 
 
@@ -189,7 +191,7 @@ def parse_single_pub_citations(publication):
     return citations
 
 
-def next_page(browser):
+def next_page(browser1, browser2):
     """
     This function makes the click on the next/chosen page number,
     as the main URL address is not updated by changing page.
@@ -198,13 +200,16 @@ def next_page(browser):
     """
     # Looking for the button, that has an inner span element, with the number of the page as its value
     # i.e. < span class ="nova-legacy-c-button__labelf" > {next_page_number} < /span >
-    browser.execute_script("window.scrollBy(0, 1000);")
+    browser1.execute_script("window.scrollBy(0, 1000);")
+    browser2.execute_script("window.scrollBy(0, 1000);")
     # xpath_expression = f'//button[.//span[contains(text(),{next_page_number})]]'
     while True:
         try:
             # browser.find_element(By.XPATH, xpath_expression).click()
-            browser.find_element(By.XPATH,
+            browser1.find_element(By.XPATH,
                                  '/html/body/div[1]/div[3]/div[1]/div/div/div/div/div/div[3]/div/div[1]/div/div[3]/div[2]/div/nav/button[2]').click()
+            browser2.find_element(By.XPATH,
+                                  '/html/body/div[1]/div[1]/div[1]/div/div/div[2]/div[2]/div/div[2]/div/div[1]/div/div/div[11]/div/div[9]').click()
             break
         except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
             sleep(1)
@@ -258,11 +263,13 @@ def main():
     """Costructor function"""
     # Initializing our container for parsed info of publications
     publications_info_list = []
+    doi_list = []
     # Launching chrome and signing in
-    browser, url = get_url(topic)
+    browser1, url = get_url(topic)
+    browser2, url = get_url(topic)
     while True:
         try:
-            sign_in(url, browser)
+            sign_in(url, browser1)
             break
         except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
             sleep(1)
@@ -276,31 +283,39 @@ def main():
     for p in range(1, num_pages + 1):
         print("Page proccessing: ", p)
         sleep(1)
-        pubs = find_all_pubs_on_page(browser)
+        pubs1 = find_all_pubs_on_page(browser1)
 
-        for pub in pubs:
+        for pub in pubs1:
             dictionary = get_publications_info(pub)
             # Preprints are excluded as they break the uniqueness of titles
             # when article with same title exists.
             if dictionary["publication_type"] != 'Preprint':
                 publications_info_list.append(dictionary)
+        for pub in pubs2:
+            pub_type = pub.find('div', class_='nova-legacy-v-publication-item__meta-left').text
+            if pub_type != 'Preprint':
+                doi = pub.findAll('li', class_='nova-legacy-e-list__item')[1].text
+                doi_list.append(doi[5:])
         print("Total publications parsed: ", len(publications_info_list))
 
-        if p % 100 == 0 or p == num_pages:
-            db_manager.insert_publications_info(publications_info_list)
-            publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
+        # if p % 100 == 0 or p == num_pages:
+        #     db_manager.insert_publications_info(publications_info_list)
+        #     publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
 
         # navigating to the next page, by pressing the next page button on the bottom of the page
         if p < num_pages + 1:
-            next_page(browser)
+            next_page(browser1, browser2)
 
         # Accumulating data
+    for index, pub in enumerate(publications_info_list):
+        pub["doi"] = doi_list[index]
 
     print(*publications_info_list, sep="\n")
     end_time = time.time()
     print(f"It took {end_time - start_time} sec")
 
-    browser.close()
+    browser1.close()
+    browser2.close()
 
     return publications_info_list
 
