@@ -15,7 +15,7 @@ class PubmedWrapper:
     fetch_countries (for ease of implementation).
     """
 
-    def __init__(self, conf, subject):
+    def __init__(self, subject):
         """
         Initialization method.
         :param conf:
@@ -134,3 +134,6 @@ class PubmedWrapper:
             print(f"Error: Unable to fetch data. Status code: {response.status_code}")
             return None
 
+query1 = PubmedWrapper("ice nucleation")
+print(query1.fetch_pubs_info(300))
+print(query1.fetch_countries())
