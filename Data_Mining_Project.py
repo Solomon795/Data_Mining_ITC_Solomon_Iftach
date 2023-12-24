@@ -15,6 +15,7 @@ import re
 
 import Configuration
 import DatabaseManager
+import json
 
 # CONSTANTS used in the program
 conf = Configuration.Configuration()
@@ -33,6 +34,7 @@ def get_url(topic_name):
 
     browser = webdriver.Chrome(options=options)
     url = f"https://www.researchgate.net/search/publication?q={topic_name}&page=1"
+    browser.get(url)
     return browser, url
 
 
@@ -45,7 +47,6 @@ def sign_in(my_url, my_chrome):
     """
     email, password = conf.get_user_credentials()
 
-    my_chrome.get(my_url)
     # Finding button "Log In" by its text and pressing it
     my_chrome.find_element(By.LINK_TEXT, "Log in").click()
 
@@ -77,6 +78,8 @@ def find_all_pubs_on_page(my_chrome):
     soup = BeautifulSoup(my_chrome.page_source, 'lxml')
 
     pubs = soup.findAll('div', class_='nova-legacy-v-entity-item__stack nova-legacy-v-entity-item__stack--gutter-m')
+    if len(pubs) == 0:
+        pubs = soup.findAll('div', class_='nova-legacy-c-card nova-legacy-c-card--spacing-xl nova-legacy-c-card--elevation-1-above')
     return pubs
 
 
@@ -187,8 +190,13 @@ def parse_single_pub_citations(publication):
         2].text
     return citations
 
+def parse_single_pub_doi(driver):
 
-def next_page(browser):
+    doi = driver.find_elements(By.XPATH, "//*[contains(text(), '10.')]")[0].text
+    return doi
+
+
+def next_page(browser1):
     """
     This function makes the click on the next/chosen page number,
     as the main URL address is not updated by changing page.
@@ -197,12 +205,12 @@ def next_page(browser):
     """
     # Looking for the button, that has an inner span element, with the number of the page as its value
     # i.e. < span class ="nova-legacy-c-button__labelf" > {next_page_number} < /span >
-    browser.execute_script("window.scrollBy(0, 1000);")
+    browser1.execute_script("window.scrollBy(0, 1000);")
     # xpath_expression = f'//button[.//span[contains(text(),{next_page_number})]]'
     while True:
         try:
             # browser.find_element(By.XPATH, xpath_expression).click()
-            browser.find_element(By.XPATH,
+            browser1.find_element(By.XPATH,
                                  '/html/body/div[1]/div[3]/div[1]/div/div/div/div/div/div[3]/div/div[1]/div/div[3]/div[2]/div/nav/button[2]').click()
             break
         except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
@@ -210,22 +218,29 @@ def next_page(browser):
     return
 
 
-def get_publications_info(publication):
+def get_publications_info(publication, driver):
     """
     This function gathers all the data for a single publication
     """
     publication_type = parse_single_pub_material(publication)
     title = parse_single_pub_title(publication)
     site = parse_single_pub_site(publication)
-    try:
-        pub_id = int(site[41:50])
-    except ValueError:
-        pub_id = re.search(r"publication/(\d+)_", site)  # use r to indicate a raw string
-        pub_id = pub_id.group(1)
-        site = site[29:]
+    pub_id = re.search(r"publication/(\d+)_", site)  # use r to indicate a raw string
+    pub_id = pub_id.group(1)
     journal = parse_single_pub_journal(publication)
     authors = parse_single_pub_authors(publication)
     monthyear = parse_single_pub_monthyear(publication)
+    original_tab = driver.current_window_handle
+    driver.switch_to.new_window('tab')
+    driver.get(site)
+    try:
+        doi = parse_single_pub_doi(driver)
+    except IndexError:
+        doi = ""
+    driver.close()
+
+    # Switch back to the old tab or window
+    driver.switch_to.window(original_tab)
     try:
         reads = int(parse_single_pub_reads(publication).split()[0])
     except IndexError:
@@ -239,7 +254,7 @@ def get_publications_info(publication):
         citations = 0
     data = {"publication_type": publication_type, "title": title, "site": site, "journal": journal, "id": pub_id,
             "authors": authors, "year": monthyear.year, "reads": reads,
-            "citations": citations}
+            "citations": citations, "doi": doi}
     return data
 
 
@@ -258,14 +273,14 @@ def main():
     # Check if topic exists already, if not insert it to DB.
     db_manager = DatabaseManager.DatabaseManager(conf, topic)
 
-    """Costructor function"""
+    """Constructor function"""
     # Initializing our container for parsed info of publications
     publications_info_list = []
     # Launching chrome and signing in
-    browser, url = get_url(topic)
+    browser1, url = get_url(topic)
     while True:
         try:
-            sign_in(url, browser)
+            sign_in(url, browser1)
             break
         except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
             sleep(1)
@@ -279,20 +294,23 @@ def main():
     for p in range(1, num_pages + 1):
         print("Page proccessing: ", p)
         sleep(1)
-        pubs = find_all_pubs_on_page(browser)
+        pubs1 = find_all_pubs_on_page(browser1)
 
-        for pub in pubs:
-            dictionary = get_publications_info(pub)
-            publications_info_list.append(dictionary)
+        for pub in pubs1:
+            dictionary = get_publications_info(pub, browser1)
+            # Preprints are excluded as they break the uniqueness of titles
+            # when article with same title exists.
+            if dictionary["publication_type"] != 'Preprint':
+                publications_info_list.append(dictionary)
         print("Total publications parsed: ", len(publications_info_list))
 
-        if p % 100 == 0 or p == num_pages:
-            db_manager.insert_publications_info(publications_info_list)
-            publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
+        # if p % 100 == 0 or p == num_pages:
+        #     db_manager.insert_publications_info(publications_info_list)
+        #     publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
 
         # navigating to the next page, by pressing the next page button on the bottom of the page
         if p < num_pages + 1:
-            next_page(browser)
+            next_page(browser1)
 
         # Accumulating data
 
@@ -300,7 +318,7 @@ def main():
     end_time = time.time()
     print(f"It took {end_time - start_time} sec")
 
-    browser.close()
+    browser1.close()
 
     return publications_info_list
 
