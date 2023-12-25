@@ -15,6 +15,7 @@ import re
 
 import Configuration
 import DatabaseManager
+import pubmed_wrapper
 import json
 
 # CONSTANTS used in the program
@@ -240,8 +241,10 @@ def get_publications_info(publication):
     return data
 
 
+
 def main():
     start_time = time.time()
+    db_source = 0  # ResearchGate
     parser = argparse.ArgumentParser(description='Choose parameters for parsing - ')
     parser.add_argument('num_pages', type=int, help='Give a positive integer value for number of pages')  # 2
     parser.add_argument('topic', type=str, help='Give a topic for publications search')  # 3
@@ -253,7 +256,7 @@ def main():
 
     topic = args.topic
     # Check if topic exists already, if not insert it to DB.
-    db_manager = DatabaseManager.DatabaseManager(conf, topic)
+    db_manager = DatabaseManager.DatabaseManager(conf, topic, db_source)
 
     """Costructor function"""
     # Initializing our container for parsed info of publications
@@ -272,7 +275,7 @@ def main():
         'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
 
-    # Looping through pages (with finding all pubs on each page)
+    # Looping through pages (with finding all pubs on each page) of Researchgate site
     for p in range(1, num_pages + 1):
         print("Page proccessing: ", p)
         sleep(1)
@@ -287,7 +290,7 @@ def main():
         print("Total publications parsed: ", len(publications_info_list))
 
         if p % 100 == 0 or p == num_pages:
-            db_manager.insert_publications_info(publications_info_list)
+            db_manager.insert_publications_info(db_source, publications_info_list)
             publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
 
         # navigating to the next page, by pressing the next page button on the bottom of the page
@@ -301,6 +304,16 @@ def main():
     print(f"It took {end_time - start_time} sec")
 
     browser.close()
+
+    ##### PUBMED #########
+    # Retrieving information from Pubmed site
+    db_pubmed = pubmed_wrapper.PubmedWrapper(topic)
+    db_source = 1  # Pubmed
+    num_pubs_requested = p * 10
+    # Fetching publications info including doi, and pubmed_id
+    pubmed_info = db_pubmed.fetch_pubs_info(num_pubs_requested)
+    #pubmed_countries = db_pubmed.fetch_countries()
+    db_manager.insert_publications_info(db_source, pubmed_info)
 
     return publications_info_list
 
