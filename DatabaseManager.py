@@ -75,7 +75,7 @@ class DatabaseManager:
             print(f"_sql_run_execute_many with command:continue running")
             return
 
-    def insert_publications_info(self, db_source, publications_info_list, countries_list=None):
+    def insert_publications_info(self, db_source, publications_info_list):
         """
         This function inserts the publications_info_list into the following tables in the
         following order:
@@ -95,9 +95,11 @@ class DatabaseManager:
         pubs_for_topic = {}  # for updating publications_by_topics table
         authors_per_pub = {}  # for updating publications_by_authors table
         authors_per_batch = set()  # for updating authors table
+        countries_per_batch = set()   # for countries_codes table
+        countries_per_pubs = {}   # for countries_publications table
         for dict in publications_info_list:
-            # Step A: making a batch of dictionaries to compare with datamining DB.
-            #         where the primary 'pub_id' is set consecutively to _max_pub_id + 1
+            # Making a batch of dictionaries to compare with datamining DB.
+            # where the primary 'pub_id' is set consecutively to _max_pub_id + 1
             # Initializing and setting fields that exist only in one of the DBs (ResearcgGate or Pubmed).
             serial_id = self._max_pub_id + 1
             self._max_pub_id += 1
@@ -113,16 +115,17 @@ class DatabaseManager:
             if db_source == 1:  # Pubmed
                 doi = dict['doi']
                 pubmed_id = dict['pubmed_id']
-                comp_key = pubmed_id
             else:  # db_source == 0 corresponding to ResearchGate
                 rgate_id = dict['id']
                 site = dict["site"]
-                comp_key = rgate_id
             # Fields common to both DBs
             pub_type = dict['publication_type']
             title = dict['title']
             journal = dict['journal']
             authors = dict['authors']
+            countries = set()
+            if db_source == 1: #Pubmed
+                countries.update(dict['countries'])
             year = dict['year']
             if dict['reads'] is None:
                 reads = 0
@@ -137,6 +140,8 @@ class DatabaseManager:
             authors_per_batch.update(set(authors))  # for authors table
             authors_per_pub.update({title: [serial_id, authors]})  # for updating publications_by_authors table
             pubs_for_topic.update({title: serial_id})  # for updating publications_by_topics table
+            countries_per_batch.update(countries)    # for countries_codes table
+            countries_per_pubs.update({title: [serial_id, countries]}) # for publications_countries table
 
             #  Check if to insert publication_type
             type_code = self._insert_publication_type_if_needed(pub_type)
@@ -161,7 +166,7 @@ class DatabaseManager:
         # Example for result structure: [{'title':'example','id': 1, 'comp_key'=567 ...,'reads': 666}, ...}]
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
         vals_to_update = []  # Update of fields for already existing publications
-        #  id's from publications tablethat will be used for the select from publications_by_topics
+        #  id's from publications table that will be used for the select from publications_by_topics
         existing_pubs_ids = []
         rgate_id_pos = 1  # position in the tuple
         pubmed_id_pos = 2
@@ -177,6 +182,10 @@ class DatabaseManager:
             authors_per_pub.pop(title_to_remove)
             # Removing existing publications from publication_by_topics batch.
             pubs_for_topic.pop(dict_id['title'])  # pubs_for_topic will contain only new publications.
+            # Removing existing publications from countries_per_pub
+            if db_source == 1 and dict_id['pubmed_id'] is not None: # The publication exists is a Pubmed publication
+                countries_per_pubs.pop(dict_id['title'])  # pubs_for_topic will contain only new publications.
+
             # Building an update list of relevant fields for existing publications, e.g. num_citations.
             # The actual list building
             if db_source == 0:  # ResearchGate
@@ -264,6 +273,20 @@ class DatabaseManager:
         sql_command = 'insert into publications_by_authors (author_id, pub_id) values (%s, %s)'
         self._sql_run_execute_many(sql_command, vals=pub_aut_id_pairs)
 
+        # 6. Insertion to countries_codes
+
+        countries_codes_dict = {}
+        for country_name in countries_per_batch:
+            country_code = self._insert_country_code_if_needed(country_name)
+            countries_codes_dict[country_name] = country_code
+
+        # 7. publications_countries
+        country_name_pub_id_pairs = []
+        for pub_id_and_countries in countries_per_pubs.values():
+            pub_id = pub_id_and_countries[0]
+            countries_names = pub_id_and_countries[1]
+            for country_name in countries_names:
+                country_name_pub_id_pairs += [(countries_codes_dict[country_name], pub_id)]
 
 
     def _insert_topic_if_needed(self, topic_subject):
@@ -343,7 +366,7 @@ class DatabaseManager:
         :return country_code: int
         """
         try:  # If country_name already in table
-            country_code = self._publications_types[country_name]
+            country_code = self._countries_codes[country_name]
             return country_code
         except KeyError:  # country_name is not in the table
             country_code = len(self._countries_codes) + 1
@@ -354,36 +377,3 @@ class DatabaseManager:
             self._countries_codes.update({country_name: country_code})
             return country_code
 
-    def _insert_publications_countries(self, pubmed_ids_countries_dict):
-        """
-        This method insert values into publications_countries table.
-        :param pubmed_ids_countries_dict: [{pubmed_id: [country_name1, country_name2]}]
-        :return None:
-        """
-        pub_countries_list = []
-        sql_command = 'SELECT id, pubmed_id from publications where pubmed_id=%s'
-        # example of result would be: [{'id':400, 'pubmed_id': 32441}, {'id':401, 'pubmed_id': 55442}]
-        result = self._sql_run_fetch_command(sql_command, vals=pubmed_ids_countries_dict.keys())
-        for elem in result:
-            pubmed_id = elem['pubmed_id']
-            for countries_per_pubmed_id in pubmed_ids_countries_dict[pubmed_id]:
-                for country_name in countries_per_pubmed_id:
-                    country_code = self._insert_country_code_if_needed(country_name)
-                    pub_countries_list += [(elem["id"], country_code)]
-
-        sql_command = 'insert into publications_countries (pub_id, country_code) values (%s, %s)'
-        self._sql_run_execute_many(sql_command, vals=pub_countries_list)
-
-
-
-
-
-
-
-
-
-
-#
-# INSERT INTO your_table (unique_column, other_column)
-# VALUES (value, other_value)
-# ON DUPLICATE KEY UPDATE other_column = VALUES(other_column);
