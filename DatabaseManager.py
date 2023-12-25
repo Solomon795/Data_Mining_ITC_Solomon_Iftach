@@ -124,20 +124,26 @@ class DatabaseManager:
             journal = dict['journal']
             authors = dict['authors']
             year = dict['year']
-            reads = dict['reads']
-            citations = dict['citations']
+            if dict['reads'] is None:
+                reads = 0
+            else:
+                reads = dict['reads']
+            if dict['citations'] is None:
+                citations = 0
+            else:
+                citations = dict['citations']
 
             # Preparing batches to insert into tables
             authors_per_batch.update(set(authors))  # for authors table
-            authors_per_pub.update({comp_key: [serial_id, authors]})  # for updating publications_by_authors table
-            pubs_for_topic.update({comp_key: serial_id})  # for updating publications_by_topics table
+            authors_per_pub.update({title: [serial_id, authors]})  # for updating publications_by_authors table
+            pubs_for_topic.update({title: serial_id})  # for updating publications_by_topics table
 
             #  Check if to insert publication_type
             type_code = self._insert_publication_type_if_needed(pub_type)
 
             # Preparing a batch for inserting into publications table
             pubs_vals_dict.update(
-             {comp_key: (serial_id, rgate_id, pubmed_id, type_code, title, year, citations, reads, site, journal, doi)})
+             {title: (serial_id, rgate_id, pubmed_id, type_code, title, year, citations, reads, site, journal, doi)})
 
             # pubs_ids += [str(pub_id)]  # was used when pub_id was PK
             titles.update({title})
@@ -148,44 +154,48 @@ class DatabaseManager:
         # Selecting existing publications and removing them from pubs_vals_dict
         if db_source == 0: #Researchgate
             sql_command = \
-                f'select id, rgate_id as comp_key, citations, reads from publications where title in ({titles_str})'
+                f'select id, rgate_id, title, num_citations, num_reads from publications where title in ({titles_str})'
         else:              #Pubmed
             sql_command = \
-                f'select id, pubmed_id as comp_key, citations, reads from publications where title in ({titles_str})'
-        # Example for result structure: [{'id': 1, 'comp_key'=567 ...,'reads': 666}, {'id': 2, ..., 'reads': 517}]
+                f'select id, pubmed_id, title, num_citations, num_reads from publications where title in ({titles_str})'
+        # Example for result structure: [{'title':'example','id': 1, 'comp_key'=567 ...,'reads': 666}, ...}]
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
         vals_to_update = []  # Update of fields for already existing publications
         #  id's from publications tablethat will be used for the select from publications_by_topics
         existing_pubs_ids = []
+        rgate_id_pos = 1  # position in the tuple
+        pubmed_id_pos = 2
         num_citation_pos = 6  # position in the tuple
         num_reads_pos = 7  # position in the tupl
         doi_pos = 10
         for dict_id in result:
             existing_pubs_ids += [str(dict_id['id'])]  #  list of publications id's in str format
-            id_to_remove = str(dict_id['comp_key'])
+            title_to_remove = dict_id['title']
             # removal of all publications for the insertion to publications table
-            element_to_remove = pubs_vals_dict.pop(id_to_remove)
+            element_to_remove = pubs_vals_dict.pop(title_to_remove)
             # removal of all publications for the insertion to publications_by_authors table
-            authors_per_pub.pop(id_to_remove)
+            authors_per_pub.pop(title_to_remove)
             # Removing existing publications from publication_by_topics batch.
-            pubs_for_topic.pop(dict_id['comp_key'])  # pubs_for_topic will contain only new publications.
+            pubs_for_topic.pop(dict_id['title'])  # pubs_for_topic will contain only new publications.
             # Building an update list of relevant fields for existing publications, e.g. num_citations.
             # The actual list building
             if db_source == 0:  # ResearchGate
-                vals_to_update += [(element_to_remove[num_citation_pos], element_to_remove[num_reads_pos],
-                                    id_to_remove)]
+                vals_to_update += [(element_to_remove[rgate_id_pos],
+                                    element_to_remove[num_citation_pos], element_to_remove[num_reads_pos],
+                                    title_to_remove)]
             else:
-                vals_to_update += [(element_to_remove[num_citation_pos], element_to_remove[num_reads_pos],
-                                    element_to_remove[doi_pos], id_to_remove)]
+                vals_to_update += [(element_to_remove[pubmed_id_pos],
+                                    element_to_remove[num_citation_pos], element_to_remove[num_reads_pos],
+                                    element_to_remove[doi_pos], title_to_remove)]
 
         if db_source == 0: # ResearchGate
             sql_command = \
-                ('update publications set num_citations = %s, num_reads = %s '
-                 'where rgate_id = %s')
+                ('update publications set rgate_id = %s, num_citations = %s, num_reads = %s '
+                 'where title = %s')
         else:              # Pubmed
             sql_command = \
-                ('update publications set num_citations = %s, num_reads = %s, doi_pos = %s, '
-                 'where pubmed_id = %s')
+                ('update publications set pubmed_id = %s, num_citations = %s, num_reads = %s, doi = %s '
+                 'where title = %s')
         self._sql_run_execute_many(sql_command, vals=vals_to_update)
 
         #  2. Insertion to publications table the verified new rows in
@@ -199,23 +209,24 @@ class DatabaseManager:
         #  3. Insertion of rows {id, topic_id, pub_id} to publications_by_topics ########
         # Existing rows in publications_by_topics removed from pubs_for_topic
         # Preparing all the existing id's in one string separated by commas for the SQL command
-        existing_pubs_ids_str = ", ".join(existing_pubs_ids)  # one string of id's
-        sql_command = (f"select pub_id from publications_by_topics "
-                       f"where topic_id=({self._topic_id}) and pub_id in ({existing_pubs_ids_str})")
-        result = self._sql_run_fetch_command(sql_command, fetch_all=True)
-        set_existing_ids = set(existing_pubs_ids)  # cast to set format for removal of serials_id's'
-        for pub_dict in result:  # [{'pub_id': 32441}, {'pub_id': 25646}]
-            serial_id_to_remove = str(pub_dict['pub_id'])  # pub_id from the table to be removed from pubs_for_topic
-            set_existing_ids.remove(serial_id_to_remove)
-        # Insertion of remaining rows to publications_by_topics table
-        ids_to_insert = list(pubs_for_topic.values()) + list(set_existing_ids)  # now pubs_for_topic contain all publications to be inserted
-        pubs_for_topics_vals = []
-        for pub_id in ids_to_insert:
-            self._max_pub_topic_id += 1
-            pubs_for_topics_vals += [(self._max_pub_topic_id, self._topic_id, pub_id)]
+        existing_pubs_ids_str = ",".join(existing_pubs_ids)  # one string of id's
+        if existing_pubs_ids_str != "":
+            sql_command = (f"select pub_id from publications_by_topics "
+                           f"where topic_id=({self._topic_id}) and pub_id in ({existing_pubs_ids_str})")
+            result = self._sql_run_fetch_command(sql_command, fetch_all=True)
+            set_existing_ids = set(existing_pubs_ids)  # cast to set format for removal of serials_id's'
+            for pub_dict in result:  # [{'pub_id': 32441}, {'pub_id': 25646}]
+                serial_id_to_remove = str(pub_dict['pub_id'])  # pub_id from the table to be removed from pubs_for_topic
+                set_existing_ids.remove(serial_id_to_remove)
+            # Insertion of remaining rows to publications_by_topics table
+            ids_to_insert = list(pubs_for_topic.values()) + list(set_existing_ids)  # now pubs_for_topic contain all publications to be inserted
+            pubs_for_topics_vals = []
+            for pub_id in ids_to_insert:
+                self._max_pub_topic_id += 1
+                pubs_for_topics_vals += [(self._max_pub_topic_id, self._topic_id, pub_id)]
 
-        sql_command = 'insert into publications_by_topics (id, topic_id, pub_id) values (%s, %s, %s)'
-        self._sql_run_execute_many(sql_command, vals=pubs_for_topics_vals)
+            sql_command = 'insert into publications_by_topics (id, topic_id, pub_id) values (%s, %s, %s)'
+            self._sql_run_execute_many(sql_command, vals=pubs_for_topics_vals)
 
         # 4. Insert set authors_per_batch to authors table
         # cast the authors to a string for the removal selection
@@ -241,16 +252,16 @@ class DatabaseManager:
         for dict_aut in result:
             dict_aut_id.update({dict_aut['full_name']: dict_aut['id']})
 
-        # 5. Insertion to publications_by_authors  from dict: {comp_key: [serial_id, [auther_fullname1, ...]}
+        # 5. Insertion to publications_by_authors  from dict: {title: [serial_id, [auther_fullname1, ...]}
         # Generating pairs candidates to insert to the table
         pub_aut_id_pairs = []
         for pub_id_and_authors in authors_per_pub.values():
             pub_id = pub_id_and_authors[0]
-            authors_fullnames = pub_id_and_authors[1]
-            for full_name in authors_fullnames:
-                pub_aut_id_pairs += [(dict_aut[full_name], pub_id)]
+            authors_full_names = pub_id_and_authors[1]
+            for full_name in authors_full_names:
+                pub_aut_id_pairs += [(dict_aut_id[full_name], pub_id)]
 
-        sql_command = 'insert into publications_by_authors (pub_id, author_id) values (%s, %s)'
+        sql_command = 'insert into publications_by_authors (author_id, pub_id) values (%s, %s)'
         self._sql_run_execute_many(sql_command, vals=pub_aut_id_pairs)
 
 
