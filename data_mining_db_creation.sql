@@ -48,13 +48,19 @@ CREATE TABLE IF NOT EXISTS `DataMining`.`publications` (
   `year` INT UNSIGNED NOT NULL COMMENT 'Year of publication.',
   `num_citations` INT UNSIGNED NOT NULL COMMENT 'Number of citations of the publication',
   `num_reads` INT UNSIGNED NOT NULL COMMENT 'Number of publication reads',
-  `url` VARCHAR(250) NOT NULL COMMENT 'URL of the publication',
+  `url` VARCHAR(250) NULL COMMENT 'URL of the publication',
   `journal` VARCHAR(150) NOT NULL,
+  `doi` VARCHAR(45) NULL,
+  `rgate_id` INT UNSIGNED NULL,
+  `pubmed_id` INT UNSIGNED NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `url_UNIQUE` (`url` ASC) VISIBLE,
   UNIQUE INDEX `title_UNIQUE` (`title` ASC) VISIBLE,
   INDEX `pub_type_code_fk_idx` (`pub_type_code` ASC) VISIBLE,
+  UNIQUE INDEX `doi_UNIQUE` (`doi` ASC) VISIBLE,
+  UNIQUE INDEX `rg_id_UNIQUE` (`rgate_id` ASC) VISIBLE,
+  UNIQUE INDEX `pubmed_id_UNIQUE` (`pubmed_id` ASC) VISIBLE,
   CONSTRAINT `pub_type_code_fk`
     FOREIGN KEY (`pub_type_code`)
     REFERENCES `DataMining`.`publications_types` (`type_code`)
@@ -114,6 +120,42 @@ CREATE TABLE IF NOT EXISTS `DataMining`.`publications_by_authors` (
   CONSTRAINT `author_id_fk`
     FOREIGN KEY (`author_id`)
     REFERENCES `DataMining`.`authors` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `DataMining`.`countries_codes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `DataMining`.`countries_codes` (
+  `country_code` INT UNSIGNED NOT NULL,
+  `country_name` VARCHAR(45) NULL,
+  PRIMARY KEY (`country_code`),
+  UNIQUE INDEX `id_UNIQUE` (`country_code` ASC) VISIBLE,
+  UNIQUE INDEX `country_UNIQUE` (`country_name` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `DataMining`.`publications_countries`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `DataMining`.`publications_countries` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `country_code` INT UNSIGNED NOT NULL,
+  `pub_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  INDEX `pub_id_fk_idx` (`pub_id` ASC) VISIBLE,
+  INDEX `country_code_fk_idx` (`country_code` ASC) VISIBLE,
+  CONSTRAINT `pub_id_fk3`
+    FOREIGN KEY (`pub_id`)
+    REFERENCES `DataMining`.`publications` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `country_code_fk`
+    FOREIGN KEY (`country_code`)
+    REFERENCES `DataMining`.`countries_codes` (`country_code`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
