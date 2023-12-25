@@ -91,6 +91,7 @@ def main():
     topic = args.topic
     logger.info(f"Number of page = {num_pages}, topic - {topic} parsed from Command Line Interface")
     # Check if topic exists already, if not insert it to DB.
+    db_source = 0 # Researchgate
     db_manager = DatabaseManager.DatabaseManager(conf, topic)
     logger.info(f"Insertion of topic {topic} into database successful")
     """Constructor function"""
@@ -132,7 +133,8 @@ def main():
         print("Total publications parsed: ", len(publications_info_list))
 
         if p % 100 == 0 or p == num_pages:
-            db_manager.insert_publications_info(publications_info_list)
+            db_source = 0 # ResearchGate
+            db_manager.insert_publications_info(db_source,publications_info_list)
             publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
 
         # navigating to the next page, by pressing the next page button on the bottom of the page
@@ -150,14 +152,13 @@ def main():
     browser1.close()
     browser2.close()
 
-    ##### PUBMED #########
+    #####       PUBMED                #########
     # Retrieving information from Pubmed site
     db_pubmed = pubmed_wrapper.PubmedWrapper(topic)
     db_source = 1  # Pubmed
     num_pubs_requested = p * 10
     # Fetching publications info including doi, and pubmed_id
     pubmed_info = db_pubmed.fetch_pubs_info(num_pubs_requested)
-    #pubmed_countries = db_pubmed.fetch_countries()
     db_manager.insert_publications_info(db_source, pubmed_info)
 
     return publications_info_list

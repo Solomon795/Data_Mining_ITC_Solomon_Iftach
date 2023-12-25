@@ -4,7 +4,7 @@ import json
 
 
 class DatabaseManager:
-    def __init__(self, conf, topic_subject, db_source):
+    def __init__(self, conf, topic_subject):
         # Connect to the database
         host, user, password, database = conf.get_database_properties()
         self._connection = pymysql.connect(host=host,
@@ -19,7 +19,6 @@ class DatabaseManager:
         self._publications_types = self._get_publications_types()
 
         self._max_pub_topic_id = self._extract_max_id('publications_by_topics')
-        self.db_source = db_source  # 0 - ResearchGate; 1 - Pubmed
 
         self._countries_codes = self._get_countries_codes()
     def _extract_max_id(self, table_name):
