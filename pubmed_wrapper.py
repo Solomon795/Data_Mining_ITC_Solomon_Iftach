@@ -18,8 +18,7 @@ class PubmedWrapper:
     def __init__(self, subject):
         """
         Initialization method.
-        :param conf:
-        :param subject:
+        :param subject: query's topic
         """
         self._subject = subject
         self._pubmed_ids = "" # will be set in the fetch_pubs_info.
@@ -29,7 +28,7 @@ class PubmedWrapper:
         The function fetch info about publications. It is done in two steps:
         - fetching the pubmed-id's
         - fetching the info (most attributes) by the pubmed-id
-        :param subject: Topic of query
+        :param num_pubs_requested: int - number of publications to retrieve
         :return pubs_info: List of dictionaries
         """
         s_time = time.time()
@@ -92,6 +91,44 @@ class PubmedWrapper:
             print("Failed to retrieve data from PubMed API.")
 
         e_time = time.time()
+        print (f"Fetching pubmed ids and summary took: {e_time-s_time}")
+
+        #### Fetching countries ###
+        s_time_2 = time.time()
+        base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
+        params = {
+            "db": "pubmed",
+            "id": self._pubmed_ids,
+            "retmode": "xml"  # the result is only in xml format
+        }
+
+        response = requests.get(base_url, params=params)
+
+        if response.status_code == 200:
+            xml_data = response.text
+            # Parse the XML response to extract the country information
+            root = ET.fromstring(xml_data)
+
+            # Using findall method to retrieve all values for the specified tag
+            for pub in root.findall(".//PubmedArticle"):
+                pmid_element = pub.find(".//PMID")
+                pmid_str = pmid_element.text
+
+                countries = []
+                for country in pub.findall(".//Country"):
+                    if country.text is not None:
+                        countries.append(country.text)
+            e_time_2 = time.time()
+            print(f"Fetching countries took:{e_time_2-s_time_2}")
+
+
+
+        #############  Merging countries into pubs_info   ##########################################
+        for i in range(len(pubs_info)):
+            pubs_info[i].update({'countries': countries})
+        ###############################################################
+
+        e_time = time.time()
         print(f"pubmed info time: {round(e_time - s_time, 1)}")
         return pubs_info
 
@@ -121,19 +158,15 @@ class PubmedWrapper:
                 pmid_element = pub.find(".//PMID")
                 pmid_str = pmid_element.text
 
-                countries = []
+                countries = set()
                 for country in pub.findall(".//Country"):
                     if country.text is not None:
-                        countries.append(country.text)
+                        countries.update(country.text)
 
                 ids_countries_dict[pmid_str] = countries
             e_time = time.time()
-            print(f"Time it took: {e_time - s_time}")
+            print(f"Fetching countries took: {e_time - s_time}")
             return ids_countries_dict
         else:
             print(f"Error: Unable to fetch data. Status code: {response.status_code}")
             return None
-
-query1 = PubmedWrapper("ice nucleation")
-print(query1.fetch_pubs_info(300))
-print(query1.fetch_countries())
