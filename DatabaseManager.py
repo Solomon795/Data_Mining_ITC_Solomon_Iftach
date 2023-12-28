@@ -118,20 +118,20 @@ class DatabaseManager:
             the 'id' field
             """
             if db_source == 1:  # Pubmed
-                doi = dict['doi']
+                doi = dict['doi'][0:45]
                 pubmed_id = dict['pubmed_id']
             else:  # db_source == 0 corresponding to ResearchGate
                 rgate_id = dict['id']
-                site = dict["site"]
+                site = dict["site"][0:250]
             # Fields common to both DBs
             pub_type = dict['publication_type']
 
-            title = dict['title']
+            title = dict['title'].title()[0:250]
             if db_source == 1 and title[-1] == '.':
                 title = title[:-1]  # removing the terminating dot in pubmed title
                 
-            journal = dict['journal']
-            authors = dict['authors']
+            journal = dict['journal'][0:150]
+            authors = map(lambda x: x[0:45], dict['authors'])
             countries = set()
             if db_source == 1:  # Pubmed
                 countries.update(dict['countries'])
