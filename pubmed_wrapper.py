@@ -1,7 +1,11 @@
 import requests
-import time
 import xml.etree.ElementTree as ET
+import time
+import logging
+import pprint
 
+# Initialize the logger according to the module name
+logger = logging.getLogger(__name__)
 
 class PubmedWrapper:
     """
@@ -25,9 +29,10 @@ class PubmedWrapper:
 
     def fetch_pubs_info(self, num_pubs_requested):
         """
-        The function fetch info about publications. It is done in two steps:
+        This function fetches info about publications, by using these services:
         - fetching the pubmed-id's
-        - fetching the info (most attributes) by the pubmed-id
+        - fetching the info (most attributes) by the pubmed-ids
+        - fetching the countries by the pubmed-ids
         :param num_pubs_requested: int - number of publications to retrieve
         :return pubs_info: List of dictionaries
         """
@@ -65,7 +70,7 @@ class PubmedWrapper:
             if summary_response.status_code == 200:
                 summary_data = summary_response.json()["result"]
 
-                pubs_info = []
+                pubs_info = {}
                 for pub_id in pubs_ids:
                     doi = ""
                     if len(summary_data[pub_id]["articleids"]) >= 2:
@@ -84,14 +89,14 @@ class PubmedWrapper:
                         "citations": summary_data[pub_id]["citedby"] if "citedby" in summary_data[pub_id] else None,
                         "doi": doi
                     }
-                    pubs_info.append(article_info)
+                    pubs_info[pub_id] = article_info
             else:
-                print("Failed to retrieve summary data.")
+                logger.error("Failed to retrieve summary data.")
         else:
-            print("Failed to retrieve data from PubMed API.")
+            logger.error("Failed to retrieve data from PubMed API.")
 
         e_time = time.time()
-        print (f"Fetching pubmed ids and summary took: {e_time-s_time}")
+        logger.info (f"Fetching pubmed ids and summary took: {e_time-s_time}")
 
         #### Fetching countries ###
         s_time_2 = time.time()
@@ -114,59 +119,20 @@ class PubmedWrapper:
                 pmid_element = pub.find(".//PMID")
                 pmid_str = pmid_element.text
 
-                countries = []
-                for country in pub.findall(".//Country"):
-                    if country.text is not None:
-                        countries.append(country.text)
-            e_time_2 = time.time()
-            print(f"Fetching countries took:{e_time_2-s_time_2}")
-
-
-
-        #############  Merging countries into pubs_info   ##########################################
-        for i in range(len(pubs_info)):
-            pubs_info[i].update({'countries': countries})
-        ###############################################################
-
-        e_time = time.time()
-        print(f"pubmed info time: {round(e_time - s_time, 1)}")
-        return pubs_info
-
-    def fetch_countries(self):
-        """
-        This functions extracts the authors' countries for pubmed ids save as a class attribute
-        :return:
-        """
-        s_time = time.time()
-        base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
-        params = {
-            "db": "pubmed",
-            "id": self._pubmed_ids,
-            "retmode": "xml"  # the result is only in xml format
-        }
-
-        response = requests.get(base_url, params=params)
-
-        if response.status_code == 200:
-            xml_data = response.text
-            # Parse the XML response to extract the country information
-            root = ET.fromstring(xml_data)
-
-            ids_countries_dict = {}
-            # Using findall method to retrieve all values for the specified tag
-            for pub in root.findall(".//PubmedArticle"):
-                pmid_element = pub.find(".//PMID")
-                pmid_str = pmid_element.text
-
                 countries = set()
                 for country in pub.findall(".//Country"):
                     if country.text is not None:
-                        countries.update(country.text)
+                        countries.add(country.text)
+                # Adding a new attribute "countries" to the pubs_info[pmid_str], which is a dictionary for
+                # a publication info
+                pubs_info[pmid_str]["countries"] = countries
 
-                ids_countries_dict[pmid_str] = countries
-            e_time = time.time()
-            print(f"Fetching countries took: {e_time - s_time}")
-            return ids_countries_dict
-        else:
-            print(f"Error: Unable to fetch data. Status code: {response.status_code}")
-            return None
+        e_time = time.time()
+        logger.info(f"Fetching pubmed countries time: {round(e_time - s_time, 1)}")
+
+        ret_val = list(pubs_info.values())
+        if logger.getEffectiveLevel() == logging.DEBUG:
+            pprint.pprint(ret_val)
+        return ret_val
+
+
