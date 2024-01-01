@@ -108,17 +108,13 @@ class DatabaseManager:
             # Initializing and setting fields that exist only in one of the DBs (ResearcgGate or Pubmed).
             serial_id = self._max_pub_id + 1
             self._max_pub_id += 1
-            doi = None
             site = None
             rgate_id = None
             pubmed_id = None
-            """
-            comp_key defined below will be used for now, as the connecting id between publications table
-            and its satellite tables.Later on it will be replaced with the valued to be allocated for
-            the 'id' field
-            """
+            doi = dict['doi'][0:45]
+
+            # Handle of fields specific to one DB only
             if db_source == 1:  # Pubmed
-                doi = dict['doi'][0:45]
                 pubmed_id = dict['pubmed_id']
             else:  # db_source == 0 corresponding to ResearchGate
                 rgate_id = dict['id']
