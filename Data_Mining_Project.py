@@ -15,6 +15,7 @@ import pubmed_wrapper
 import json
 import traceback
 
+MAX_PAGES_PER_BATCH = 20
 
 def setup_logger():
     """
@@ -96,10 +97,18 @@ def fetching_from_pubmed_and_insert_db(db_manager, num_pages, topic):
     logger.info("Fetching from pubmed ...")
     db_pubmed = pubmed_wrapper.PubmedWrapper(topic)
     db_source = 1  # Pubmed
-    num_pubs_requested = num_pages * 10
-    # Fetching publications info including doi, and pubmed_id
-    pubs_info = db_pubmed.fetch_pubs_info(num_pubs_requested)
-    db_manager.insert_publications_info(db_source, pubs_info)
+
+    # Handling pages left out after performing mode MAX_PAGES_PER_BATCH)
+    if num_pages % MAX_PAGES_PER_BATCH != 0:
+        pubs_info = db_pubmed.fetch_pubs_info(num_pages*10)
+        db_manager.insert_publications_info(db_source, pubs_info)
+
+    # Handling all other pages
+    num_pages_left = num_pages - num_pages % MAX_PAGES_PER_BATCH
+    # Fetching publications by parts (batch = MAX_PAGES_PER_BATCH pages, that is MAX_PAGES_PER_BATCH * 10 pubs)
+    for i in range(0, num_pages_left, MAX_PAGES_PER_BATCH):
+        pubs_info = db_pubmed.fetch_pubs_info(MAX_PAGES_PER_BATCH * 10)
+        db_manager.insert_publications_info(db_source, pubs_info)
 
 
 def scraping_researchgate_and_insert_db(db_manager, num_pages, topic):
@@ -140,7 +149,7 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic):
                 logger.debug(f"Publication {p * 10 - 10 + index} added to collection")
         logger.info(f"Total publications parsed: {len(publications_info_list)}")
 
-        if p % 100 == 0 or p == num_pages:
+        if p % MAX_PAGES_PER_BATCH == 0 or p == num_pages:
             db_source = 0  # ResearchGate
             db_manager.insert_publications_info(db_source, publications_info_list)
             publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
@@ -195,6 +204,7 @@ def main():
         full_traceback = traceback.format_exc()
         logger.fatal("Full stack trace:")
         logger.fatal(full_traceback)
+        raise e
 
 
 if __name__ == '__main__':
