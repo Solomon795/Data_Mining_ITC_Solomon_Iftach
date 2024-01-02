@@ -7,9 +7,11 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import time
 from time import sleep
-
 from datetime import datetime
+import logging
 
+# Initialize the logger according to the module name
+logger = logging.getLogger(__name__)
 
 def find_all_pubs_on_page(my_chrome):
     """
@@ -108,7 +110,12 @@ def parse_single_pub_monthyear(publication):
     """
     monthyear = publication.findAll('li', class_='nova-legacy-e-list__item nova-legacy-v-entity-item__meta-data-item')[
         0].text
-    monthyear = datetime.strptime(monthyear, '%B %Y')
+    try:
+        monthyear = datetime.strptime(monthyear, '%B %Y')
+    except ValueError as e:
+        logger.debug("in parse_single_pub_monthyear, the following exception raised:", e)
+        special_year = 2100
+        monthyear = datetime(year=special_year, month=1, day=1)
     return monthyear
 
 
