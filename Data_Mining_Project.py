@@ -15,7 +15,7 @@ import pubmed_wrapper
 import json
 import traceback
 
-MAX_PAGES_PER_BATCH = 20
+MAX_PAGES_PER_BATCH = 5
 
 def setup_logger():
     """
@@ -139,19 +139,23 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic):
         sleep(1)
         pubs1 = find_all_pubs_on_page(browser1)
         logger.info(f"Publications on page {p} recognized successfully")
+        num_no_doi = 0
         for index, pub in enumerate(pubs1):
             dictionary = get_publications_info(pub, browser1)
             logger.debug(f"All info on publication {p * 10 - 10 + index} recognized successfully")
-            # Preprints are excluded as they break the uniqueness of titles
-            # when article with same title exists.
-            if dictionary["publication_type"] != 'Preprint':
+            if dictionary['doi'] == '':
+                num_no_doi += 1
+                logger.dubug(f"dictionary:{dictionary}")
+
+            if dictionary['doi'] != '':
                 publications_info_list.append(dictionary)
                 logger.debug(f"Publication {p * 10 - 10 + index} added to collection")
-        logger.info(f"Total publications parsed: {len(publications_info_list)}")
+        logger.info(f"Total publications parsed: {len(publications_info_list)}, publications with no doi:{num_no_doi}")
 
         if p % MAX_PAGES_PER_BATCH == 0 or p == num_pages:
             db_source = 0  # ResearchGate
-            db_manager.insert_publications_info(db_source, publications_info_list)
+            if len(publications_info_list) > 0:
+                db_manager.insert_publications_info(db_source, publications_info_list)
             publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
 
         # navigating to the next page, by pressing the next page button on the bottom of the page
