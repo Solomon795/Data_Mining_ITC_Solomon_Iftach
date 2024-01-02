@@ -247,11 +247,11 @@ class DatabaseManager:
         # Extract the authors to remove from authors table
         authors_to_insert = authors_per_batch
         sql_command = f'select full_name from authors where full_name in ({authors_str})'
-        #print(f"aut:len{len(sql_command)}, sel:{sql_command}")
+
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
         for dict_aut in result:
             aut_to_remove = dict_aut['full_name']
-            authors_to_insert.remove(aut_to_remove)
+            authors_to_insert.discard(aut_to_remove)
 
         # Insertion of new authors to authors table
         sql_command = 'insert into authors (full_name) values (%s)'
