@@ -111,7 +111,7 @@ class DatabaseManager:
             site = None
             rgate_id = None
             pubmed_id = None
-            doi = dict['doi'][0:45]
+            doi = dict['doi'][0:45].upper()
 
             # Handle of fields specific to one DB only
             if db_source == 1:  # Pubmed
@@ -127,7 +127,7 @@ class DatabaseManager:
                 title = title[:-1]  # removing the terminating dot in pubmed title
                 
             journal = dict['journal'][0:150]
-            authors = map(lambda x: x[0:45], dict['authors'])
+            authors = map(lambda x: x[0:45].title(), dict['authors'])
             countries = set()
             if db_source == 1:  # Pubmed
                 countries.update(dict['countries'])
@@ -247,6 +247,7 @@ class DatabaseManager:
         # Extract the authors to remove from authors table
         authors_to_insert = authors_per_batch
         sql_command = f'select full_name from authors where full_name in ({authors_str})'
+        #print(f"aut:len{len(sql_command)}, sel:{sql_command}")
         result = self._sql_run_fetch_command(sql_command, fetch_all=True)
         for dict_aut in result:
             aut_to_remove = dict_aut['full_name']
