@@ -44,8 +44,8 @@ class PubmedWrapper:
             "term": self._subject,  # subject of query
             "retmode": "json",  # format of response
             "retmax": num_pubs_requested,  # Number of results to retrieve
-            # 'sort': 'pub+date'
-            'sort': 'relevance'
+            'sort': 'pub+date'
+            #'sort': 'relevance'
         }
 
         # Step 1: Perform a search to get article IDs
