@@ -142,5 +142,5 @@ def parse_single_pub_citations(publication):
 
 def parse_single_pub_doi(driver):
 
-    doi = driver.find_elements(By.XPATH, "//*[contains(text(), '10.')]")[0].text
+    doi = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a").text
     return doi

@@ -17,6 +17,7 @@ import traceback
 
 MAX_PAGES_PER_BATCH = 5
 
+
 def setup_logger():
     """
     Set up the logger and log file (data_mining.log) with loggin.basicConfig - this will set these properties to
@@ -61,7 +62,7 @@ def get_publications_info(publication, driver):
     driver.get(site)
     try:
         doi = parse_single_pub_doi(driver)
-    except IndexError:
+    except selenium.common.exceptions.NoSuchElementException:
         doi = ""
     driver.close()
 
@@ -100,7 +101,7 @@ def fetching_from_pubmed_and_insert_db(db_manager, num_pages, topic):
 
     # Handling pages left out after performing mode MAX_PAGES_PER_BATCH)
     if num_pages % MAX_PAGES_PER_BATCH != 0:
-        pubs_info = db_pubmed.fetch_pubs_info(num_pages*10)
+        pubs_info = db_pubmed.fetch_pubs_info(num_pages * 10)
         db_manager.insert_publications_info(db_source, pubs_info)
 
     # Handling all other pages
@@ -111,12 +112,12 @@ def fetching_from_pubmed_and_insert_db(db_manager, num_pages, topic):
         db_manager.insert_publications_info(db_source, pubs_info)
 
 
-def scraping_researchgate_and_insert_db(db_manager, num_pages, topic):
+def scraping_researchgate_and_insert_db(db_manager, num_pages, topic, data_list):
     logger.info("Scraping from Researchgate ...")
     start_time = time.time()
 
     # Initializing our container for parsed info of publications
-    publications_info_list = []
+    
     # Launching chrome and signing in
     browser1, url = get_url(topic)
     logger.info(f"URL {url} opened successfully in automated browser (selenium)")
@@ -148,14 +149,14 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic):
                 logger.debug(f"dictionary:{dictionary}")
 
             if dictionary['doi'] != '':
-                publications_info_list.append(dictionary)
+                data_list.append(dictionary)
                 logger.debug(f"Publication {p * 10 - 10 + index} added to collection")
-        logger.info(f"Total publications parsed: {len(publications_info_list)}, publications with no doi:{num_no_doi}")
+        logger.info(f"Total publications parsed: {len(data_list)}, publications with no doi:{num_no_doi}")
 
         if p % MAX_PAGES_PER_BATCH == 0 or p == num_pages:
             db_source = 0  # ResearchGate
-            if len(publications_info_list) > 0:
-                db_manager.insert_publications_info(db_source, publications_info_list)
+            if len(data_list) > 0:
+                db_manager.insert_publications_info(db_source, data_list)
             publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
 
         # navigating to the next page, by pressing the next page button on the bottom of the page
@@ -164,11 +165,11 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic):
             logger.info(f"Turned to page {p + 1}")
 
     # Accumulating data
-    #print(*publications_info_list, sep="\n")
+    # print(*publications_info_list, sep="\n")
     end_time = time.time()
     logger.info(f"It took {round(end_time - start_time, 1)} sec")
     browser1.close()
-    return publications_info_list
+    return data_list
 
 
 def parse_commandline_arguments():
@@ -186,7 +187,9 @@ def parse_commandline_arguments():
 Defining logger as global, so that's it would be accessible in all functions
 """
 
+
 def main():
+    publications_info_list = []
     try:
         # Paring the arguments
         args = parse_commandline_arguments()
@@ -198,7 +201,7 @@ def main():
         db_manager = DatabaseManager.DatabaseManager(conf, topic)
 
         # Scrape information from Researchgate
-        scraping_researchgate_and_insert_db(db_manager, num_pages, topic)
+        scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
 
         # Retrieving information from Pubmed site
         fetching_from_pubmed_and_insert_db(db_manager, num_pages, topic)
