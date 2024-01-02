@@ -62,7 +62,9 @@ def sign_in(my_url, my_chrome):
                            '.nova'
                            '-legacy-l-flex--justify-content-flex-start\@s-up.nova-legacy-l-flex--wrap-nowrap\@s-up > '
                            'div:nth-child(1) > button').click()
-
+    sleep(1)
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-c-dropdown__action')[0].click()
 
 
 
