@@ -71,14 +71,37 @@ class DatabaseManager:
         :param vals:
         :return:
         """
-        try:
-            with self._connection.cursor() as cursor:
+        #try:
+        with self._connection.cursor() as cursor:
+            # Disable auto-commit (start a transaction)
+            self._connection.autocommit(False)
+
+            try:
+                # Execute SQL statements
                 cursor.executemany(sql_command, vals)
+
+                # Commit the transaction if successful
                 self._connection.commit()
-        except Exception as e:
-            logger.error(f"_sql_run_execute_many failed on command:{sql_command}\n exception:{e}\n vals:{vals}\n")
-            logger.error(f"_sql_run_execute_many continues running")
-            return
+            except Exception as e:
+                # Roll back the transaction on error
+                self._connection.rollback()
+                logger.error(
+                    f"_sql_run_execute_many failed on command:{sql_command}\n exception:{e}\n vals:{vals}\n")
+                logger.error(f"_sql_run_execute_many continues running")
+
+        #finally:
+            # Re-enable auto-commit
+        #    self._connection.autocommit(True)
+
+        ##################
+        # try:
+        #     with self._connection.cursor() as cursor:
+        #         cursor.executemany(sql_command, vals)
+        #         self._connection.commit()
+        # except Exception as e:
+        #     logger.error(f"_sql_run_execute_many failed on command:{sql_command}\n exception:{e}\n vals:{vals}\n")
+        #     logger.error(f"_sql_run_execute_many continues running")
+        return
 
     def insert_publications_info(self, db_source, publications_info_list):
         """
