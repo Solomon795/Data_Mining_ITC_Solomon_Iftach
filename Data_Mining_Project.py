@@ -145,7 +145,7 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic):
             logger.debug(f"All info on publication {p * 10 - 10 + index} recognized successfully")
             if dictionary['doi'] == '':
                 num_no_doi += 1
-                logger.dubug(f"dictionary:{dictionary}")
+                logger.debug(f"dictionary:{dictionary}")
 
             if dictionary['doi'] != '':
                 publications_info_list.append(dictionary)
