@@ -27,8 +27,7 @@ def get_url(topic_name):
         "profile.managed_default_content_settings.images": 2,
     })
     # options.add_argument("--headless")
-    user_agent = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 '
-                  'Safari/537.36')
+    user_agent = conf.get_headers()
     options.add_argument(f'user-agent={user_agent}')
     browser = uc.Chrome(options=options)
     url = f"https://www.researchgate.net/search/publication?q={topic_name}&page=1"

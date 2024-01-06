@@ -1,0 +1,2050 @@
+2024-01-01 20:35:04,007;__main__;main;INFO;Number of page = 1, topic - Energy parsed from Command Line Interface
+2024-01-01 20:35:04,042;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-01 20:35:09,853;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-01 20:35:09,853;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-01 20:35:12,708;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-01 20:35:13,838;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-01 20:35:29,911;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 9
+2024-01-01 20:35:29,924;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 9 publications into DB: 0.0
+2024-01-01 20:35:29,925;__main__;scraping_researchgate_and_insert_db;INFO;It took 25.9 sec
+2024-01-01 20:35:32,017;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-01 20:35:33,842;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.8242547512054443
+2024-01-01 20:35:34,888;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.9
+2024-01-01 20:35:34,905;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 10 publications into DB: 0.0
+2024-01-02 19:36:13,279;__main__;main;INFO;Number of page = 1, topic - Energy parsed from Command Line Interface
+2024-01-02 19:36:13,379;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 19:36:26,517;__main__;main;INFO;Number of page = 1, topic - Energy parsed from Command Line Interface
+2024-01-02 19:36:26,526;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 19:36:33,411;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-02 19:36:33,411;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 19:36:36,034;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 19:36:37,100;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 19:36:50,487;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 19:36:50,488;__main__;scraping_researchgate_and_insert_db;INFO;It took 24.0 sec
+2024-01-02 19:36:52,611;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 19:36:54,138;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.527010440826416
+2024-01-02 19:36:55,034;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.4
+2024-01-02 19:36:55,207;DatabaseManager;insert_publications_info;INFO;Time it took to insert 10 and update 0 publications into DB: 0.2
+2024-01-02 20:02:25,155;__main__;main;INFO;Number of page = 1, topic - Energy parsed from Command Line Interface
+2024-01-02 20:02:25,276;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:02:30,803;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:02:30,803;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:02:32,798;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-02 20:02:32,801;__main__;main;CRITICAL;Full stack trace:
+2024-01-02 20:02:32,802;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 203, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 65, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-02 20:03:18,302;__main__;main;INFO;Number of page = 1, topic - Energy parsed from Command Line Interface
+2024-01-02 20:03:18,324;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:03:23,604;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:03:23,604;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:03:28,431;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:03:29,495;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:03:49,839;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:03:49,840;__main__;scraping_researchgate_and_insert_db;INFO;It took 31.5 sec
+2024-01-02 20:03:52,184;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 20:03:53,925;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.7410154342651367
+2024-01-02 20:03:54,805;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.6
+2024-01-02 20:03:54,916;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 10 publications into DB: 0.1
+2024-01-02 20:04:19,487;__main__;main;INFO;Number of page = 1, topic - Energy parsed from Command Line Interface
+2024-01-02 20:04:19,497;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:04:24,693;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:04:24,693;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:04:29,276;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:04:30,324;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:04:38,150;__main__;main;CRITICAL;Script failed with:Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.130)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7CCBF2142+3514994]
+	(No symbol) [0x00007FF7CC810CE2]
+	(No symbol) [0x00007FF7CC6B76AA]
+	(No symbol) [0x00007FF7CC690AFD]
+	(No symbol) [0x00007FF7CC72CB1B]
+	(No symbol) [0x00007FF7CC732F06]
+	(No symbol) [0x00007FF7CC725FB0]
+	(No symbol) [0x00007FF7CC6F4BDC]
+	(No symbol) [0x00007FF7CC6F5C64]
+	GetHandleVerifier [0x00007FF7CCC1E16B+3695259]
+	GetHandleVerifier [0x00007FF7CCC76737+4057191]
+	GetHandleVerifier [0x00007FF7CCC6E4E3+4023827]
+	GetHandleVerifier [0x00007FF7CC9404F9+689705]
+	(No symbol) [0x00007FF7CC81C048]
+	(No symbol) [0x00007FF7CC818044]
+	(No symbol) [0x00007FF7CC8181C9]
+	(No symbol) [0x00007FF7CC8088C4]
+	BaseThreadInitThunk [0x00007FFC2F8B257D+29]
+	RtlUserThreadStart [0x00007FFC304AAA58+40]
+
+2024-01-02 20:04:38,155;__main__;main;CRITICAL;Full stack trace:
+2024-01-02 20:04:38,156;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 203, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 67, in get_publications_info
+    driver.close()
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 458, in close
+    self.execute(Command.CLOSE)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.130)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7CCBF2142+3514994]
+	(No symbol) [0x00007FF7CC810CE2]
+	(No symbol) [0x00007FF7CC6B76AA]
+	(No symbol) [0x00007FF7CC690AFD]
+	(No symbol) [0x00007FF7CC72CB1B]
+	(No symbol) [0x00007FF7CC732F06]
+	(No symbol) [0x00007FF7CC725FB0]
+	(No symbol) [0x00007FF7CC6F4BDC]
+	(No symbol) [0x00007FF7CC6F5C64]
+	GetHandleVerifier [0x00007FF7CCC1E16B+3695259]
+	GetHandleVerifier [0x00007FF7CCC76737+4057191]
+	GetHandleVerifier [0x00007FF7CCC6E4E3+4023827]
+	GetHandleVerifier [0x00007FF7CC9404F9+689705]
+	(No symbol) [0x00007FF7CC81C048]
+	(No symbol) [0x00007FF7CC818044]
+	(No symbol) [0x00007FF7CC8181C9]
+	(No symbol) [0x00007FF7CC8088C4]
+	BaseThreadInitThunk [0x00007FFC2F8B257D+29]
+	RtlUserThreadStart [0x00007FFC304AAA58+40]
+
+
+2024-01-02 20:04:48,078;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-02 20:04:48,093;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:04:53,576;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:04:53,577;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:04:58,563;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:04:59,624;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:05:23,680;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:05:23,985;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 20:05:25,055;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 20:05:38,028;__main__;main;CRITICAL;Script failed with:Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.130)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7CCBF2142+3514994]
+	(No symbol) [0x00007FF7CC810CE2]
+	(No symbol) [0x00007FF7CC6B76AA]
+	(No symbol) [0x00007FF7CC690AFD]
+	(No symbol) [0x00007FF7CC72CB1B]
+	(No symbol) [0x00007FF7CC732F06]
+	(No symbol) [0x00007FF7CC725FB0]
+	(No symbol) [0x00007FF7CC6F4BDC]
+	(No symbol) [0x00007FF7CC6F5C64]
+	GetHandleVerifier [0x00007FF7CCC1E16B+3695259]
+	GetHandleVerifier [0x00007FF7CCC76737+4057191]
+	GetHandleVerifier [0x00007FF7CCC6E4E3+4023827]
+	GetHandleVerifier [0x00007FF7CC9404F9+689705]
+	(No symbol) [0x00007FF7CC81C048]
+	(No symbol) [0x00007FF7CC818044]
+	(No symbol) [0x00007FF7CC8181C9]
+	(No symbol) [0x00007FF7CC8088C4]
+	BaseThreadInitThunk [0x00007FFC2F8B257D+29]
+	RtlUserThreadStart [0x00007FFC304AAA58+40]
+
+2024-01-02 20:05:38,032;__main__;main;CRITICAL;Full stack trace:
+2024-01-02 20:05:38,033;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 203, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 67, in get_publications_info
+    driver.close()
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 458, in close
+    self.execute(Command.CLOSE)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.130)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7CCBF2142+3514994]
+	(No symbol) [0x00007FF7CC810CE2]
+	(No symbol) [0x00007FF7CC6B76AA]
+	(No symbol) [0x00007FF7CC690AFD]
+	(No symbol) [0x00007FF7CC72CB1B]
+	(No symbol) [0x00007FF7CC732F06]
+	(No symbol) [0x00007FF7CC725FB0]
+	(No symbol) [0x00007FF7CC6F4BDC]
+	(No symbol) [0x00007FF7CC6F5C64]
+	GetHandleVerifier [0x00007FF7CCC1E16B+3695259]
+	GetHandleVerifier [0x00007FF7CCC76737+4057191]
+	GetHandleVerifier [0x00007FF7CCC6E4E3+4023827]
+	GetHandleVerifier [0x00007FF7CC9404F9+689705]
+	(No symbol) [0x00007FF7CC81C048]
+	(No symbol) [0x00007FF7CC818044]
+	(No symbol) [0x00007FF7CC8181C9]
+	(No symbol) [0x00007FF7CC8088C4]
+	BaseThreadInitThunk [0x00007FFC2F8B257D+29]
+	RtlUserThreadStart [0x00007FFC304AAA58+40]
+
+
+2024-01-02 20:05:48,835;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-02 20:05:48,848;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:06:15,947;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:06:15,947;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:06:19,657;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:06:20,710;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:06:33,849;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:06:34,060;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 20:06:35,104;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 20:06:49,668;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:06:49,669;__main__;scraping_researchgate_and_insert_db;INFO;It took 60.8 sec
+2024-01-02 20:06:51,796;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 20:06:53,436;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.6386220455169678
+2024-01-02 20:06:54,417;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.6
+2024-01-02 20:06:54,450;DatabaseManager;insert_publications_info;INFO;Time it took to insert 7 and update 10 publications into DB: 0.0
+2024-01-02 20:07:14,989;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:07:15,003;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:07:19,378;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:07:19,378;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:07:23,127;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:07:24,176;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:07:36,666;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:07:36,753;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 20:07:37,803;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 20:07:53,922;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:07:53,922;__main__;scraping_researchgate_and_insert_db;INFO;It took 38.9 sec
+2024-01-02 20:07:56,019;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 20:07:58,415;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 2.3958420753479004
+2024-01-02 20:07:59,475;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.5
+2024-01-02 20:07:59,503;DatabaseManager;insert_publications_info;INFO;Time it took to insert 20 and update 0 publications into DB: 0.0
+2024-01-02 20:08:09,668;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:08:09,682;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:08:13,994;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:08:13,994;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:08:17,072;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:08:18,121;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:08:34,459;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:08:34,609;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 20:08:35,677;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 20:08:53,836;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:08:53,837;__main__;scraping_researchgate_and_insert_db;INFO;It took 44.2 sec
+2024-01-02 20:08:56,268;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:08:56,279;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:09:02,063;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:09:02,063;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:09:08,042;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:09:09,123;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:09:33,906;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:09:34,187;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 20:09:35,291;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 20:09:56,105;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:09:56,107;__main__;scraping_researchgate_and_insert_db;INFO;It took 59.8 sec
+2024-01-02 20:09:58,493;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 20:10:00,122;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.6282830238342285
+2024-01-02 20:10:01,376;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.9
+2024-01-02 20:10:01,399;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 20 publications into DB: 0.0
+2024-01-02 20:18:05,036;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:18:05,078;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:18:32,992;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:18:32,992;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:18:36,994;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:18:38,104;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:20:18,077;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:20:18,086;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:20:22,335;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:20:22,336;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:20:26,445;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:20:27,496;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:20:40,870;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:20:41,190;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 20:20:42,254;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 20:21:01,230;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:21:01,230;__main__;scraping_researchgate_and_insert_db;INFO;It took 43.1 sec
+2024-01-02 20:21:03,346;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 20:21:04,985;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.6381144523620605
+2024-01-02 20:21:06,128;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.8
+2024-01-02 20:21:06,145;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 20 publications into DB: 0.0
+2024-01-02 20:22:47,288;__main__;main;INFO;Number of page = 1, topic - Energy parsed from Command Line Interface
+2024-01-02 20:22:47,302;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:22:51,572;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:22:51,572;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:22:55,301;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:22:56,369;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:23:09,276;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:23:09,276;__main__;scraping_researchgate_and_insert_db;INFO;It took 22.0 sec
+2024-01-02 20:23:11,344;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 20:23:13,153;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.8083455562591553
+2024-01-02 20:23:14,209;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.9
+2024-01-02 20:23:14,231;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 10 publications into DB: 0.0
+2024-01-02 20:23:45,705;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:23:45,719;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:23:49,626;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:23:49,627;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:23:53,320;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:23:54,369;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:24:07,760;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:24:07,922;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 20:24:08,978;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 20:24:22,492;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:24:22,493;__main__;scraping_researchgate_and_insert_db;INFO;It took 36.8 sec
+2024-01-02 20:24:24,574;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 20:24:26,331;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.7562079429626465
+2024-01-02 20:24:34,857;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:24:34,876;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:24:39,368;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:24:39,368;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:24:43,210;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:24:44,323;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:29:11,793;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:29:11,808;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:29:36,845;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:29:36,846;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:29:40,750;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:29:41,879;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:35:12,024;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:35:12,040;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:35:16,228;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:35:16,228;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:35:20,150;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:35:21,205;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:35:33,346;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:10
+2024-01-02 20:35:33,460;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 20:35:34,511;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 20:36:15,354;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:36:30,999;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 20:37:04,928;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 20:37:06,873;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 20:37:15,176;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 20:37:39,840;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 20:41:20,628;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 20:41:20,647;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 21:04:17,221;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 21:04:17,290;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 21:04:44,715;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 21:04:44,716;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 21:04:48,634;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 21:04:49,695;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 21:04:51,100;__main__;main;CRITICAL;Script failed with:name 'browser' is not defined
+2024-01-02 21:04:51,102;__main__;main;CRITICAL;Full stack trace:
+2024-01-02 21:04:51,102;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 64, in get_publications_info
+    doi = parse_single_pub_doi(driver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_parse_info.py", line 145, in parse_single_pub_doi
+    doi = browser.find_element(By.XPATH, "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a").text
+          ^^^^^^^
+NameError: name 'browser' is not defined
+
+2024-01-02 21:05:08,319;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 21:05:08,332;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 21:05:32,970;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 21:05:32,971;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 21:05:36,817;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 21:05:37,868;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 21:05:50,265;__main__;main;CRITICAL;Script failed with:Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a"}
+  (Session info: chrome-headless-shell=120.0.6099.130); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF66F562142+3514994]
+	(No symbol) [0x00007FF66F180CE2]
+	(No symbol) [0x00007FF66F0276AA]
+	(No symbol) [0x00007FF66F071860]
+	(No symbol) [0x00007FF66F07197C]
+	(No symbol) [0x00007FF66F0B4EE7]
+	(No symbol) [0x00007FF66F09602F]
+	(No symbol) [0x00007FF66F0B28F6]
+	(No symbol) [0x00007FF66F095D93]
+	(No symbol) [0x00007FF66F064BDC]
+	(No symbol) [0x00007FF66F065C64]
+	GetHandleVerifier [0x00007FF66F58E16B+3695259]
+	GetHandleVerifier [0x00007FF66F5E6737+4057191]
+	GetHandleVerifier [0x00007FF66F5DE4E3+4023827]
+	GetHandleVerifier [0x00007FF66F2B04F9+689705]
+	(No symbol) [0x00007FF66F18C048]
+	(No symbol) [0x00007FF66F188044]
+	(No symbol) [0x00007FF66F1881C9]
+	(No symbol) [0x00007FF66F1788C4]
+	BaseThreadInitThunk [0x00007FFC2F8B257D+29]
+	RtlUserThreadStart [0x00007FFC304AAA58+40]
+
+2024-01-02 21:05:50,272;__main__;main;CRITICAL;Full stack trace:
+2024-01-02 21:05:50,273;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 64, in get_publications_info
+    doi = parse_single_pub_doi(driver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_parse_info.py", line 145, in parse_single_pub_doi
+    doi = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a").text
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 741, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a"}
+  (Session info: chrome-headless-shell=120.0.6099.130); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF66F562142+3514994]
+	(No symbol) [0x00007FF66F180CE2]
+	(No symbol) [0x00007FF66F0276AA]
+	(No symbol) [0x00007FF66F071860]
+	(No symbol) [0x00007FF66F07197C]
+	(No symbol) [0x00007FF66F0B4EE7]
+	(No symbol) [0x00007FF66F09602F]
+	(No symbol) [0x00007FF66F0B28F6]
+	(No symbol) [0x00007FF66F095D93]
+	(No symbol) [0x00007FF66F064BDC]
+	(No symbol) [0x00007FF66F065C64]
+	GetHandleVerifier [0x00007FF66F58E16B+3695259]
+	GetHandleVerifier [0x00007FF66F5E6737+4057191]
+	GetHandleVerifier [0x00007FF66F5DE4E3+4023827]
+	GetHandleVerifier [0x00007FF66F2B04F9+689705]
+	(No symbol) [0x00007FF66F18C048]
+	(No symbol) [0x00007FF66F188044]
+	(No symbol) [0x00007FF66F1881C9]
+	(No symbol) [0x00007FF66F1788C4]
+	BaseThreadInitThunk [0x00007FFC2F8B257D+29]
+	RtlUserThreadStart [0x00007FFC304AAA58+40]
+
+
+2024-01-02 21:08:13,883;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 21:08:13,911;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 21:08:40,453;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 21:08:40,454;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 21:08:45,955;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 21:08:47,024;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 21:09:12,061;__main__;main;CRITICAL;Script failed with:Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a"}
+  (Session info: chrome=120.0.6099.130); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF7E10C2142+3514994]
+	(No symbol) [0x00007FF7E0CE0CE2]
+	(No symbol) [0x00007FF7E0B876AA]
+	(No symbol) [0x00007FF7E0BD1860]
+	(No symbol) [0x00007FF7E0BD197C]
+	(No symbol) [0x00007FF7E0C14EE7]
+	(No symbol) [0x00007FF7E0BF602F]
+	(No symbol) [0x00007FF7E0C128F6]
+	(No symbol) [0x00007FF7E0BF5D93]
+	(No symbol) [0x00007FF7E0BC4BDC]
+	(No symbol) [0x00007FF7E0BC5C64]
+	GetHandleVerifier [0x00007FF7E10EE16B+3695259]
+	GetHandleVerifier [0x00007FF7E1146737+4057191]
+	GetHandleVerifier [0x00007FF7E113E4E3+4023827]
+	GetHandleVerifier [0x00007FF7E0E104F9+689705]
+	(No symbol) [0x00007FF7E0CEC048]
+	(No symbol) [0x00007FF7E0CE8044]
+	(No symbol) [0x00007FF7E0CE81C9]
+	(No symbol) [0x00007FF7E0CD88C4]
+	BaseThreadInitThunk [0x00007FFC2F8B257D+29]
+	RtlUserThreadStart [0x00007FFC304AAA58+40]
+
+2024-01-02 21:09:12,106;__main__;main;CRITICAL;Full stack trace:
+2024-01-02 21:09:12,106;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 64, in get_publications_info
+    doi = parse_single_pub_doi(driver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_parse_info.py", line 145, in parse_single_pub_doi
+    doi = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a").text
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 741, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a"}
+  (Session info: chrome=120.0.6099.130); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF7E10C2142+3514994]
+	(No symbol) [0x00007FF7E0CE0CE2]
+	(No symbol) [0x00007FF7E0B876AA]
+	(No symbol) [0x00007FF7E0BD1860]
+	(No symbol) [0x00007FF7E0BD197C]
+	(No symbol) [0x00007FF7E0C14EE7]
+	(No symbol) [0x00007FF7E0BF602F]
+	(No symbol) [0x00007FF7E0C128F6]
+	(No symbol) [0x00007FF7E0BF5D93]
+	(No symbol) [0x00007FF7E0BC4BDC]
+	(No symbol) [0x00007FF7E0BC5C64]
+	GetHandleVerifier [0x00007FF7E10EE16B+3695259]
+	GetHandleVerifier [0x00007FF7E1146737+4057191]
+	GetHandleVerifier [0x00007FF7E113E4E3+4023827]
+	GetHandleVerifier [0x00007FF7E0E104F9+689705]
+	(No symbol) [0x00007FF7E0CEC048]
+	(No symbol) [0x00007FF7E0CE8044]
+	(No symbol) [0x00007FF7E0CE81C9]
+	(No symbol) [0x00007FF7E0CD88C4]
+	BaseThreadInitThunk [0x00007FFC2F8B257D+29]
+	RtlUserThreadStart [0x00007FFC304AAA58+40]
+
+
+2024-01-02 21:10:32,506;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 21:10:32,519;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 21:10:42,226;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 21:10:42,226;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 21:10:57,174;__main__;main;INFO;Number of page = 2, topic - Energy Storage parsed from Command Line Interface
+2024-01-02 21:10:57,185;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 21:11:01,471;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy Storage&page=1 opened successfully in automated browser (selenium)
+2024-01-02 21:11:01,471;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 21:11:05,763;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 21:11:06,932;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 21:11:20,452;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 9, publications with no doi:1
+2024-01-02 21:11:20,616;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 21:11:21,693;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 21:11:40,096;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 18, publications with no doi:1
+2024-01-02 21:11:40,164;DatabaseManager;_sql_run_execute_many;ERROR;_sql_run_execute_many failed on command:insert into publications (id, rgate_id, pubmed_id, pub_type_code, title, year, num_citations, num_reads, url, journal, doi) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+ exception:(1062, "Duplicate entry 'Optimization Configuration Of Renewable Energies And Energy Stor' for key 'publications.title_UNIQUE'")
+ vals:dict_values([(125, '377058856', None, 1, 'Energy Storage', 2024, 0, 21, 'https://www.researchgate.net/publication/377058856_Energy_Storage', 'No journal indicated', '10.1007/978-3-031-49125-2_7'), (126, '377045607', None, 3, 'Numerical Study Of Latent Heat Discharge Of A Phase Change Material Shell-And-Tube Thermal Energy Storage System', 2024, 0, 11, 'https://www.researchgate.net/publication/377045607_Numerical_Study_of_Latent_Heat_Discharge_of_a_Phase_Change_Material_Shell-and-Tube_Thermal_Energy_Storage_System', 'No journal indicated', '10.1007/978-3-031-46973-2_14'), (127, '377040271', None, 1, 'Metal And Metal-Oxide-Based Polymeric Nanodielectrics For Energy Storage: Opportunities And Challenges', 2024, 0, 12, 'https://www.researchgate.net/publication/377040271_Metal_and_Metal-Oxide-Based_Polymeric_Nanodielectrics_for_Energy_Storage_Opportunities_and_Challenges', 'No journal indicated', '10.1007/978-3-031-40938-7_7'), (128, '377039235', None, 3, 'Accumulation Of Thermal Energy In The Thermal Tank Storage With The Help Of The Sun', 2024, 0, 9, 'https://www.researchgate.net/publication/377039235_Accumulation_of_Thermal_Energy_in_the_Thermal_Tank_Storage_with_the_Help_of_the_Sun', 'No journal indicated', '10.1007/978-3-031-44955-0_13'), (129, '377012753', None, 1, 'Numerical Calculation Of Temperature Field Of Energy Storage Battery Based On Finite Element Method And Analysis Of Influencing Factors', 2023, 0, 10, 'https://www.researchgate.net/publication/377012753_Numerical_Calculation_of_Temperature_Field_of_Energy_Storage_Battery_Based_on_Finite_Element_Method_and_Analysis_of_Influencing_Factors', 'No journal indicated', '10.1007/978-981-99-7405-4_41'), (130, '377028697', None, 2, 'The Next Frontier In Energy Storage: A Game-Changing Guide To Advances In Solid-State Battery Cathodes', 2023, 0, 22, 'https://www.researchgate.net/publication/377028697_The_Next_Frontier_in_Energy_Storage_A_Game-Changing_Guide_to_Advances_in_Solid-State_Battery_Cathodes', 'Batteries', '10.3390/BATTERIES10010013'), (131, '377026658', None, 2, 'Influence Of Reservoir Heterogeneity On Simultaneous Geothermal Energy Extraction And Co2 Storage', 2023, 0, 31, 'https://www.researchgate.net/publication/377026658_Influence_of_Reservoir_Heterogeneity_on_Simultaneous_Geothermal_Energy_Extraction_and_CO2_Storage', 'Sustainability', '10.3390/SU16010387'), (132, '376960184', None, 1, 'Optimization Configuration Of Renewable Energies And Energy Storages In Port Microgrids', 2023, 0, 13, 'https://www.researchgate.net/publication/376960184_Optimization_Configuration_of_Renewable_Energies_and_Energy_Storages_in_Port_Microgrids', 'No journal indicated', '10.1007/978-981-99-8795-5_2'), (133, '376952992', None, 11, 'Advancements In Nanoparticle-Enhanced Electrochemical Energy Storage: A Comprehensive Analysis Of Flow Batteries', 2023, 0, 12, 'https://www.researchgate.net/publication/376952992_Advancements_in_Nanoparticle-Enhanced_Electrochemical_Energy_Storage_A_Comprehensive_Analysis_of_Flow_Batteries', 'No journal indicated', '10.13140/RG.2.2.28337.76640'), (134, '376950660', None, 2, 'Collaborative Optimization For Hydrogen Generation, Storage, And Transportation In Mobile Hydrogen Energy Systems Based On Distributionally Robust Chance Constraint', 2023, 0, 15, 'https://www.researchgate.net/publication/376950660_Collaborative_Optimization_for_Hydrogen_Generation_Storage_and_Transportation_in_Mobile_Hydrogen_Energy_Systems_Based_on_Distributionally_Robust_Chance_Constraint', 'Dianli Xitong Zidonghua/Automation of Electric Power Systems', '10.7500/AEPS20230619003'), (135, '376975243', None, 2, 'Topological Vortex Domain Engineering For High Dielectric Energy Storage Performance', 2023, 0, 44, 'https://www.researchgate.net/publication/376975243_Topological_Vortex_Domain_Engineering_for_High_Dielectric_Energy_Storage_Performance', 'Advanced Energy Materials', '10.1002/AENM.202303409'), (136, '376972226', None, 2, 'Black-Fe2O3 Polyhedron-Assembled 3D Film Electrode With Enhanced Conductivity And Energy Density For Aqueous Solid-State Energy Storage', 2023, 0, 5, 'https://www.researchgate.net/publication/376972226_Black-Fe2O3_Polyhedron-Assembled_3D_Film_Electrode_with_Enhanced_Conductivity_and_Energy_Density_for_Aqueous_Solid-State_Energy_Storage', 'Journal of Electrochemical Energy Conversion and Storage', '10.1115/1.4064380'), (137, '376965837', None, 2, 'Perspective In Textile Energy Storage Integrated Textile Elements: Textile Materials, Structure, And Manufactured Methods', 2023, 0, 22, 'https://www.researchgate.net/publication/376965837_Perspective_in_Textile_Energy_Storage_Integrated_Textile_Elements_Textile_Materials_Structure_and_Manufactured_Methods', 'Advanced Energy Materials', '10.1002/AENM.202303587'), (138, '376893058', None, 2, 'Hot-Pressed Mn-Doped Pb((Zr0.3Ti0.7)0.99Mn0.01)O3/Polystyrene Composites With Improved Dielectric And Energy Storage Performance', 2023, 0, 31, 'https://www.researchgate.net/publication/376893058_Hot-pressed_Mn-Doped_PbZr03Ti07099Mn001O3polystyrene_composites_with_improved_dielectric_and_energy_storage_performance', 'Materials Today Communications', '10.1016/J.MTCOMM.2023.107974'), (139, '376892397', None, 2, 'Evaluation Of An Improved Indirect Solar Dryer For Curcuma Amada Without And With Stone Chips As Thermal Energy Storage: An Investigation On Kinetics, Energy, Exergy, Quality And Economic Aspects', 2024, 0, 14, 'https://www.researchgate.net/publication/376892397_Evaluation_of_an_improved_indirect_solar_dryer_for_Curcuma_Amada_without_and_with_stone_chips_as_thermal_energy_storage_An_investigation_on_kinetics_energy_exergy_quality_and_economic_aspects', 'No journal indicated', '10.1016/J.EST.2023.110199'), (140, '376955828', None, 2, 'Advances In Phase Change Materials And Nanomaterials For Applications In Thermal Energy Storage', 2023, 0, 28, 'https://www.researchgate.net/publication/376955828_Advances_in_phase_change_materials_and_nanomaterials_for_applications_in_thermal_energy_storage', 'Environmental Science and Pollution Research', '10.1007/S11356-023-31718-8'), (141, '376939607', None, 2, 'Advances In Additive Manufacturing Techniques For Electrochemical Energy Storage', 2023, 0, 37, 'https://www.researchgate.net/publication/376939607_Advances_in_Additive_Manufacturing_Techniques_for_Electrochemical_Energy_Storage', 'Advanced Materials Technologies', '10.1002/ADMT.202301439'), (142, '376926628', None, 2, 'Energy Storage Dynamic Configuration Of Active Distribution Networks—Joint Planning Of Grid Structures', 2023, 0, 5, 'https://www.researchgate.net/publication/376926628_Energy_Storage_Dynamic_Configuration_of_Active_Distribution_Networks-Joint_Planning_of_Grid_Structures', 'Processes', '10.3390/PR12010079')])
+
+2024-01-02 21:11:40,167;DatabaseManager;_sql_run_execute_many;ERROR;_sql_run_execute_many continues running
+2024-01-02 21:11:40,195;DatabaseManager;insert_publications_info;INFO;Time it took to insert 18 and update 0 publications into DB: 0.1
+2024-01-02 21:11:40,195;__main__;scraping_researchgate_and_insert_db;INFO;It took 43.0 sec
+2024-01-02 21:11:42,318;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 21:11:44,090;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.7720682621002197
+2024-01-02 21:11:45,394;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.1
+2024-01-02 21:11:45,406;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 20 publications into DB: 0.0
+2024-01-02 21:15:22,721;__main__;main;INFO;Number of page = 7, topic - Cryo-TEM parsed from Command Line Interface
+2024-01-02 21:15:22,748;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-02 21:15:49,402;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo-TEM&page=1 opened successfully in automated browser (selenium)
+2024-01-02 21:15:49,403;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-02 21:15:54,539;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-02 21:15:55,604;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-02 21:16:19,128;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 10, publications with no doi:0
+2024-01-02 21:16:19,846;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-02 21:16:20,942;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-02 21:16:42,872;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 19, publications with no doi:1
+2024-01-02 21:16:43,044;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 3
+2024-01-02 21:16:44,104;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 3 recognized successfully
+2024-01-02 21:17:09,085;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 28, publications with no doi:1
+2024-01-02 21:17:09,253;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 4
+2024-01-02 21:17:10,318;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 4 recognized successfully
+2024-01-02 21:17:34,259;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 38, publications with no doi:0
+2024-01-02 21:17:34,660;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 5
+2024-01-02 21:17:35,760;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 5 recognized successfully
+2024-01-02 21:18:02,506;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 45, publications with no doi:3
+2024-01-02 21:18:02,580;DatabaseManager;insert_publications_info;INFO;Time it took to insert 45 and update 0 publications into DB: 0.1
+2024-01-02 21:18:02,829;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 6
+2024-01-02 21:18:03,891;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 6 recognized successfully
+2024-01-02 21:18:28,038;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 55, publications with no doi:0
+2024-01-02 21:18:28,208;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 7
+2024-01-02 21:18:29,270;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 7 recognized successfully
+2024-01-02 21:18:51,985;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 63, publications with no doi:2
+2024-01-02 21:18:52,068;DatabaseManager;insert_publications_info;INFO;Time it took to insert 18 and update 45 publications into DB: 0.1
+2024-01-02 21:18:52,068;__main__;scraping_researchgate_and_insert_db;INFO;It took 209.3 sec
+2024-01-02 21:18:54,517;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-02 21:18:57,839;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 3.322075128555298
+2024-01-02 21:18:59,758;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 5.2
+2024-01-02 21:18:59,849;DatabaseManager;insert_publications_info;INFO;Time it took to insert 70 and update 0 publications into DB: 0.1
+2024-01-02 21:19:01,584;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.7339165210723877
+2024-01-02 21:19:02,874;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.0
+2024-01-02 21:19:02,909;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 0.0
+2024-01-04 21:56:54,076;__main__;main;INFO;Number of page = 7, topic - Cryo-TEM parsed from Command Line Interface
+2024-01-04 21:56:54,446;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 21:57:00,270;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo-TEM&page=1 opened successfully in automated browser (selenium)
+2024-01-04 21:57:00,270;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 21:57:04,893;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 21:57:04,897;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 21:57:04,898;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 207, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 134, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 21:57:08,156;__main__;main;INFO;Number of page = 7, topic - Cryo-TEM parsed from Command Line Interface
+2024-01-04 21:57:08,165;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 21:57:12,319;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo-TEM&page=1 opened successfully in automated browser (selenium)
+2024-01-04 21:57:12,319;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 21:57:15,936;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 21:57:15,937;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 21:57:15,937;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 207, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 134, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 21:57:24,178;__main__;main;INFO;Number of page = 7, topic - Cryo-TEM parsed from Command Line Interface
+2024-01-04 21:57:24,192;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 21:57:33,240;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo-TEM&page=1 opened successfully in automated browser (selenium)
+2024-01-04 21:57:33,240;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 21:58:56,796;__main__;main;INFO;Number of page = 7, topic - Cryo-TEM parsed from Command Line Interface
+2024-01-04 21:58:56,809;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 21:59:34,207;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo-TEM&page=1 opened successfully in automated browser (selenium)
+2024-01-04 21:59:34,207;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 21:59:37,866;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 21:59:37,868;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 21:59:37,868;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 207, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 134, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:00:33,797;__main__;main;INFO;Number of page = 7, topic - Cryo-TEM parsed from Command Line Interface
+2024-01-04 22:00:33,819;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:00:40,545;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo-TEM&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:00:40,545;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:00:44,115;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:00:44,117;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:00:44,117;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 207, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 134, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:01:03,590;__main__;main;INFO;Number of page = 7, topic - Cryo-TEM parsed from Command Line Interface
+2024-01-04 22:01:03,626;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:01:09,703;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo-TEM&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:01:09,703;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:01:13,001;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:01:13,003;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:01:13,003;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 207, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 134, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:01:26,311;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 22:01:26,364;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:01:32,262;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:01:32,262;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:01:35,655;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:01:35,656;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:01:35,656;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 207, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 134, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:08:31,473;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 22:08:31,491;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:08:38,308;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:08:38,308;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:08:40,101;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:08:40,102;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:08:40,102;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:10:00,742;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 22:10:00,755;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:10:05,204;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:10:05,204;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:10:07,034;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:10:07,036;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:10:07,036;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:11:40,318;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 22:11:40,327;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:11:44,180;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:11:44,180;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:11:46,061;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:11:46,063;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:11:46,063;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:12:06,226;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 22:12:06,238;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:12:32,646;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:12:32,646;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:12:34,215;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:12:34,216;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:12:34,216;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:13:06,598;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 22:13:06,616;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:13:36,380;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:13:36,380;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:13:39,617;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:13:39,619;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:13:39,620;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 22:22:13,828;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 22:22:14,249;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 22:22:22,660;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 22:22:22,660;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 22:22:26,850;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 22:22:26,854;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 22:22:26,854;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 23:11:39,804;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 23:11:39,849;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 23:11:45,947;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 23:11:45,947;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 23:11:49,822;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 23:11:49,825;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 23:11:49,826;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 23:12:05,501;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 23:12:05,512;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 23:12:16,280;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 23:12:16,280;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 23:12:20,546;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 23:12:20,547;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 23:12:20,548;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 23:12:49,339;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 23:12:49,347;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 23:12:56,637;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 23:12:56,637;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 23:13:00,708;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 23:13:00,711;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 23:13:00,711;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 23:13:06,254;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 23:13:06,285;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 23:13:16,081;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 23:13:16,082;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 23:13:21,028;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 23:13:21,031;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 23:13:21,032;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-04 23:29:40,277;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 23:29:40,369;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 23:29:45,357;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 23:29:45,361;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 23:30:19,018;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-04 23:30:19,028;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-04 23:30:28,605;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-04 23:30:28,606;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-04 23:30:35,450;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-04 23:30:35,454;__main__;main;CRITICAL;Full stack trace:
+2024-01-04 23:30:35,455;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 01:43:55,191;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 01:43:55,212;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 01:44:07,134;selenium.webdriver.common.selenium_manager;run;WARNING;There was an error managing MicrosoftEdge (error sending request for url (https://msedgedriver.azureedge.net/LATEST_RELEASE_120_WINDOWS): error trying to connect: dns error: No such host is known. (os error 11001)); using driver found in the cache
+2024-01-05 01:44:15,272;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 01:44:15,273;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 01:44:22,316;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 01:44:22,329;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 01:44:30,643;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 01:44:30,644;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 01:44:34,663;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 01:44:34,666;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 01:44:34,666;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 14:52:35,016;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 14:52:35,313;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 14:52:45,573;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 14:52:45,573;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 14:52:50,214;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 14:52:50,221;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 14:52:50,222;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 14:55:07,078;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 14:55:07,116;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 14:55:17,725;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 14:55:17,726;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 14:55:21,576;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 14:55:21,578;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 14:55:21,578;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 14:55:29,188;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 14:55:29,197;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 14:55:38,309;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 14:55:38,309;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 14:55:41,266;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 14:55:41,268;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 14:55:41,268;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 14:56:58,597;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 14:56:58,609;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 14:57:25,056;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 14:57:25,056;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:00:28,170;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 15:00:28,189;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:00:34,158;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:00:34,158;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:01:04,174;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 15:01:04,183;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:01:05,829;__main__;main;CRITICAL;Script failed with:name 'driver' is not defined
+2024-01-05 15:01:05,832;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:01:05,832;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 122, in scraping_researchgate_and_insert_db
+    browser1, url = get_url(topic)
+                    ^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 43, in get_url
+    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    ^^^^^^
+NameError: name 'driver' is not defined
+
+2024-01-05 15:01:15,262;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 15:01:15,270;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:01:20,502;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:01:20,502;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:01:40,856;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 15:01:40,866;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:02:19,863;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:02:19,864;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:02:24,863;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:02:24,865;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:02:24,865;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 78, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:02:41,950;__main__;main;INFO;Number of page = 7, topic - Crya parsed from Command Line Interface
+2024-01-05 15:02:41,961;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:03:20,591;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Crya&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:03:20,591;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:03:29,448;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-05 15:03:30,488;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-05 15:03:30,488;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:0
+2024-01-05 15:04:06,344;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:04:06,352;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:04:50,967;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:04:50,968;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:04:55,654;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:04:55,657;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:04:55,657;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 78, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:05:03,868;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:05:03,878;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:05:06,760;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:05:06,760;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:05:11,705;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:05:11,716;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:05:17,205;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:05:17,205;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:05:34,383;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:05:34,401;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:05:42,065;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:05:42,065;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:05:45,368;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:05:45,370;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:05:45,371;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 78, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:05:47,928;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:05:47,936;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:05:53,396;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:05:53,396;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:06:00,667;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:06:00,670;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:06:00,670;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 78, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:06:03,931;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:06:03,940;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:06:09,378;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:06:09,378;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:06:14,936;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-05 15:06:15,980;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-05 15:06:15,981;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:0
+2024-01-05 15:06:50,169;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:06:50,182;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:06:55,860;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:06:55,860;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:06:58,449;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:06:58,452;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:06:58,452;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 77, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:07:00,770;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:07:00,781;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:07:06,636;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:07:06,637;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:07:09,889;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:07:09,892;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:07:09,892;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 77, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:07:12,073;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:07:12,085;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:07:17,624;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:07:17,624;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:07:19,887;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:07:19,888;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:07:19,888;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 77, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:07:22,717;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:07:22,727;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:07:28,100;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:07:28,100;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:07:31,401;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:07:31,403;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:07:31,403;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 77, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:07:33,690;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:07:33,712;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:07:40,278;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:07:40,279;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:07:42,809;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:07:42,810;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:07:42,810;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 77, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:07:45,596;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:07:45,608;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:07:51,302;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:07:51,302;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:07:54,525;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:07:54,526;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:07:54,527;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 77, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:08:22,576;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:08:22,595;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:08:50,533;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:08:50,533;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:08:54,658;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 15:08:54,660;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:08:54,661;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 71, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 15:12:02,967;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:12:02,985;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:12:04,169;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:12:10,298;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:12:10,298;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:12:16,082;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-05 15:12:17,173;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-05 15:12:43,541;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 10, publications with no doi:0
+2024-01-05 15:12:43,779;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-05 15:12:44,845;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-05 15:13:05,178;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 20, publications with no doi:0
+2024-01-05 15:13:05,325;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 3
+2024-01-05 15:13:06,387;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 3 recognized successfully
+2024-01-05 15:13:23,816;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 29, publications with no doi:1
+2024-01-05 15:13:23,904;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 4
+2024-01-05 15:13:24,963;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 4 recognized successfully
+2024-01-05 15:14:47,572;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:14:47,582;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:14:48,617;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:14:51,668;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:14:51,668;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:15:56,616;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:15:56,625;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:15:57,675;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:16:00,764;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:16:00,764;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:16:33,757;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:16:33,766;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:16:34,986;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:17:14,132;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:17:14,163;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:17:15,267;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:17:18,668;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:17:18,668;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:17:41,241;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:17:41,258;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:17:42,350;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:18:43,703;__main__;main;CRITICAL;Script failed with:Message: unknown error: cannot connect to chrome at 127.0.0.1:62736
+from chrome not reachable
+Stacktrace:
+	GetHandleVerifier [0x012E6EE3+174339]
+	(No symbol) [0x01210A51]
+	(No symbol) [0x00F26E8A]
+	(No symbol) [0x00F1C8A3]
+	(No symbol) [0x00F4DE94]
+	(No symbol) [0x00F47B12]
+	(No symbol) [0x00F47927]
+	(No symbol) [0x00F7E259]
+	(No symbol) [0x00F7DBBA]
+	(No symbol) [0x00F76DA6]
+	(No symbol) [0x00F51034]
+	(No symbol) [0x00F51F8D]
+	GetHandleVerifier [0x01384B1C+820540]
+	sqlite3_dbdata_init [0x014453EE+653550]
+	sqlite3_dbdata_init [0x01444E09+652041]
+	sqlite3_dbdata_init [0x014397CC+605388]
+	sqlite3_dbdata_init [0x01445D9B+656027]
+	(No symbol) [0x0121FE6C]
+	(No symbol) [0x012183B8]
+	(No symbol) [0x012184DD]
+	(No symbol) [0x01205818]
+	BaseThreadInitThunk [0x76417BA9+25]
+	RtlInitializeExceptionChain [0x777DBD2B+107]
+	RtlClearBits [0x777DBCAF+191]
+
+2024-01-05 15:18:43,708;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:18:43,708;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 122, in scraping_researchgate_and_insert_db
+    browser1, url = get_url(topic)
+                    ^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 35, in get_url
+    browser = uc.Chrome(options=options)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+    super(Chrome, self).__init__(
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+    super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot connect to chrome at 127.0.0.1:62736
+from chrome not reachable
+Stacktrace:
+	GetHandleVerifier [0x012E6EE3+174339]
+	(No symbol) [0x01210A51]
+	(No symbol) [0x00F26E8A]
+	(No symbol) [0x00F1C8A3]
+	(No symbol) [0x00F4DE94]
+	(No symbol) [0x00F47B12]
+	(No symbol) [0x00F47927]
+	(No symbol) [0x00F7E259]
+	(No symbol) [0x00F7DBBA]
+	(No symbol) [0x00F76DA6]
+	(No symbol) [0x00F51034]
+	(No symbol) [0x00F51F8D]
+	GetHandleVerifier [0x01384B1C+820540]
+	sqlite3_dbdata_init [0x014453EE+653550]
+	sqlite3_dbdata_init [0x01444E09+652041]
+	sqlite3_dbdata_init [0x014397CC+605388]
+	sqlite3_dbdata_init [0x01445D9B+656027]
+	(No symbol) [0x0121FE6C]
+	(No symbol) [0x012183B8]
+	(No symbol) [0x012184DD]
+	(No symbol) [0x01205818]
+	BaseThreadInitThunk [0x76417BA9+25]
+	RtlInitializeExceptionChain [0x777DBD2B+107]
+	RtlClearBits [0x777DBCAF+191]
+
+
+2024-01-05 15:19:53,948;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:19:53,957;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:19:55,181;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:19:58,500;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:19:58,500;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:20:45,943;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:20:45,951;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:20:47,028;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:21:09,501;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:21:09,515;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:21:10,771;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:21:14,294;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:21:14,294;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:22:42,917;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:22:42,931;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:22:44,243;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:22:47,796;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:22:47,797;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:24:00,752;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:24:00,767;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:24:02,292;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:24:05,586;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:24:05,586;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:25:20,873;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:25:20,892;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:25:22,567;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:25:35,069;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:25:35,070;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:34:08,239;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:34:08,305;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:34:12,269;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:34:17,769;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:34:17,770;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:36:04,371;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:36:04,387;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:36:07,923;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:36:14,809;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 15:36:14,809;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 15:37:57,152;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:37:57,170;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:38:01,171;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:38:08,848;__main__;main;CRITICAL;Script failed with:cannot unpack non-iterable Chrome object
+2024-01-05 15:38:08,850;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:38:08,850;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 122, in scraping_researchgate_and_insert_db
+    browser1, url = get_url(topic)
+    ^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable Chrome object
+
+2024-01-05 15:38:36,162;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:38:36,246;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:38:37,977;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:38:45,254;__main__;main;CRITICAL;Script failed with:cannot unpack non-iterable Chrome object
+2024-01-05 15:38:45,256;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:38:45,256;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 122, in scraping_researchgate_and_insert_db
+    browser1, url = get_url(topic)
+    ^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable Chrome object
+
+2024-01-05 15:40:15,815;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:40:15,835;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:40:17,667;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:40:24,209;__main__;main;CRITICAL;Script failed with:cannot unpack non-iterable Chrome object
+2024-01-05 15:40:24,211;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:40:24,211;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 122, in scraping_researchgate_and_insert_db
+    browser1, url = get_url(topic)
+    ^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable Chrome object
+
+2024-01-05 15:41:07,318;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 15:41:07,339;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 15:41:09,230;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 15:41:39,059;__main__;main;CRITICAL;Script failed with:cannot unpack non-iterable Chrome object
+2024-01-05 15:41:39,061;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 15:41:39,061;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 122, in scraping_researchgate_and_insert_db
+    browser1, url = get_url(topic)
+    ^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable Chrome object
+
+2024-01-05 16:01:31,202;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 16:01:31,732;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:01:33,808;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 16:01:39,335;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:01:39,335;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:01:55,144;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-05 16:01:56,961;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-05 16:02:16,802;__main__;main;CRITICAL;Script failed with:'NoneType' object has no attribute 'text'
+2024-01-05 16:02:16,813;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 16:02:16,813;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 64, in get_publications_info
+    doi = parse_single_pub_doi(driver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_parse_info.py", line 145, in parse_single_pub_doi
+    doi = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a").text
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'text'
+
+2024-01-05 16:02:54,334;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 16:02:54,349;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:03:02,410;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:03:02,410;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:03:05,854;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 16:03:05,856;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 16:03:05,856;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 72, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 16:06:03,931;__main__;main;INFO;Number of page = 7, topic - Cryo parsed from Command Line Interface
+2024-01-05 16:06:03,943;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:06:06,722;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:06:06,723;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:22:32,294;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:22:32,377;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:22:59,295;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:22:59,295;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:24:15,911;urllib3.connectionpool;urlopen;WARNING;Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001DE8F25A6D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/8d768d03c771e056bad3b2d9ad3b0feb/element
+2024-01-05 16:24:19,964;urllib3.connectionpool;urlopen;WARNING;Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001DE8F25B950>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/8d768d03c771e056bad3b2d9ad3b0feb/element
+2024-01-05 16:24:24,023;urllib3.connectionpool;urlopen;WARNING;Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001DE8F270610>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/8d768d03c771e056bad3b2d9ad3b0feb/element
+2024-01-05 16:24:28,080;__main__;main;CRITICAL;Script failed with:HTTPConnectionPool(host='localhost', port=53982): Max retries exceeded with url: /session/8d768d03c771e056bad3b2d9ad3b0feb/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001DE8F2713D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2024-01-05 16:24:28,289;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 16:24:28,289;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connection.py", line 395, in request
+    self.endheaders()
+  File "C:\Users\solom\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1281, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\solom\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1041, in _send_output
+    self.send(msg)
+  File "C:\Users\solom\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 979, in send
+    self.connect()
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001DE8F2713D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 53, in sign_in
+    my_chrome.find_element(By.LINK_TEXT, "Log in").click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 742, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 346, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 321, in _request
+    response = self._conn.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=53982): Max retries exceeded with url: /session/8d768d03c771e056bad3b2d9ad3b0feb/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001DE8F2713D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+2024-01-05 16:24:43,942;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:24:43,955;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:24:49,785;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:24:49,786;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:25:10,744;urllib3.connectionpool;urlopen;WARNING;Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000201C24F2E90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/a3bd34e99a73bca40014ab790fabae75/element
+2024-01-05 16:25:14,800;urllib3.connectionpool;urlopen;WARNING;Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000201C2A7AF90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/a3bd34e99a73bca40014ab790fabae75/element
+2024-01-05 16:25:18,859;urllib3.connectionpool;urlopen;WARNING;Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000201C2A90410>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/a3bd34e99a73bca40014ab790fabae75/element
+2024-01-05 16:25:22,914;__main__;main;CRITICAL;Script failed with:HTTPConnectionPool(host='localhost', port=54455): Max retries exceeded with url: /session/a3bd34e99a73bca40014ab790fabae75/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000201C2A90B90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2024-01-05 16:25:22,920;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 16:25:22,920;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connection.py", line 395, in request
+    self.endheaders()
+  File "C:\Users\solom\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1281, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\solom\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1041, in _send_output
+    self.send(msg)
+  File "C:\Users\solom\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 979, in send
+    self.connect()
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000201C2A90B90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 53, in sign_in
+    my_chrome.find_element(By.LINK_TEXT, "Log in").click()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 742, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 346, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 321, in _request
+    response = self._conn.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=54455): Max retries exceeded with url: /session/a3bd34e99a73bca40014ab790fabae75/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000201C2A90B90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+2024-01-05 16:33:10,012;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:33:10,049;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:33:51,400;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:33:51,400;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:33:56,558;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-05 16:33:56,562;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 16:33:56,563;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 75, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-05 16:34:39,129;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:34:39,144;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:34:43,325;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 16:35:16,421;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:35:16,422;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:35:30,673;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-05 16:35:31,834;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-05 16:35:37,547;__main__;main;CRITICAL;Script failed with:Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.199)
+Stacktrace:
+	GetHandleVerifier [0x00D36EE3+174339]
+	(No symbol) [0x00C60A51]
+	(No symbol) [0x00976FF6]
+	(No symbol) [0x0095EFE7]
+	(No symbol) [0x009CB53B]
+	(No symbol) [0x009D9E7B]
+	(No symbol) [0x009C6DA6]
+	(No symbol) [0x009A1034]
+	(No symbol) [0x009A1F8D]
+	GetHandleVerifier [0x00DD4B1C+820540]
+	sqlite3_dbdata_init [0x00E953EE+653550]
+	sqlite3_dbdata_init [0x00E94E09+652041]
+	sqlite3_dbdata_init [0x00E897CC+605388]
+	sqlite3_dbdata_init [0x00E95D9B+656027]
+	(No symbol) [0x00C6FE6C]
+	(No symbol) [0x00C683B8]
+	(No symbol) [0x00C684DD]
+	(No symbol) [0x00C55818]
+	BaseThreadInitThunk [0x767B7BA9+25]
+	RtlInitializeExceptionChain [0x77C8BD2B+107]
+	RtlClearBits [0x77C8BCAF+191]
+
+2024-01-05 16:35:37,556;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 16:35:37,557;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 64, in get_publications_info
+    doi = parse_single_pub_doi(driver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_parse_info.py", line 145, in parse_single_pub_doi
+    doi = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a").text
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 742, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 348, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.199)
+Stacktrace:
+	GetHandleVerifier [0x00D36EE3+174339]
+	(No symbol) [0x00C60A51]
+	(No symbol) [0x00976FF6]
+	(No symbol) [0x0095EFE7]
+	(No symbol) [0x009CB53B]
+	(No symbol) [0x009D9E7B]
+	(No symbol) [0x009C6DA6]
+	(No symbol) [0x009A1034]
+	(No symbol) [0x009A1F8D]
+	GetHandleVerifier [0x00DD4B1C+820540]
+	sqlite3_dbdata_init [0x00E953EE+653550]
+	sqlite3_dbdata_init [0x00E94E09+652041]
+	sqlite3_dbdata_init [0x00E897CC+605388]
+	sqlite3_dbdata_init [0x00E95D9B+656027]
+	(No symbol) [0x00C6FE6C]
+	(No symbol) [0x00C683B8]
+	(No symbol) [0x00C684DD]
+	(No symbol) [0x00C55818]
+	BaseThreadInitThunk [0x767B7BA9+25]
+	RtlInitializeExceptionChain [0x77C8BD2B+107]
+	RtlClearBits [0x77C8BCAF+191]
+
+
+2024-01-05 16:36:02,723;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:36:02,735;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:36:05,152;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 16:36:07,431;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:36:07,431;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:36:42,925;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:36:42,943;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:36:42,943;__main__;main;CRITICAL;Script failed with:module 'undetected_chromedriver' has no attribute 'Edge'
+2024-01-05 16:36:42,945;__main__;main;CRITICAL;Full stack trace:
+2024-01-05 16:36:42,945;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 122, in scraping_researchgate_and_insert_db
+    browser1, url = get_url(topic)
+                    ^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 36, in get_url
+    browser = uc.Edge(headless=True)
+              ^^^^^^^
+AttributeError: module 'undetected_chromedriver' has no attribute 'Edge'
+
+2024-01-05 16:44:18,024;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:44:18,060;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:44:30,833;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:44:30,847;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:44:34,286;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 16:44:40,309;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:44:40,310;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:45:45,992;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-05 16:45:46,007;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-05 16:45:49,557;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-05 16:45:57,396;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-05 16:45:57,396;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-05 16:46:06,562;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-05 16:46:09,367;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-05 16:46:43,750;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 7, publications with no doi:3
+2024-01-06 16:14:41,041;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:14:41,581;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:14:51,020;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:14:51,021;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:14:53,296;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-06 16:14:53,298;__main__;main;CRITICAL;Full stack trace:
+2024-01-06 16:14:53,299;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 78, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-06 16:15:13,539;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:15:13,555;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:15:34,273;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:15:34,274;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:15:37,987;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:15:38,006;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:15:44,100;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:15:44,101;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:15:56,956;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:15:56,971;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:16:03,073;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:16:03,074;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:16:06,385;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-06 16:16:06,387;__main__;main;CRITICAL;Full stack trace:
+2024-01-06 16:16:06,388;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 78, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-06 16:16:09,745;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:16:09,763;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:16:15,860;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:16:15,860;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:16:19,144;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-06 16:16:19,147;__main__;main;CRITICAL;Full stack trace:
+2024-01-06 16:16:19,147;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 78, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-06 16:16:29,957;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:16:29,967;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:16:36,053;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:16:36,055;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:16:38,987;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 16:16:40,012;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 16:16:40,013;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 0, publications with no doi:0
+2024-01-06 16:18:42,459;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:18:42,471;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:18:44,003;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 16:18:50,010;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:18:50,010;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:18:55,877;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 16:18:57,040;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 16:19:10,352;__main__;main;CRITICAL;Script failed with:Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.199)
+Stacktrace:
+	GetHandleVerifier [0x00A66EE3+174339]
+	(No symbol) [0x00990A51]
+	(No symbol) [0x006A6FF6]
+	(No symbol) [0x0068EFE7]
+	(No symbol) [0x006FB53B]
+	(No symbol) [0x00709E7B]
+	(No symbol) [0x006F6DA6]
+	(No symbol) [0x006D1034]
+	(No symbol) [0x006D1F8D]
+	GetHandleVerifier [0x00B04B1C+820540]
+	sqlite3_dbdata_init [0x00BC53EE+653550]
+	sqlite3_dbdata_init [0x00BC4E09+652041]
+	sqlite3_dbdata_init [0x00BB97CC+605388]
+	sqlite3_dbdata_init [0x00BC5D9B+656027]
+	(No symbol) [0x0099FE6C]
+	(No symbol) [0x009983B8]
+	(No symbol) [0x009984DD]
+	(No symbol) [0x00985818]
+	BaseThreadInitThunk [0x76187BA9+25]
+	RtlInitializeExceptionChain [0x77D6BD2B+107]
+	RtlClearBits [0x77D6BCAF+191]
+
+2024-01-06 16:19:10,368;__main__;main;CRITICAL;Full stack trace:
+2024-01-06 16:19:10,368;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 64, in get_publications_info
+    doi = parse_single_pub_doi(driver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_parse_info.py", line 145, in parse_single_pub_doi
+    doi = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a").text
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 742, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 348, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.199)
+Stacktrace:
+	GetHandleVerifier [0x00A66EE3+174339]
+	(No symbol) [0x00990A51]
+	(No symbol) [0x006A6FF6]
+	(No symbol) [0x0068EFE7]
+	(No symbol) [0x006FB53B]
+	(No symbol) [0x00709E7B]
+	(No symbol) [0x006F6DA6]
+	(No symbol) [0x006D1034]
+	(No symbol) [0x006D1F8D]
+	GetHandleVerifier [0x00B04B1C+820540]
+	sqlite3_dbdata_init [0x00BC53EE+653550]
+	sqlite3_dbdata_init [0x00BC4E09+652041]
+	sqlite3_dbdata_init [0x00BB97CC+605388]
+	sqlite3_dbdata_init [0x00BC5D9B+656027]
+	(No symbol) [0x0099FE6C]
+	(No symbol) [0x009983B8]
+	(No symbol) [0x009984DD]
+	(No symbol) [0x00985818]
+	BaseThreadInitThunk [0x76187BA9+25]
+	RtlInitializeExceptionChain [0x77D6BD2B+107]
+	RtlClearBits [0x77D6BCAF+191]
+
+
+2024-01-06 16:22:33,400;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:22:33,426;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:22:41,677;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:22:41,678;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:22:44,170;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-06 16:22:44,173;__main__;main;CRITICAL;Full stack trace:
+2024-01-06 16:22:44,174;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-06 16:22:49,089;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:22:49,102;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:22:53,374;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:22:53,374;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:22:55,409;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-06 16:22:55,410;__main__;main;CRITICAL;Full stack trace:
+2024-01-06 16:22:55,410;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 127, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 66, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-e-text')[7].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-06 16:24:52,986;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:24:53,005;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:24:54,563;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 16:24:58,678;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:24:58,678;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:25:41,270;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:25:41,281;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:25:42,420;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 16:25:47,690;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:25:47,691;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:25:53,090;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 16:25:54,175;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 16:26:09,416;__main__;main;CRITICAL;Script failed with:'NoneType' object has no attribute 'text'
+2024-01-06 16:26:09,418;__main__;main;CRITICAL;Full stack trace:
+2024-01-06 16:26:09,419;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 204, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 145, in scraping_researchgate_and_insert_db
+    dictionary = get_publications_info(pub, browser1)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 64, in get_publications_info
+    doi = parse_single_pub_doi(driver)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_parse_info.py", line 145, in parse_single_pub_doi
+    doi = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a").text
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'text'
+
+2024-01-06 16:31:18,171;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:31:18,199;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:31:19,686;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 16:31:24,982;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:31:24,982;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:31:30,434;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 16:31:31,564;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 16:31:55,065;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 8, publications with no doi:2
+2024-01-06 16:31:55,252;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-06 16:31:56,410;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-06 16:32:19,816;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 15, publications with no doi:3
+2024-01-06 16:32:19,946;DatabaseManager;insert_publications_info;INFO;Time it took to insert 15 and update 0 publications into DB: 0.1
+2024-01-06 16:32:19,949;__main__;scraping_researchgate_and_insert_db;INFO;It took 61.8 sec
+2024-01-06 16:32:20,065;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-06 16:32:22,181;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 2.1162312030792236
+2024-01-06 16:32:23,128;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.1
+2024-01-06 16:32:23,210;DatabaseManager;insert_publications_info;INFO;Time it took to insert 20 and update 0 publications into DB: 0.1
+2024-01-06 16:38:11,420;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 16:38:11,430;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 16:38:12,797;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 16:38:18,110;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 16:38:18,110;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 16:38:23,769;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 16:38:24,930;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 16:38:49,734;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 8, publications with no doi:2
+2024-01-06 16:38:49,964;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-06 16:38:51,116;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-06 16:39:15,747;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 15, publications with no doi:3
+2024-01-06 16:39:15,782;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 15 publications into DB: 0.0
+2024-01-06 16:39:15,787;__main__;scraping_researchgate_and_insert_db;INFO;It took 64.4 sec
+2024-01-06 16:39:15,885;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-06 16:39:18,231;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 2.345954418182373
+2024-01-06 16:39:19,049;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.2
+2024-01-06 16:39:19,072;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 20 publications into DB: 0.0
+2024-01-06 17:03:57,558;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 17:03:57,757;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 17:03:59,559;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 17:04:06,413;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 17:04:06,414;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 17:04:29,862;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-06 17:04:29,866;__main__;main;CRITICAL;Full stack trace:
+2024-01-06 17:04:29,868;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 215, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 141, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 68, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-c-dropdown__action')[0].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-06 17:04:41,381;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 17:04:41,394;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 17:04:42,700;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 17:04:47,837;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 17:04:47,837;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 17:04:53,531;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 17:04:54,688;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 17:05:17,368;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 8, publications with no doi:2
+2024-01-06 17:05:17,663;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-06 17:05:18,748;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-06 17:05:44,120;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 15, publications with no doi:3
+2024-01-06 17:05:44,242;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 15 publications into DB: 0.1
+2024-01-06 17:05:44,246;__main__;scraping_researchgate_and_insert_db;INFO;It took 62.9 sec
+2024-01-06 17:05:44,356;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-06 17:05:46,894;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 2.5381264686584473
+2024-01-06 17:05:48,122;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.8
+2024-01-06 17:05:48,163;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 20 publications into DB: 0.0
+2024-01-06 17:26:10,795;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 17:26:10,836;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 17:26:12,037;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 17:26:17,533;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 17:26:17,533;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 17:26:23,276;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 17:26:24,425;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 17:26:49,800;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 8, publications with no doi:2
+2024-01-06 17:26:50,064;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-06 17:26:51,199;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-06 17:27:20,959;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 15, publications with no doi:3
+2024-01-06 17:27:21,008;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 15 publications into DB: 0.0
+2024-01-06 17:27:21,010;__main__;scraping_researchgate_and_insert_db;INFO;It took 70.2 sec
+2024-01-06 17:27:21,103;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-06 17:27:23,309;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 2.205781936645508
+2024-01-06 17:27:24,171;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.1
+2024-01-06 17:27:24,188;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 20 publications into DB: 0.0
+2024-01-06 17:35:54,331;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 17:35:54,348;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 17:35:56,403;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 17:36:01,996;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 17:36:01,997;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 17:36:55,159;__main__;main;INFO;Number of page = 2, topic - Energy parsed from Command Line Interface
+2024-01-06 17:36:55,177;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 17:36:56,493;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 17:37:21,809;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Energy&page=1 opened successfully in automated browser (selenium)
+2024-01-06 17:37:21,809;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 17:37:26,957;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 17:37:28,015;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 17:37:46,473;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 8, publications with no doi:2
+2024-01-06 17:37:46,637;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-06 17:37:47,689;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-06 17:38:07,326;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 15, publications with no doi:3
+2024-01-06 17:38:07,367;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 15 publications into DB: 0.0
+2024-01-06 17:38:07,371;__main__;scraping_researchgate_and_insert_db;INFO;It took 72.2 sec
+2024-01-06 17:38:07,452;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-06 17:38:09,290;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.8377172946929932
+2024-01-06 17:38:10,026;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.6
+2024-01-06 17:38:10,041;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 20 publications into DB: 0.0
+2024-01-06 17:39:21,684;__main__;main;INFO;Number of page = 7, topic - Cryo-TEM parsed from Command Line Interface
+2024-01-06 17:39:21,694;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-06 17:39:23,381;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-06 17:39:28,471;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Cryo-TEM&page=1 opened successfully in automated browser (selenium)
+2024-01-06 17:39:28,472;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-06 17:39:33,723;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-06 17:39:34,810;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-06 17:39:55,910;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 10, publications with no doi:0
+2024-01-06 17:39:56,136;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-06 17:39:57,199;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-06 17:40:16,540;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 20, publications with no doi:0
+2024-01-06 17:40:16,722;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 3
+2024-01-06 17:40:17,780;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 3 recognized successfully
+2024-01-06 17:40:37,747;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 29, publications with no doi:1
+2024-01-06 17:40:37,897;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 4
+2024-01-06 17:40:38,955;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 4 recognized successfully
+2024-01-06 17:40:58,929;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 38, publications with no doi:1
+2024-01-06 17:40:59,159;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 5
+2024-01-06 17:41:00,250;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 5 recognized successfully
+2024-01-06 17:41:20,970;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 47, publications with no doi:1
+2024-01-06 17:41:21,051;DatabaseManager;insert_publications_info;INFO;Time it took to insert 7 and update 40 publications into DB: 0.1
+2024-01-06 17:41:21,190;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 6
+2024-01-06 17:41:22,261;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 6 recognized successfully
+2024-01-06 17:41:46,342;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 55, publications with no doi:2
+2024-01-06 17:41:46,674;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 7
+2024-01-06 17:41:47,743;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 7 recognized successfully
+2024-01-06 17:42:11,276;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 63, publications with no doi:2
+2024-01-06 17:42:11,342;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 63 publications into DB: 0.1
+2024-01-06 17:42:11,348;__main__;scraping_researchgate_and_insert_db;INFO;It took 169.7 sec
+2024-01-06 17:42:11,430;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-06 17:42:13,509;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 2.0788657665252686
+2024-01-06 17:42:14,930;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.5
+2024-01-06 17:42:15,018;DatabaseManager;insert_publications_info;INFO;Time it took to insert 62 and update 8 publications into DB: 0.1
+2024-01-06 17:42:16,782;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.763519287109375
+2024-01-06 17:42:18,958;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.9
+2024-01-06 17:42:18,991;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 0.0

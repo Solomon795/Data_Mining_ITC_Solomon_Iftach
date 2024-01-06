@@ -18,3 +18,8 @@ class Configuration:
         return (self._config['DatabaseProperties']['host'], self._config['DatabaseProperties']['user'],
                 self._config['DatabaseProperties']['password'], self._config['DatabaseProperties']['database'])
 
+    def get_headers(self):
+        return self._config["Headers"]
+
+    def get_parse_tag(self, part):
+        return self._config["Tags"][part]

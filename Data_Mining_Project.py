@@ -38,6 +38,38 @@ def setup_logger():
 logger = setup_logger()
 
 
+def retrieve_doi(driver_instance, url):
+    """retrieve_doi returns doi for single publication"""
+    original_tab = driver_instance.current_window_handle
+    driver_instance.switch_to.new_window('tab')
+    driver_instance.get(url)
+    try:
+        doi = parse_single_pub_doi(driver_instance)
+    except selenium.common.exceptions.NoSuchElementException:
+        doi = ""
+    driver_instance.close()
+
+    # Switch back to the old tab or window
+    driver_instance.switch_to.window(original_tab)
+    logger.debug(f'Publication doi number ({doi}) parsed successfully')
+    return doi
+
+def retrieve_reads(pub):
+    """
+    retrieve_reads returns reads for single publication
+    :param pub: publication
+    :return: number of reads
+    """
+    try:
+        reads = int(parse_single_pub_reads(pub).split()[0])
+    except IndexError:
+        reads = 0
+    except ValueError:
+        reads = parse_single_pub_reads(pub).split()[0]
+        reads = ''.join(char for char in reads if char.isdigit())
+    logger.debug(f'Publication reads number ({reads}) parsed successfully')
+    return reads
+
 def get_publications_info(publication, driver):
     """
     This function gathers all the data for a single publication
@@ -57,26 +89,8 @@ def get_publications_info(publication, driver):
     logger.debug(f'Publication authors ({authors}) parsed successfully')
     monthyear = parse_single_pub_monthyear(publication)
     logger.debug(f'Publication year ({monthyear}) parsed successfully')
-    original_tab = driver.current_window_handle
-    driver.switch_to.new_window('tab')
-    driver.get(site)
-    try:
-        doi = parse_single_pub_doi(driver)
-    except selenium.common.exceptions.NoSuchElementException:
-        doi = ""
-    driver.close()
-
-    # Switch back to the old tab or window
-    driver.switch_to.window(original_tab)
-    logger.debug(f'Publication doi number ({doi}) parsed successfully')
-    try:
-        reads = int(parse_single_pub_reads(publication).split()[0])
-    except IndexError:
-        reads = 0
-    except ValueError:
-        reads = parse_single_pub_reads(publication).split()[0]
-        reads = ''.join(char for char in reads if char.isdigit())
-    logger.debug(f'Publication reads number ({reads}) parsed successfully')
+    doi = retrieve_doi(driver, site)
+    reads = retrieve_reads(publication)
     try:
         citations = int(parse_single_pub_citations(publication).split()[0])
     except IndexError:
@@ -130,10 +144,7 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic, data_list)
         except selenium.common.exceptions.ElementClickInterceptedException and selenium.common.exceptions.ElementNotInteractableException and selenium.common.exceptions.WebDriverException:
             logger.debug(f"Waiting for sign in tags to appear (1 sec)")
             sleep(1)
-    # Headers needed for the parallel downloading by grequests
-    headers = {
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"}
+
     # Looping through pages (with finding all pubs on each page)
     for p in range(1, num_pages + 1):
         logger.debug(f"Page proccessing: {p}")
@@ -165,7 +176,7 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic, data_list)
             logger.info(f"Turned to page {p + 1}")
 
     # Accumulating data
-    # print(*publications_info_list, sep="\n")
+    print(*data_list, sep="\n")
     end_time = time.time()
     logger.info(f"It took {round(end_time - start_time, 1)} sec")
     browser1.close()

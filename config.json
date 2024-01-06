@@ -10,5 +10,21 @@
     "user": "root",
     "password": "root",
     "database": "DataMining"
+  },
+
+  "Headers": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0",
+  "Tags": {
+    "pub_class": "nova-legacy-v-entity-item__stack nova-legacy-v-entity-item__stack--gutter-m",
+    "material_class": "nova-legacy-e-badge nova-legacy-e-badge--color-green nova-legacy-e-badge--display-block nova-legacy-e-badge--luminosity-high nova-legacy-e-badge--size-l nova-legacy-e-badge--theme-solid nova-legacy-e-badge--radius-m nova-legacy-v-entity-item__badge",
+    "title_class" : "nova-legacy-e-link nova-legacy-e-link--color-inherit nova-legacy-e-link--theme-bare",
+    "site_class": "nova-legacy-e-link nova-legacy-e-link--color-inherit nova-legacy-e-link--theme-bare",
+    "journal_class": "nova-legacy-e-text nova-legacy-e-text--size-m nova-legacy-e-text--family-sans-serif nova-legacy-e-text--spacing-none nova-legacy-e-text--color-grey-900 nova-legacy-e-text--clamp",
+    "authors_class": "nova-legacy-v-person-inline-item__fullname",
+    "monthyear_class": "nova-legacy-e-list__item nova-legacy-v-entity-item__meta-data-item",
+    "reads_class": "nova-legacy-e-list__item nova-legacy-v-entity-item__meta-data-item",
+    "citations_class": "nova-legacy-e-list__item nova-legacy-v-entity-item__meta-data-item",
+    "doi_xpath": "/html/body/div[1]/div[3]/div[1]/div/div/div[1]/div[1]/div[1]/div[1]/div[3]/div/div[2]/ul/li[2]/a"
+
+
   }
 }
