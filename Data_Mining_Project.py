@@ -126,7 +126,7 @@ def fetching_from_pubmed_and_insert_db(db_manager, num_pages, topic):
         db_manager.insert_publications_info(db_source, pubs_info)
 
 
-def scraping_researchgate_and_insert_db(db_manager, num_pages, topic, data_list):
+def scraping_researchgate_and_insert_db(db_manager, num_pages, topic):
     logger.info("Scraping from Researchgate ...")
     start_time = time.time()
 
@@ -167,7 +167,7 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic, data_list)
         if p % MAX_PAGES_PER_BATCH == 0 or p == num_pages:
             db_source = 0  # ResearchGate
             if len(publications_info_list) > 0:
-                db_manager.insert_publications_info(db_source, data_list)
+                db_manager.insert_publications_info(db_source, publications_info_list)
             publications_info_list = []  # initiation of the list prior to accepting new batch of publications info.
 
         # navigating to the next page, by pressing the next page button on the bottom of the page
@@ -176,7 +176,6 @@ def scraping_researchgate_and_insert_db(db_manager, num_pages, topic, data_list)
             logger.info(f"Turned to page {p + 1}")
 
     # Accumulating data
-    print(*data_list, sep="\n")
     end_time = time.time()
     logger.info(f"It took {round(end_time - start_time, 1)} sec")
     browser1.close()
