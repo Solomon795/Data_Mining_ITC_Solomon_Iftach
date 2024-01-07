@@ -1,5 +1,3 @@
-
-
 # we use combo of bs4, selenium and requests at this point
 import selenium
 from selenium import webdriver
