@@ -2048,3 +2048,269 @@ IndexError: list index out of range
 2024-01-06 17:42:16,782;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.763519287109375
 2024-01-06 17:42:18,958;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.9
 2024-01-06 17:42:18,991;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 0.0
+2024-01-07 17:15:12,759;__main__;main;INFO;Number of page = 50, topic - Molecular self-assembly parsed from Command Line Interface
+2024-01-07 17:15:15,747;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-07 17:15:20,362;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-07 17:15:30,504;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Molecular self-assembly&page=1 opened successfully in automated browser (selenium)
+2024-01-07 17:15:30,505;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-07 17:15:40,450;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-07 17:15:42,056;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-07 17:16:14,915;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 7, publications with no doi:3
+2024-01-07 17:29:53,079;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-07 17:29:54,479;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-07 17:30:21,395;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 16, publications with no doi:1
+2024-01-07 17:30:25,946;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 3
+2024-01-07 17:30:27,140;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 3 recognized successfully
+2024-01-07 17:30:53,780;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 26, publications with no doi:0
+2024-01-07 17:31:15,674;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 4
+2024-01-07 17:31:17,417;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 4 recognized successfully
+2024-01-07 17:31:55,522;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 36, publications with no doi:0
+2024-01-07 17:31:57,943;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 5
+2024-01-07 17:31:59,211;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 5 recognized successfully
+2024-01-07 17:32:21,714;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 46, publications with no doi:0
+2024-01-07 17:32:21,765;__main__;main;CRITICAL;Script failed with:(2006, "MySQL server has gone away (ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))")
+2024-01-07 17:32:21,938;__main__;main;CRITICAL;Full stack trace:
+2024-01-07 17:32:21,938;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\pymysql\connections.py", line 803, in _write_bytes
+    self._sock.sendall(data)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 215, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 170, in scraping_researchgate_and_insert_db
+    db_manager.insert_publications_info(db_source, data_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\DatabaseManager.py", line 194, in insert_publications_info
+    result = self._sql_run_fetch_command(sql_command, fetch_all=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\DatabaseManager.py", line 51, in _sql_run_fetch_command
+    cursor.execute(sql_command, vals)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\pymysql\connections.py", line 557, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\pymysql\connections.py", line 861, in _execute_command
+    self._write_bytes(packet)
+  File "C:\Users\solom\venv_data_mining\Lib\site-packages\pymysql\connections.py", line 806, in _write_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2006, "MySQL server has gone away (ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))")
+
+2024-01-07 17:32:53,848;__main__;main;INFO;Number of page = 50, topic - Molecular self-assembly parsed from Command Line Interface
+2024-01-07 17:32:56,194;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-07 17:32:57,851;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-07 17:33:24,325;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Molecular self-assembly&page=1 opened successfully in automated browser (selenium)
+2024-01-07 17:33:24,325;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-07 17:33:30,293;__main__;main;CRITICAL;Script failed with:list index out of range
+2024-01-07 17:33:30,295;__main__;main;CRITICAL;Full stack trace:
+2024-01-07 17:33:30,295;__main__;main;CRITICAL;Traceback (most recent call last):
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 215, in main
+    scraping_researchgate_and_insert_db(db_manager, num_pages, topic, publications_info_list)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\Data_Mining_Project.py", line 141, in scraping_researchgate_and_insert_db
+    sign_in(url, browser1)
+  File "C:\Users\solom\PycharmProjects\Data_Mining_ITC_Solomon_Iftach\dm_setup_manage_browser.py", line 68, in sign_in
+    my_chrome.find_elements(By.CLASS_NAME, 'nova-legacy-c-dropdown__action')[0].click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+2024-01-07 17:33:43,422;__main__;main;INFO;Number of page = 50, topic - Molecular self-assembly parsed from Command Line Interface
+2024-01-07 17:33:45,551;__main__;scraping_researchgate_and_insert_db;INFO;Scraping from Researchgate ...
+2024-01-07 17:33:46,895;undetected_chromedriver.patcher;patch_exe;INFO;patching driver executable C:\Users\solom\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2024-01-07 17:33:53,435;__main__;scraping_researchgate_and_insert_db;INFO;URL https://www.researchgate.net/search/publication?q=Molecular self-assembly&page=1 opened successfully in automated browser (selenium)
+2024-01-07 17:33:53,435;__main__;scraping_researchgate_and_insert_db;INFO;Starting signing in ...
+2024-01-07 17:34:00,423;__main__;scraping_researchgate_and_insert_db;INFO;Signed in successfully in automated browser (selenium)
+2024-01-07 17:34:01,687;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 1 recognized successfully
+2024-01-07 17:34:31,687;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 7, publications with no doi:3
+2024-01-07 17:34:31,876;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 2
+2024-01-07 17:34:33,111;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 2 recognized successfully
+2024-01-07 17:34:59,595;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 16, publications with no doi:1
+2024-01-07 17:34:59,775;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 3
+2024-01-07 17:35:00,898;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 3 recognized successfully
+2024-01-07 17:35:26,274;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 26, publications with no doi:0
+2024-01-07 17:35:26,461;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 4
+2024-01-07 17:35:27,608;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 4 recognized successfully
+2024-01-07 17:35:54,316;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 36, publications with no doi:0
+2024-01-07 17:35:54,672;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 5
+2024-01-07 17:35:55,814;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 5 recognized successfully
+2024-01-07 17:36:22,000;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 46, publications with no doi:0
+2024-01-07 17:36:24,372;DatabaseManager;insert_publications_info;INFO;Time it took to insert 46 and update 0 publications into DB: 2.4
+2024-01-07 17:36:24,487;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 6
+2024-01-07 17:36:25,578;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 6 recognized successfully
+2024-01-07 17:36:50,195;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 56, publications with no doi:0
+2024-01-07 17:36:50,367;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 7
+2024-01-07 17:36:51,466;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 7 recognized successfully
+2024-01-07 17:37:32,945;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 65, publications with no doi:1
+2024-01-07 17:37:33,252;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 8
+2024-01-07 17:37:35,000;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 8 recognized successfully
+2024-01-07 17:38:08,775;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 75, publications with no doi:0
+2024-01-07 17:38:08,981;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 9
+2024-01-07 17:38:10,681;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 9 recognized successfully
+2024-01-07 17:38:48,622;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 83, publications with no doi:2
+2024-01-07 17:38:48,821;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 10
+2024-01-07 17:38:50,301;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 10 recognized successfully
+2024-01-07 17:39:25,506;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 92, publications with no doi:1
+2024-01-07 17:39:38,043;DatabaseManager;insert_publications_info;INFO;Time it took to insert 46 and update 46 publications into DB: 12.5
+2024-01-07 17:39:38,176;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 11
+2024-01-07 17:39:39,455;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 11 recognized successfully
+2024-01-07 17:40:16,407;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 100, publications with no doi:2
+2024-01-07 17:40:16,649;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 12
+2024-01-07 17:40:18,252;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 12 recognized successfully
+2024-01-07 17:40:56,749;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 108, publications with no doi:2
+2024-01-07 17:40:56,963;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 13
+2024-01-07 17:40:58,321;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 13 recognized successfully
+2024-01-07 17:41:34,578;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 117, publications with no doi:1
+2024-01-07 17:41:34,781;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 14
+2024-01-07 17:41:36,685;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 14 recognized successfully
+2024-01-07 17:42:15,913;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 124, publications with no doi:3
+2024-01-07 17:42:16,105;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 15
+2024-01-07 17:42:17,527;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 15 recognized successfully
+2024-01-07 17:42:55,209;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 132, publications with no doi:2
+2024-01-07 17:43:16,842;DatabaseManager;insert_publications_info;INFO;Time it took to insert 40 and update 92 publications into DB: 21.6
+2024-01-07 17:43:17,097;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 16
+2024-01-07 17:43:18,493;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 16 recognized successfully
+2024-01-07 17:43:57,768;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 138, publications with no doi:4
+2024-01-07 17:43:57,985;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 17
+2024-01-07 17:43:59,475;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 17 recognized successfully
+2024-01-07 17:44:25,107;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 147, publications with no doi:1
+2024-01-07 17:44:25,310;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 18
+2024-01-07 17:44:26,651;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 18 recognized successfully
+2024-01-07 17:44:55,376;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 156, publications with no doi:1
+2024-01-07 17:44:55,715;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 19
+2024-01-07 17:44:57,018;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 19 recognized successfully
+2024-01-07 17:45:24,325;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 165, publications with no doi:1
+2024-01-07 17:45:24,529;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 20
+2024-01-07 17:45:25,761;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 20 recognized successfully
+2024-01-07 17:45:52,320;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 175, publications with no doi:0
+2024-01-07 17:46:24,029;DatabaseManager;insert_publications_info;INFO;Time it took to insert 43 and update 132 publications into DB: 31.7
+2024-01-07 17:46:24,273;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 21
+2024-01-07 17:46:25,767;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 21 recognized successfully
+2024-01-07 17:47:07,486;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 183, publications with no doi:2
+2024-01-07 17:47:07,703;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 22
+2024-01-07 17:47:09,049;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 22 recognized successfully
+2024-01-07 17:47:50,671;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 193, publications with no doi:0
+2024-01-07 17:47:50,888;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 23
+2024-01-07 17:47:52,340;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 23 recognized successfully
+2024-01-07 17:48:34,611;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 200, publications with no doi:3
+2024-01-07 17:48:34,828;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 24
+2024-01-07 17:48:36,240;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 24 recognized successfully
+2024-01-07 17:49:09,526;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 209, publications with no doi:1
+2024-01-07 17:49:09,977;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 25
+2024-01-07 17:49:11,258;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 25 recognized successfully
+2024-01-07 17:49:42,103;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 218, publications with no doi:1
+2024-01-07 17:50:21,113;DatabaseManager;insert_publications_info;INFO;Time it took to insert 42 and update 175 publications into DB: 39.0
+2024-01-07 17:50:21,249;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 26
+2024-01-07 17:50:22,921;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 26 recognized successfully
+2024-01-07 17:51:05,086;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 225, publications with no doi:3
+2024-01-07 17:51:05,368;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 27
+2024-01-07 17:51:06,717;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 27 recognized successfully
+2024-01-07 17:51:35,763;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 235, publications with no doi:0
+2024-01-07 17:51:36,006;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 28
+2024-01-07 17:51:37,320;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 28 recognized successfully
+2024-01-07 17:52:07,712;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 243, publications with no doi:2
+2024-01-07 17:52:07,942;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 29
+2024-01-07 17:52:10,034;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 29 recognized successfully
+2024-01-07 17:52:39,029;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 250, publications with no doi:3
+2024-01-07 17:52:39,313;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 30
+2024-01-07 17:52:41,167;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 30 recognized successfully
+2024-01-07 17:53:21,584;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 257, publications with no doi:3
+2024-01-07 17:54:08,619;DatabaseManager;insert_publications_info;INFO;Time it took to insert 39 and update 217 publications into DB: 47.0
+2024-01-07 17:54:08,846;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 31
+2024-01-07 17:54:10,472;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 31 recognized successfully
+2024-01-07 17:54:53,556;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 264, publications with no doi:3
+2024-01-07 17:54:53,690;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 32
+2024-01-07 17:54:54,837;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 32 recognized successfully
+2024-01-07 17:55:24,033;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 273, publications with no doi:1
+2024-01-07 17:55:24,202;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 33
+2024-01-07 17:55:25,301;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 33 recognized successfully
+2024-01-07 17:55:51,943;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 282, publications with no doi:1
+2024-01-07 17:55:52,085;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 34
+2024-01-07 17:55:53,184;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 34 recognized successfully
+2024-01-07 17:56:20,335;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 290, publications with no doi:2
+2024-01-07 17:56:20,483;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 35
+2024-01-07 17:56:21,583;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 35 recognized successfully
+2024-01-07 17:56:48,086;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 298, publications with no doi:2
+2024-01-07 17:57:36,455;DatabaseManager;insert_publications_info;INFO;Time it took to insert 34 and update 256 publications into DB: 48.4
+2024-01-07 17:57:36,603;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 36
+2024-01-07 17:57:37,697;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 36 recognized successfully
+2024-01-07 17:58:09,751;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 308, publications with no doi:0
+2024-01-07 17:58:10,027;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 37
+2024-01-07 17:58:11,235;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 37 recognized successfully
+2024-01-07 17:58:41,071;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 314, publications with no doi:4
+2024-01-07 17:58:41,287;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 38
+2024-01-07 17:58:42,606;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 38 recognized successfully
+2024-01-07 17:59:12,911;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 321, publications with no doi:3
+2024-01-07 17:59:13,129;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 39
+2024-01-07 17:59:14,485;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 39 recognized successfully
+2024-01-07 17:59:44,105;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 331, publications with no doi:0
+2024-01-07 17:59:44,304;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 40
+2024-01-07 17:59:45,707;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 40 recognized successfully
+2024-01-07 18:00:17,298;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 340, publications with no doi:1
+2024-01-07 18:01:11,595;DatabaseManager;insert_publications_info;INFO;Time it took to insert 42 and update 290 publications into DB: 54.3
+2024-01-07 18:01:11,732;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 41
+2024-01-07 18:01:12,954;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 41 recognized successfully
+2024-01-07 18:01:42,557;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 349, publications with no doi:1
+2024-01-07 18:01:42,759;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 42
+2024-01-07 18:01:44,082;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 42 recognized successfully
+2024-01-07 18:02:14,185;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 358, publications with no doi:1
+2024-01-07 18:02:14,414;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 43
+2024-01-07 18:02:15,729;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 43 recognized successfully
+2024-01-07 18:02:45,927;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 365, publications with no doi:3
+2024-01-07 18:02:46,140;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 44
+2024-01-07 18:02:47,764;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 44 recognized successfully
+2024-01-07 18:03:17,795;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 372, publications with no doi:3
+2024-01-07 18:03:18,061;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 45
+2024-01-07 18:03:19,228;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 45 recognized successfully
+2024-01-07 18:03:49,585;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 380, publications with no doi:2
+2024-01-07 18:04:51,595;DatabaseManager;insert_publications_info;INFO;Time it took to insert 40 and update 332 publications into DB: 62.0
+2024-01-07 18:04:51,717;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 46
+2024-01-07 18:04:52,905;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 46 recognized successfully
+2024-01-07 18:05:23,641;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 390, publications with no doi:0
+2024-01-07 18:05:23,850;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 47
+2024-01-07 18:05:25,230;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 47 recognized successfully
+2024-01-07 18:05:55,106;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 400, publications with no doi:0
+2024-01-07 18:05:55,296;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 48
+2024-01-07 18:05:56,658;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 48 recognized successfully
+2024-01-07 18:06:25,815;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 410, publications with no doi:0
+2024-01-07 18:06:26,057;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 49
+2024-01-07 18:06:27,241;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 49 recognized successfully
+2024-01-07 18:06:55,827;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 418, publications with no doi:2
+2024-01-07 18:06:56,079;__main__;scraping_researchgate_and_insert_db;INFO;Turned to page 50
+2024-01-07 18:06:57,352;__main__;scraping_researchgate_and_insert_db;INFO;Publications on page 50 recognized successfully
+2024-01-07 18:07:27,447;__main__;scraping_researchgate_and_insert_db;INFO;Total publications parsed: 426, publications with no doi:2
+2024-01-07 18:08:36,592;DatabaseManager;insert_publications_info;INFO;Time it took to insert 46 and update 372 publications into DB: 69.1
+2024-01-07 18:08:36,643;__main__;scraping_researchgate_and_insert_db;INFO;It took 2091.1 sec
+2024-01-07 18:08:36,719;__main__;fetching_from_pubmed_and_insert_db;INFO;Fetching from pubmed ...
+2024-01-07 18:08:38,898;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 2.1789932250976562
+2024-01-07 18:08:40,205;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.5
+2024-01-07 18:08:44,149;DatabaseManager;insert_publications_info;INFO;Time it took to insert 44 and update 6 publications into DB: 3.9
+2024-01-07 18:08:45,893;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.7433586120605469
+2024-01-07 18:08:47,118;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.0
+2024-01-07 18:08:57,783;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 10.7
+2024-01-07 18:08:59,576;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.7919983863830566
+2024-01-07 18:09:00,689;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.9
+2024-01-07 18:09:11,401;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 10.7
+2024-01-07 18:09:13,178;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.776322603225708
+2024-01-07 18:09:14,248;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.8
+2024-01-07 18:09:24,963;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 10.7
+2024-01-07 18:09:26,918;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.9553101062774658
+2024-01-07 18:09:28,081;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.1
+2024-01-07 18:09:38,784;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 10.7
+2024-01-07 18:09:40,663;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.8784284591674805
+2024-01-07 18:09:41,896;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.1
+2024-01-07 18:09:52,613;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 10.7
+2024-01-07 18:09:54,261;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.6487555503845215
+2024-01-07 18:09:55,485;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.9
+2024-01-07 18:10:06,170;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 10.7
+2024-01-07 18:10:07,956;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.7864406108856201
+2024-01-07 18:10:09,346;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.2
+2024-01-07 18:10:20,910;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 11.6
+2024-01-07 18:10:22,586;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.6753029823303223
+2024-01-07 18:10:23,819;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 2.9
+2024-01-07 18:10:34,524;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 10.7
+2024-01-07 18:10:36,442;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed ids and summary took: 1.9180808067321777
+2024-01-07 18:10:37,783;pubmed_wrapper;fetch_pubs_info;INFO;Fetching pubmed countries time: 3.3
+2024-01-07 18:10:48,455;DatabaseManager;insert_publications_info;INFO;Time it took to insert 0 and update 50 publications into DB: 10.7
