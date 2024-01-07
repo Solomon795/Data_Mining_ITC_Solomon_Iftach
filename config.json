@@ -6,9 +6,9 @@
       },
 
   "DatabaseProperties": {
-    "host": "localhost",
-    "user": "root",
-    "password": "root",
+    "host": "data-mining-db1.cttpnp4olbpx.us-west-1.rds.amazonaws.com",
+    "user": "solomon_iftach",
+    "password": "solomon_iftach",
     "database": "DataMining"
   },
 
