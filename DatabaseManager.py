@@ -3,6 +3,7 @@ import pymysql.cursors
 import json
 import logging
 import time
+import Configuration
 
 # Initialize the logger according to the module name
 logger = logging.getLogger(__name__)
@@ -150,7 +151,10 @@ class DatabaseManager:
                 title = title[:-1]  # removing the terminating dot in pubmed title
                 
             journal = dict['journal'][0:150]
-            authors = map(lambda x: x[0:45].title(), dict['authors'])
+
+            authors = set()
+            for name in dict['authors']:
+                authors.add(name.title()[0:45])
             countries = set()
             if db_source == 1:  # Pubmed
                 countries.update(dict['countries'])
@@ -207,9 +211,9 @@ class DatabaseManager:
             # removal of all publications for the insertion to publications_by_authors table
             authors_per_pub.pop(doi_to_remove)
             # Removing existing publications from publication_by_topics batch.
-            pubs_for_topic.pop(dict_id['doi'])  # pubs_for_topic will contain only new publications.
+            pubs_for_topic.pop(doi_to_remove)  # pubs_for_topic will contain only new publications.
             # Removing existing publications from countries_per_pub
-            countries_per_pubs.pop(dict_id['doi'])  # countries_per_pub will have countries only for new publications.
+            countries_per_pubs.pop(doi_to_remove)  # countries_per_pub will have countries only for new publications.
 
             # Building an update list of relevant fields for existing publications, e.g. num_citations.
             # The actual list building
@@ -241,25 +245,25 @@ class DatabaseManager:
         #  3. Insertion of rows {id, topic_id, pub_id} to publications_by_topics ########
         # Existing rows in publications_by_topics removed from pubs_for_topic
         # Preparing all the existing id's in one string separated by commas for the SQL command
+        ids_to_insert = list(pubs_for_topic.values())
         existing_pubs_ids_str = ",".join(existing_pubs_ids)  # one string of id's
         if existing_pubs_ids_str != "":
             sql_command = (f"select pub_id from publications_by_topics "
-                           f"where topic_id=({self._topic_id}) and pub_id in ({existing_pubs_ids_str})")
+                           f"where topic_id={self._topic_id} and pub_id in ({existing_pubs_ids_str})")
             result = self._sql_run_fetch_command(sql_command, fetch_all=True)
             set_existing_ids = set(existing_pubs_ids)  # cast to set format for removal of serials_id's'
             for pub_dict in result:  # [{'pub_id': 32441}, {'pub_id': 25646}]
                 serial_id_to_remove = str(pub_dict['pub_id'])  # pub_id from the table to be removed from pubs_for_topic
                 set_existing_ids.remove(serial_id_to_remove)
             # Insertion of remaining rows to publications_by_topics table
-            ids_to_insert = list(pubs_for_topic.values()) + list(
-                set_existing_ids)  # now pubs_for_topic contain all publications to be inserted
-            pubs_for_topics_vals = []
-            for pub_id in ids_to_insert:
-                self._max_pub_topic_id += 1
-                pubs_for_topics_vals += [(self._max_pub_topic_id, self._topic_id, pub_id)]
+            ids_to_insert += list(set_existing_ids)  # now pubs_for_topic contain all publications to be inserted
+        pubs_for_topics_vals = []
+        for pub_id in ids_to_insert:
+            self._max_pub_topic_id += 1
+            pubs_for_topics_vals += [(self._max_pub_topic_id, self._topic_id, pub_id)]
 
-            sql_command = 'insert into publications_by_topics (id, topic_id, pub_id) values (%s, %s, %s)'
-            self._sql_run_execute_many(sql_command, vals=pubs_for_topics_vals)
+        sql_command = 'insert into publications_by_topics (id, topic_id, pub_id) values (%s, %s, %s)'
+        self._sql_run_execute_many(sql_command, vals=pubs_for_topics_vals)
 
         # 4. Insert set authors_per_batch to authors table
         # cast the authors to a string for the removal selection
